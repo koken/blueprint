@@ -19,6 +19,8 @@
 		<koken:print data="album.title" />
 	</h2>
 
+	<koken:link lightbox="true" class="button">View in lightbox</koken:link>
+
 	<!-- Display the album's description --> 
 	<koken:print data="album.description" paragraphs="true" />
 		        

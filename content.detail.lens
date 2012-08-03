@@ -41,6 +41,8 @@
 
 	</koken:if>
 
+	<koken:link lightbox="true" class="button">View in lightbox</koken:link>
+
 	<koken:print data="content.caption" paragraphs="true" />
 
 	<p>

@@ -25,6 +25,19 @@ a:hover {
 	text-decoration:underline;
 }
 
+a.button {
+	background:#000;
+	padding:6px 12px;
+	color:#fff;
+	font-size:13px;
+	margin:1em 0;
+	display:inline-block;
+}
+
+a.button:hover {
+	text-decoration:none;
+}
+
 img {
 	-ms-interpolation-mode: bicubic;
 }
