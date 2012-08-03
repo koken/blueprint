@@ -1,0 +1,10 @@
+{ 
+	"name": "Blueprint",
+	"version": "1.0",
+	"description": "Bare bones theme for theme developers learning the ropes. Nothing fancy, just data.",
+	"demo": "http://koken.me",
+	"author": {
+		"name": "Your name",
+		"link": "http://koken.me"
+	}
+}

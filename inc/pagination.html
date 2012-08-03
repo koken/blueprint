@@ -1,0 +1,35 @@
+<!-- Paginates data for index page this is included in -->
+<koken:pagination>
+	
+<div id="pagination">
+				
+	<koken:if condition="{page} > 1">
+
+		<koken:link data="previous_page" title="View page {previous_page.number}">
+			Previous
+		</koken:link>
+		&nbsp;
+
+	</koken:if>
+	
+	<koken:loop>	
+					
+		<koken:link class="{is_current}" title="View page {number}">
+			<koken:print data="number" />
+		</koken:link>
+		&nbsp;
+		
+	</koken:loop>
+
+	<koken:if condition="{page} < {pages}">
+
+		<koken:link data="next_page" title="View page {next_page.number}">
+			Next
+		</koken:link>
+		&nbsp;
+		
+	</koken:if>
+			
+</div>
+
+</koken:pagination>

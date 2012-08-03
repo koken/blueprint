@@ -1,0 +1,71 @@
+<koken:include file="inc/header.html" />
+
+<div id="content">
+
+	<koken:load>
+
+	<h2>
+		<!-- Displays links to neighbor albums, link back to albums index -->
+		<div id="content-pag">
+			<koken:not empty="album.context.neighbors.previous">
+				&larr;&nbsp;&nbsp;<koken:link data="album.context.neighbors.previous" title="Previous: {album.context.neighbors.previous.title}"><koken:print data="album.context.neighbors.previous.title" /></koken:link>
+			</koken:not>
+			&nbsp;&nbsp;&nbsp;<koken:link source="albums">View all</koken:link>&nbsp;&nbsp;&nbsp;
+			<koken:not empty="album.context.neighbors.next">
+				<koken:link data="album.context.neighbors.next" title="Next: {album.context.neighbors.next.title}"><koken:print data="album.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
+			</koken:not>
+		</div>
+		<!-- Display the album's title --> 
+		<koken:print data="album.title" />
+	</h2>
+
+	<!-- Display the album's description --> 
+	<koken:print data="album.description" paragraphs="true" />
+		        
+	<!-- Display the album's categories --> 
+	<koken:categories>
+		<p>
+			<strong>Categories: </strong>
+			<koken:loop separator=", ">
+				<koken:link>
+					<koken:print data="category.title" />
+				</koken:link>
+			</koken:loop>
+		</p>
+	</koken:categories>
+
+	<!-- Display the album's tags --> 
+	<koken:tags>
+		<p>
+			<strong>Tags: </strong>
+			<koken:loop separator=", ">
+				<koken:link>
+					<koken:print data="tag.title" />
+				</koken:link>
+			</koken:loop>
+		</p>
+	</koken:tags>
+
+	<ol>
+		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
+		<koken:loop>
+		<li>
+			<koken:link>
+				<koken:img />
+			</koken:link>
+			<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
+			<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
+		</li>
+		</koken:loop>
+	</ol>
+
+	<koken:else>
+
+		<!-- Displayed if the album contains no content -->
+		Nothing loaded
+
+	</koken:load>
+
+</div> <!-- close #content -->
+
+<koken:include file="inc/footer.html" />

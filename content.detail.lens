@@ -1,0 +1,111 @@
+<koken:include file="inc/header.html" />
+
+<div id="content">
+
+<koken:load>
+     
+	<h2>
+		<div style="float:right;">
+			<koken:if empty="content.context.album">
+				<koken:variable name="previous_label" value="Older" />
+				<koken:variable name="next_label" value="Newer" />
+			<koken:else>
+				<koken:variable name="previous_label" value="Previous" />
+				<koken:variable name="next_label" value="Next" />
+			</koken:if>
+
+			<koken:if empty="content.context.neighbors.previous">
+				&larr; <koken:print data="previous_label" />
+			<koken:else>
+				&larr; <koken:link data="content.context.neighbors.previous" title="{previous_label}"><koken:print data="previous_label" /></koken:link>
+			</koken:if>
+			&nbsp;&nbsp;
+			<koken:if empty="content.context.neighbors.next">
+				<koken:print data="next_label" /> &rarr;
+			<koken:else>
+				<koken:link data="content.context.neighbors.next" title="{next_label}"><koken:print data="next_label" /></koken:link> &rarr;
+			</koken:if>
+		</div>
+		<koken:print data="content.title" fallback="content.filename" />
+	</h2>
+
+	<koken:if data="content.file_type" equals="image">
+
+		<koken:link lightbox="true"><koken:img /></koken:link>
+
+	</koken:if>
+
+	<koken:if data="content.file_type" equals="video">
+
+		<koken:video width="100%" controls="true" />
+
+	</koken:if>
+
+	<koken:print data="content.caption" paragraphs="true" />
+
+	<p>
+		<strong>Uploaded: </strong> <koken:print data="content.uploaded_on" />
+	</p>
+
+	<p>
+		<strong>Captured: </strong> <koken:print data="content.captured_on" />
+	</p>
+
+	<koken:categories>
+		<p>
+			<strong>Categories: </strong>
+			<koken:loop separator=", ">
+				<koken:link>
+					<koken:print data="category.title" />
+				</koken:link>
+			</koken:loop>
+		</p>
+	</koken:categories>
+     
+	<koken:tags>
+		<p>
+			<strong>Tags: </strong>
+			<koken:loop separator=", ">
+				<koken:link>
+					<koken:print data="tag.title" />
+				</koken:link>
+			</koken:loop>
+		</p>
+	</koken:tags>
+
+	<koken:exif>
+		<koken:not empty="exif.model">
+			<p><strong>Camera: </strong> <koken:print data="exif.model" /></p>
+		</koken:not>
+
+		<koken:not empty="exif.exposure">
+			<p><strong>Exposure: </strong> <koken:print data="exif.exposure" /></p>
+		</koken:not>
+	</koken:exif>
+
+	<p>
+		<strong>License: </strong>
+		<koken:print data="content.license.clean" />
+	</p>
+
+	<koken:max_download>
+		<p>
+			<strong>Download image: </strong> <koken:link>
+				<koken:print data="max_download.label" />&nbsp;(<koken:print data="max_download.width" />x<koken:print data="max_download.height" />)
+			</koken:link>
+		</p>
+	</koken:else>
+		<p>
+			<strong>Download image: </strong>User has disabled downloads for this image.
+		</p>	
+	</koken:max_download>
+
+	<koken:else>
+
+		Nothing loaded
+
+</koken:load>
+
+</div>
+
+<koken:include file="inc/footer.html" />

@@ -1,0 +1,168 @@
+/*
+	GLOBAL
+*/
+
+body,html {
+	background:#fff;
+	color:#777;
+	font:14px/21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	margin:20px;
+	text-align:center;
+}
+
+h1,h2,h3,h4,h5,h6,strong {
+	color:#000;
+	font-weight:bold;
+}
+
+a, a:visited {
+	color:#000;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+}
+
+/*
+	LAYOUT
+*/
+
+div#container {
+	width:740px;
+	margin:0 auto;
+	text-align:left;
+}
+
+header {
+	margin-bottom:40px;
+}
+
+header h2 {
+	font-size:14px;
+	font-weight:normal;
+}
+
+footer {
+	padding:40px 0;
+	clear:both;
+	text-align:left;
+}
+
+nav {
+	margin-top:40px;
+}
+
+nav ul {
+	margin:0;
+	padding:0;
+}
+
+nav ul li {
+	display:inline-block;
+	margin:0 15px 0 0;
+}
+
+div#content ol {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+div#content ol li {
+	margin-bottom:20px;
+}
+
+div#content img {
+	margin-bottom:10px;
+}
+
+div#content h2, div#text h2 {
+	margin-bottom:20px;
+}
+
+div#content-pag {
+	float:right;
+	font-size:14px;
+}
+
+div.lcol {
+	width:70%;
+	float:left;
+	margin-right:5%;
+}
+
+div.rcol {
+	width:25%;
+	float:left;
+}
+
+/*
+	ARCHIVE INDEX
+*/
+
+div#content div.row {
+	clear:both;
+	width:100%;
+	float:left;
+	border-bottom:1px solid #000;
+	margin-bottom:20px;
+}
+
+div#content div.row section {
+	float:left;
+	width:225px;
+	margin-right:20px;
+}
+
+/*
+	ESSAY / PAGE MARKUP
+*/
+
+/* wrapper for inserted media */
+.k-content-embed {
+	margin-bottom:1.6364em;
+}
+
+/* wrapper of the media asset itself */
+.k-content {
+	line-height:0; /* resolves html whitespace */
+}
+
+/* wrapper for title/caption underneath photo/video, if turned on */
+.k-content-text {
+	padding:0 0 1em;
+	margin:0 0 1em;
+}
+
+/* wrapper for the media's title */
+.k-content-title {}
+
+/* wrapper for the media's caption */
+.k-content-caption {}
+
+/*
+	ASSIGNED CLASSES
+	See: http://koken.me/docs/themes-css-classes.html
+*/
+
+a.k-nav-current {
+	color:#ff6e00;
+}
+
+.k-note {}
+
+.k-content-embed {}
+
+.k-content {}
+
+.k-content-text {}
+
+.k-content-title {}
+
+.k-content-caption {}

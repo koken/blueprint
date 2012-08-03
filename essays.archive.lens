@@ -1,0 +1,71 @@
+<koken:include file="inc/header.html" />
+
+<div id="text">
+
+  <koken:load>
+
+  <h2>
+    <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
+  	Essay archive (<koken:print data="archive.type" case="titlecase" />) / <em><koken:print data="archive.title" /></em> / <koken:link source="essays">View all</koken:link>
+  </h2>
+
+  <div class="lcol">
+
+    <!-- Loop over all returned essays, link to their essays.detail.lens pages -->
+    <koken:loop>
+         <article>  
+              <h3><koken:link><koken:print data="essay.title" /></koken:link></h3>
+              <koken:print data="essay.content" />
+              	<p>
+    				<strong>Published: </strong>
+    				<koken:time data="essay.published_on" />
+    			</p>          
+         </article>
+    </koken:loop>
+
+    </div> <!-- close .lcol -->
+
+    <div class="rcol">
+
+      <!-- Links to essays archived by date, categories and tags -->
+      <h2>Archives</h2>
+      <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
+           <h3>Date</h3> 
+           <koken:loop>
+                <koken:link to="essays">
+                     <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                </koken:link>
+                <br>
+           </koken:loop>
+      </koken:load>
+      <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
+           <h3>Categories</h3>
+           <koken:loop>
+                <koken:link to="essays">
+                     <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                </koken:link>
+                <br>
+           </koken:loop>
+      </koken:load>
+      <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
+           <h3>Tags</h3>
+           <koken:loop>
+                <koken:link to="essays">
+                     <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                </koken:link>
+                <br>
+           </koken:loop>
+      </koken:load>
+
+   </div> <!-- close .rcol -->
+
+  <koken:else>
+
+      <!-- Displayed if no data is loaded -->
+       Nothing loaded
+
+  </koken:load>
+
+</div> <!-- close #text -->
+
+<koken:include file="inc/footer.html" />

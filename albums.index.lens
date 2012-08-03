@@ -1,0 +1,104 @@
+<koken:include file="inc/header.html" />
+
+<div id="content">
+
+<koken:load>
+
+<div class="lcol">
+	
+	<h2>Albums index</h2>
+
+	<ol>
+
+		<!-- Loop over all albums, render each with the following -->
+		<koken:loop>
+
+		<li>
+
+			<!-- Display each album's first album cover, link to albums.detail.lens -->
+			<koken:link>
+				<koken:img data="album.covers.first" size="16:9" />
+			</koken:link>
+
+			<!-- Display each album's title, link to albums.detail.lens -->
+			<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
+
+			<!-- Display the album's (shorter) summary -->
+			<koken:print data="album.summary" paragraphs="true" />
+
+			<!-- Display album categories, link each to albums.archive -->
+			<koken:categories>
+				<p>
+					<strong>Categories: </strong>
+					<koken:loop separator=", ">
+						<koken:link>
+							<koken:print data="category.title" />
+						</koken:link>
+					</koken:loop>
+				</p>
+			</koken:categories>
+
+			<!-- Display album tags, link each to albums.archive -->
+			<koken:tags>
+				<p>
+					<strong>Tags: </strong>
+					<koken:loop separator=", ">
+						<koken:link>
+							<koken:print data="tag.title" />
+						</koken:link>
+					</koken:loop>
+				</p>
+			</koken:tags>
+
+		</li>
+
+		</koken:loop>
+
+	</ol>
+
+</div>
+
+<div class="rcol">
+
+	<!-- Links to albums archived by date, categories and tags -->
+	<h2>Archives</h2>
+	<koken:load source="archives" summary="true" limit_to="albums">
+		<h3>Date</h3> 
+		<koken:loop>
+			<koken:link to="albums">
+				<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+			</koken:link>
+			<br>
+		</koken:loop>
+	</koken:load>
+	<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
+		<h3>Categories</h3>
+		<koken:loop>
+			<koken:link to="albums">
+				<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+			</koken:link>
+			<br>
+		</koken:loop>
+	</koken:load>
+	<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
+		<h3>Tags</h3>
+		<koken:loop>
+			<koken:link to="albums">
+				<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+			</koken:link>
+			<br>
+		</koken:loop>
+	</koken:load>
+
+</div>
+
+<koken:else>
+
+	<!-- Fallback message if no public albums are available -->
+	Nothing public albums found
+
+</koken:load>
+
+</div>
+
+<koken:include file="inc/footer.html" />

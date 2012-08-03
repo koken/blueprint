@@ -1,0 +1,76 @@
+<koken:include file="inc/header.html" />
+
+<div id="content">
+
+	<koken:load limit="50">
+
+		<div class="lcol">
+
+			<h2>Content index</h2>
+
+			<ol>
+				<!-- Loop over all public content, display info about each, link to content.detail.lens -->
+				<koken:loop>
+				<li>
+					<koken:link title="View {content.filename}">
+						<koken:img />
+					</koken:link>
+					<koken:link title="View {content.filename}">
+						<koken:print data="content.title" fallback="content.filename" />
+					</koken:link>
+					<p>
+						<strong>Uploaded: </strong> <koken:print data="content.uploaded_on" />
+					</p>
+				</li>
+				</koken:loop>
+			</ol>
+
+			<!-- Paginate the results -->
+			<koken:include file="inc/pagination.html" />
+
+		</div>
+
+		<div class="rcol">
+
+			<!-- Links to content archived by date, categories and tags -->
+			<h2>Archives</h2>
+			<koken:load source="archives" summary="true" limit_to="content">
+				<h3>Date</h3> 
+				<koken:loop>
+					<koken:link to="content">
+						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+					</koken:link>
+					<br>
+				</koken:loop>
+			</koken:load>
+			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
+				<h3>Categories</h3>
+				<koken:loop>
+					<koken:link to="content">
+						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+					</koken:link>
+					<br>
+				</koken:loop>
+			</koken:load>
+			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
+				<h3>Tags</h3>
+				<koken:loop>
+					<koken:link to="content">
+						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+					</koken:link>
+					<br>
+				</koken:loop>
+			</koken:load>
+
+		</div>
+
+		<koken:else>
+
+			<!-- Displayed if no data is loaded -->
+			Nothing loaded
+
+	</koken:load>
+
+</div> <!-- close #content -->
+
+<koken:include file="inc/footer.html" />
