@@ -5,6 +5,13 @@
 	<!-- Load this template's source data (essay) -->
 	<koken:load>
 
+		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<koken:head>
+			<meta property="og:title" koken:content="{site.title}: {essay.title}" />
+			<meta property="og:description" koken:content="{essay.excerpt}" />
+			<meta name="medium" content="article" />
+		</koken:head>
+
 		<div class="lcol">
 
 			<article>  

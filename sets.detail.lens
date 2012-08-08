@@ -5,6 +5,16 @@
 	<!-- Load this template's source data (set) -->
 	<koken:load>
 
+		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<koken:head>
+			<meta property="og:title" koken:content="{site.title}: {album.title}" />
+			<meta property="og:description" koken:content="{album.summary}" />
+			<meta name="medium" content="mult" />
+			<koken:loop data="album.covers">
+				<meta property="og:image" koken:content="{content.presets.small.url}" />	
+			</koken:loop>
+		</koken:head>
+
 		<h2>
 			<!-- Displays links to neighbor albums, link back to albums index -->
 			<div id="content-pag">
