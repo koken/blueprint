@@ -30,6 +30,18 @@
 			<koken:print data="album.title" />
 		</h2>
 
+		<koken:topics>
+					<strong>Related content</strong>
+					<koken:loop>
+						<p>
+							<koken:link>
+								<koken:print data="essay.title" />
+							</koken:link>
+						</p>
+					</koken:loop>
+				</koken:topics>
+
+
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
 
 		<!-- Display the album's description --> 

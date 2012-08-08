@@ -5,67 +5,89 @@
 	<!-- Load this template's source data (essay) -->
 	<koken:load>
 
-		<article>  
+		<div class="lcol">
 
-			<h2>
-				<div style="float:right;">
-					<koken:not empty="essay.context.neighbors.previous">
-						&larr;&nbsp;&nbsp;<koken:link data="essay.context.neighbors.previous" title="Previous: {essay.context.neighbors.previous.title}"><koken:print data="essay.context.neighbors.previous.title" /></koken:link>
-					</koken:not>
-					&nbsp;&nbsp;
-					<koken:not empty="essay.context.neighbors.next">
-						<koken:link data="essay.context.neighbors.next" title="Next: {essay.context.neighbors.next.title}"><koken:print data="essay.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
-					</koken:not>
-				</div>
-				<koken:link><koken:print data="essay.title" /></koken:link>
-			</h2>
+			<article>  
 
-			<koken:print data="essay.content" />
+				<h2>
+					<div style="float:right;">
+						<koken:not empty="essay.context.neighbors.previous">
+							&larr;&nbsp;&nbsp;<koken:link data="essay.context.neighbors.previous" title="Previous: {essay.context.neighbors.previous.title}"><koken:print data="essay.context.neighbors.previous.title" /></koken:link>
+						</koken:not>
+						&nbsp;&nbsp;
+						<koken:not empty="essay.context.neighbors.next">
+							<koken:link data="essay.context.neighbors.next" title="Next: {essay.context.neighbors.next.title}"><koken:print data="essay.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
+						</koken:not>
+					</div>
+					<koken:link><koken:print data="essay.title" /></koken:link>
+				</h2>
 
-			<p>
-				<koken:link>Permalink</koken:link>
-			</p>
+				<koken:print data="essay.content" />
 
-			<p>
-				<strong>Published: </strong>
-				<koken:time data="essay.published_on" />
-			</p>
+				<p>
+					<strong>Published: </strong>
+					<koken:time data="essay.published_on" />
+				</p>
 
-			<koken:topics>
-			<p>
-				<strong>Topics: </strong>
-				<koken:loop separator=", ">
-					<koken:link>
-						<koken:print data="album.title" />
-					</koken:link>
-				</koken:loop>
-			</p>
-			</koken:topics>
+				<p>
+					<koken:link>Permalink</koken:link>
+				</p>
 
-			<koken:categories>
-			<p>
-				<strong>Category: </strong>
-				<koken:loop separator=", ">
-					<koken:link>
-						<koken:print data="category.title" />
-					</koken:link>
-					<br>
-				</koken:loop>
-			</p>
-			</koken:categories>
+			</article>
 
-			<koken:tags>
-			<p>
-				<strong>Tags: </strong>
-				<koken:loop separator=", ">
-					<koken:link>
-						<koken:print data="tag.title" />
-					</koken:link>
-				</koken:loop>
-			</p>
-			</koken:tags>
+		</div> <!-- close .lcol -->
 
-		</article>
+		<div class="rcol">
+
+			<aside>
+
+				<koken:topics>
+					<strong>Related content</strong>
+					<koken:loop>
+						<p>
+							<koken:link>
+								<koken:img data="album.covers.first" />
+							</koken:link>
+							<koken:link>
+								<koken:print data="album.title" /> (<koken:print data="album.counts.total" /> images)
+							</koken:link>
+						</p>
+					</koken:loop>
+				</koken:topics>
+
+				<!-- Links to essays archived by date, categories and tags -->
+               <h2>Archives</h2>
+               <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
+                    <h3>Date</h3> 
+                    <koken:loop>
+                         <koken:link to="essays">
+                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                         </koken:link>
+                         <br>
+                    </koken:loop>
+               </koken:load>
+               <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
+                    <h3>Categories</h3>
+                    <koken:loop>
+                         <koken:link to="essays">
+                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                         </koken:link>
+                         <br>
+                    </koken:loop>
+               </koken:load>
+               <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
+                    <h3>Tags</h3>
+                    <koken:loop>
+                         <koken:link to="essays">
+                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                         </koken:link>
+                         <br>
+                    </koken:loop>
+               </koken:load>
+
+			</aside>
+
+		</div> <!-- close .rcol -->
 
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
