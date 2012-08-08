@@ -4,6 +4,14 @@
 
 	<!-- Load this template's source data (content) -->
 	<koken:load>
+
+		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<koken:head>
+			<meta property="og:title" koken:content="{site.title}: {content.title|content.filename}" />
+			<meta property="og:description" koken:content="{content.caption}" />
+			<meta name="medium" content="{content.file_type}" />
+			<meta property="og:image" koken:content="{content.presets.small.url}" />	
+		</koken:head>
 	     
 		<h2>
 			<div style="float:right;">
