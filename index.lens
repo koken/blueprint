@@ -2,18 +2,21 @@
 
 <div id="content">
 
+	<!-- Load this template's source data (featured content) -->
 	<koken:load>
 
 		<!-- Slideshow that loads template data (Featured Content by default) -->
-		<koken:pulse size="3:2" autostart="true" timer:enabled="true" transitions:type="dissolve" />
+		<koken:pulse size="3:2" autostart="true" timer:enabled="true" />
 
-	<koken:else>
-		
-		<!-- Fallback content if data load contains no data -->
-		<p>No featured or favorite content found. Assign either in the Library then edit the page filter if necessary.</p>
+		<!-- Fallback content if no data was loaded by koken:load -->
+		<koken:else>
+			
+			<p>
+				No featured or favorite content found. Assign either in the Library then edit the page filter if necessary.
+			</p>
 
 	</koken:load>
 
-</div>
+</div> <!-- close #content -->
 
 <koken:include file="inc/footer.html" />

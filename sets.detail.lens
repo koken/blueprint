@@ -2,113 +2,114 @@
 
 <div id="content">
 
+	<!-- Load this template's source data (set) -->
 	<koken:load>
 
-	<h2>
-		<!-- Displays links to neighbor albums, link back to albums index -->
-		<div id="content-pag">
-			<koken:not empty="album.context.neighbors.previous">
-				&larr;&nbsp;&nbsp;<koken:link data="album.context.neighbors.previous" title="Previous: {album.context.neighbors.previous.title}"><koken:print data="album.context.neighbors.previous.title" /></koken:link>
-			</koken:not>
-			&nbsp;&nbsp;&nbsp;<koken:link source="albums">View all</koken:link>&nbsp;&nbsp;&nbsp;
-			<koken:not empty="album.context.neighbors.next">
-				<koken:link data="album.context.neighbors.next" title="Next: {album.context.neighbors.next.title}"><koken:print data="album.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
-			</koken:not>
-		</div>
-		<!-- Display the set's title --> 
-		Set: <koken:print data="album.title" />
+		<h2>
+			<!-- Displays links to neighbor albums, link back to albums index -->
+			<div id="content-pag">
+				<koken:not empty="album.context.neighbors.previous">
+					&larr;&nbsp;&nbsp;<koken:link data="album.context.neighbors.previous" title="Previous: {album.context.neighbors.previous.title}"><koken:print data="album.context.neighbors.previous.title" /></koken:link>
+				</koken:not>
+				&nbsp;&nbsp;&nbsp;<koken:link source="albums">View all</koken:link>&nbsp;&nbsp;&nbsp;
+				<koken:not empty="album.context.neighbors.next">
+					<koken:link data="album.context.neighbors.next" title="Next: {album.context.neighbors.next.title}"><koken:print data="album.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
+				</koken:not>
+			</div>
+			<!-- Display the set's title --> 
+			Set: <koken:print data="album.title" />
 
-	</h2>
+		</h2>
 
-	<p><koken:print data="album.description" /></p>
-
-	<div class="lcol">
-
-		<h2><koken:print data="album.title" /></h2>
 		<p><koken:print data="album.description" /></p>
 
-		<ol>
+		<div class="lcol">
+
+			<h2><koken:print data="album.title" /></h2>
+			<p><koken:print data="album.description" /></p>
+
+			<ol>
+				
+				<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
+				<koken:loop>
+
+				<li>
+					<koken:link>
+						<koken:img data="album.covers.first" size="1:1" />
+					</koken:link>
+					<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
+					<p><koken:print data="album.summary" /></p>
+
+					<!-- Display the set's categories --> 
+					<koken:categories>
+						<p>
+							<strong>Categories: </strong>
+							<koken:loop separator=", ">
+								<koken:link>
+									<koken:print data="category.title" />
+								</koken:link>
+							</koken:loop>
+						</p>
+					</koken:categories>
+
+					<!-- Display the set's tags --> 
+					<koken:tags>
+						<p>
+							<strong>Tags: </strong>
+							<koken:loop separator=", ">
+								<koken:link>
+									<koken:print data="title" />
+								</koken:link>
+							</koken:loop>
+						</p>
+					</koken:tags>
+
+				</li>
+				
+				</koken:loop>
 			
-			<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
-			<koken:loop>
+			</ol>
 
-			<li>
-				<koken:link>
-					<koken:img data="album.covers.first" size="1:1" />
-				</koken:link>
-				<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
-				<p><koken:print data="album.summary" /></p>
+		</div> <!-- close .lcol -->
 
-				<!-- Display the set's categories --> 
-				<koken:categories>
-					<p>
-						<strong>Categories: </strong>
-						<koken:loop separator=", ">
-							<koken:link>
-								<koken:print data="category.title" />
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:categories>
+		<div class="rcol">
 
-				<!-- Display the set's tags --> 
-				<koken:tags>
-					<p>
-						<strong>Tags: </strong>
-						<koken:loop separator=", ">
-							<koken:link>
-								<koken:print data="title" />
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:tags>
+			<!-- Links to albums archived by date, categories and tags -->
+			<h2>Archives</h2>
+			<koken:load source="archives" summary="true" limit_to="albums">
+				<h3>Date</h3> 
+				<koken:loop>
+					<koken:link to="albums">
+						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+					</koken:link>
+					<br>
+				</koken:loop>
+			</koken:load>
+			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
+				<h3>Categories</h3>
+				<koken:loop>
+					<koken:link to="albums">
+						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+					</koken:link>
+					<br>
+				</koken:loop>
+			</koken:load>
+			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
+				<h3>Tags</h3>
+				<koken:loop>
+					<koken:link to="albums">
+						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+					</koken:link>
+					<br>
+				</koken:loop>
+			</koken:load>
 
-			</li>
-			
-			</koken:loop>
-		
-		</ol>
+		</div> <!-- close .rcol -->
 
-	</div> <!-- close .lcol -->
+		<!-- Fallback content if no data was loaded by koken:load -->
+		<koken:else>
 
-	<div class="rcol">
-
-		<!-- Links to albums archived by date, categories and tags -->
-		<h2>Archives</h2>
-		<koken:load source="archives" summary="true" limit_to="albums">
-			<h3>Date</h3> 
-			<koken:loop>
-				<koken:link to="albums">
-					<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
-				</koken:link>
-				<br>
-			</koken:loop>
-		</koken:load>
-		<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
-			<h3>Categories</h3>
-			<koken:loop>
-				<koken:link to="albums">
-					<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
-				</koken:link>
-				<br>
-			</koken:loop>
-		</koken:load>
-		<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
-			<h3>Tags</h3>
-			<koken:loop>
-				<koken:link to="albums">
-					<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
-				</koken:link>
-				<br>
-			</koken:loop>
-		</koken:load>
-
-	</div> <!-- close .rcol -->
-
-	<koken:else>
-
-		<!-- Displayed if the album contains no content -->
-		Nothing loaded
+			Nothing loaded
 
 	</koken:load>
 

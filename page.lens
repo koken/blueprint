@@ -1,13 +1,18 @@
 <koken:include file="inc/header.html" />
 
-<koken:load>
+<div id="content">
 
-	<!-- Displays the custom page title -->
-	<h1><koken:print data="page.title" /></h1>
+	<!-- Load this template's source data (page) -->
+	<koken:load>
 
-	<!-- Displays the custom page content -->
-	<koken:print data="page.content" />
+		<!-- Displays the custom page title -->
+		<h1><koken:print data="page.title" /></h1>
 
-</koken:load>
+		<!-- Displays the custom page content -->
+		<koken:print data="page.content" />
+
+	</koken:load>
+
+</div> <!-- close #content -->
 
 <koken:include file="inc/footer.html" />

@@ -2,69 +2,80 @@
 
 <div id="content">
 
+	<!-- Load this template's source data (album) -->
 	<koken:load>
 
-	<h2>
-		<!-- Displays links to neighbor albums, link back to albums index -->
-		<div id="content-pag">
-			<koken:not empty="album.context.neighbors.previous">
-				&larr;&nbsp;&nbsp;<koken:link data="album.context.neighbors.previous" title="Previous: {album.context.neighbors.previous.title}"><koken:print data="album.context.neighbors.previous.title" /></koken:link>
-			</koken:not>
-			&nbsp;&nbsp;&nbsp;<koken:link source="albums">View all</koken:link>&nbsp;&nbsp;&nbsp;
-			<koken:not empty="album.context.neighbors.next">
-				<koken:link data="album.context.neighbors.next" title="Next: {album.context.neighbors.next.title}"><koken:print data="album.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
-			</koken:not>
-		</div>
-		<!-- Display the album's title --> 
-		<koken:print data="album.title" />
-	</h2>
-
-	<koken:link lightbox="true" class="button">View in lightbox</koken:link>
-
-	<!-- Display the album's description --> 
-	<koken:print data="album.description" paragraphs="true" />
-		        
-	<!-- Display the album's categories --> 
-	<koken:categories>
-		<p>
-			<strong>Categories: </strong>
-			<koken:loop separator=", ">
-				<koken:link>
-					<koken:print data="category.title" />
-				</koken:link>
+		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<koken:head>
+			<meta property="og:title" koken:content="{site.title}: {album.title}" />
+			<meta property="og:description" koken:content="{album.summary}" />
+			<meta name="medium" content="mult" />
+			<koken:loop data="album.covers">
+				<meta property="og:image" koken:content="{content.presets.small.url}" />	
 			</koken:loop>
-		</p>
-	</koken:categories>
+		</koken:head>
 
-	<!-- Display the album's tags --> 
-	<koken:tags>
-		<p>
-			<strong>Tags: </strong>
-			<koken:loop separator=", ">
+		<h2>
+			<!-- Displays links to neighbor albums, link back to albums index -->
+			<div id="content-pag">
+				<koken:not empty="album.context.neighbors.previous">
+					&larr;&nbsp;&nbsp;<koken:link data="album.context.neighbors.previous" title="Previous: {album.context.neighbors.previous.title}"><koken:print data="album.context.neighbors.previous.title" /></koken:link>
+				</koken:not>
+				&nbsp;&nbsp;&nbsp;<koken:link source="albums">View all</koken:link>&nbsp;&nbsp;&nbsp;
+				<koken:not empty="album.context.neighbors.next">
+					<koken:link data="album.context.neighbors.next" title="Next: {album.context.neighbors.next.title}"><koken:print data="album.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
+				</koken:not>
+			</div>
+			<!-- Display the album's title --> 
+			<koken:print data="album.title" />
+		</h2>
+
+		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
+
+		<!-- Display the album's description --> 
+		<koken:print data="album.description" paragraphs="true" />
+			        
+		<!-- Display the album's categories --> 
+		<koken:categories>
+			<p>
+				<strong>Categories: </strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						<koken:print data="category.title" />
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:categories>
+
+		<!-- Display the album's tags --> 
+		<koken:tags>
+			<p>
+				<strong>Tags: </strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						<koken:print data="tag.title" />
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:tags>
+
+		<ol>
+			<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
+			<koken:loop>
+			<li>
 				<koken:link>
-					<koken:print data="tag.title" />
+					<koken:img />
 				</koken:link>
+				<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
+				<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
+			</li>
 			</koken:loop>
-		</p>
-	</koken:tags>
+		</ol>
 
-	<ol>
-		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
-		<koken:loop>
-		<li>
-			<koken:link>
-				<koken:img />
-			</koken:link>
-			<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
-			<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
-		</li>
-		</koken:loop>
-	</ol>
+		<!-- Fallback content if no data was loaded by koken:load -->
+		<koken:else>
 
-	<koken:else>
-
-		<!-- Displayed if the album contains no content -->
-		Nothing loaded
+			Nothing loaded
 
 	</koken:load>
 

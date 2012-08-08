@@ -1,77 +1,79 @@
 <koken:include file="inc/header.html" />
 
-<div id="text">
+<div id="content">
 
-<koken:load>
+	<!-- Load this template's source data (essay) -->
+	<koken:load>
 
-<article>  
+		<article>  
 
-	<h2>
-		<div style="float:right;">
-			<koken:not empty="essay.context.neighbors.previous">
-				&larr;&nbsp;&nbsp;<koken:link data="essay.context.neighbors.previous" title="Previous: {essay.context.neighbors.previous.title}"><koken:print data="essay.context.neighbors.previous.title" /></koken:link>
-			</koken:not>
-			&nbsp;&nbsp;
-			<koken:not empty="essay.context.neighbors.next">
-				<koken:link data="essay.context.neighbors.next" title="Next: {essay.context.neighbors.next.title}"><koken:print data="essay.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
-			</koken:not>
-		</div>
-		<koken:link><koken:print data="essay.title" /></koken:link>
-	</h2>
+			<h2>
+				<div style="float:right;">
+					<koken:not empty="essay.context.neighbors.previous">
+						&larr;&nbsp;&nbsp;<koken:link data="essay.context.neighbors.previous" title="Previous: {essay.context.neighbors.previous.title}"><koken:print data="essay.context.neighbors.previous.title" /></koken:link>
+					</koken:not>
+					&nbsp;&nbsp;
+					<koken:not empty="essay.context.neighbors.next">
+						<koken:link data="essay.context.neighbors.next" title="Next: {essay.context.neighbors.next.title}"><koken:print data="essay.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
+					</koken:not>
+				</div>
+				<koken:link><koken:print data="essay.title" /></koken:link>
+			</h2>
 
-	<koken:print data="essay.content" />
+			<koken:print data="essay.content" />
 
-	<p>
-		<koken:link>Permalink</koken:link>
-	</p>
+			<p>
+				<koken:link>Permalink</koken:link>
+			</p>
 
-	<p>
-		<strong>Published: </strong>
-		<koken:time data="essay.published_on" />
-	</p>
+			<p>
+				<strong>Published: </strong>
+				<koken:time data="essay.published_on" />
+			</p>
 
-	<koken:topics>
-	<p>
-		<strong>Topics: </strong>
-		<koken:loop separator=", ">
-			<koken:link>
-				<koken:print data="album.title" />
-			</koken:link>
-		</koken:loop>
-	</p>
-	</koken:topics>
+			<koken:topics>
+			<p>
+				<strong>Topics: </strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						<koken:print data="album.title" />
+					</koken:link>
+				</koken:loop>
+			</p>
+			</koken:topics>
 
-	<koken:categories>
-	<p>
-		<strong>Category: </strong>
-		<koken:loop separator=", ">
-			<koken:link>
-				<koken:print data="category.title" />
-			</koken:link>
-			<br>
-		</koken:loop>
-	</p>
-	</koken:categories>
+			<koken:categories>
+			<p>
+				<strong>Category: </strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						<koken:print data="category.title" />
+					</koken:link>
+					<br>
+				</koken:loop>
+			</p>
+			</koken:categories>
 
-	<koken:tags>
-	<p>
-		<strong>Tags: </strong>
-		<koken:loop separator=", ">
-			<koken:link>
-				<koken:print data="tag.title" />
-			</koken:link>
-		</koken:loop>
-	</p>
-	</koken:tags>
+			<koken:tags>
+			<p>
+				<strong>Tags: </strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						<koken:print data="tag.title" />
+					</koken:link>
+				</koken:loop>
+			</p>
+			</koken:tags>
 
-</article>
+		</article>
 
-<koken:else>
+		<!-- Fallback content if no data was loaded by koken:load -->
+		<koken:else>
 
-	Nothing loaded
+			Nothing loaded
 
-</koken:load>
+	</koken:load>
 
-</div>
+</div> <!-- close #content -->
 
 <koken:include file="inc/footer.html" />

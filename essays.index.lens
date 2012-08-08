@@ -1,97 +1,98 @@
 <koken:include file="inc/header.html" />
 
-<div id="text">
+<div id="content">
 
-     <div class="lcol">
+     <!-- Load this template's source data (essays) -->
+     <koken:load>
 
-          <koken:load>
+          <div class="lcol">
 
-          <koken:loop>
-               <article>  
-                    <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
-                    <koken:print data="essay.content" />
-               	<p>
-     				<strong>Published: </strong>
-     				<koken:time data="essay.published_on" />
-     			</p>
-                    <koken:topics>
-                         <p>
-                              <strong>Topics: </strong>
-                              <koken:loop separator=", ">
-                                   <koken:link>
-                                        <koken:print data="album.title" />
-                                   </koken:link>
-                              </koken:loop>
-                         </p>
-                    </koken:topics>
+               <koken:loop>
+                    <article>  
+                         <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
+                         <koken:print data="essay.content" />
+                    	<p>
+          				<strong>Published: </strong>
+          				<koken:time data="essay.published_on" />
+          			</p>
+                         <koken:topics>
+                              <p>
+                                   <strong>Topics: </strong>
+                                   <koken:loop separator=", ">
+                                        <koken:link>
+                                             <koken:print data="album.title" />
+                                        </koken:link>
+                                   </koken:loop>
+                              </p>
+                         </koken:topics>
 
-                    <koken:categories>
-                         <p>
-                              <strong>Category: </strong>
-                              <koken:loop separator=", ">
-                                   <koken:link>
-                                        <koken:print data="category.title" />
-                                   </koken:link>
-                              </koken:loop>
-                         </p>
-                    </koken:categories>
+                         <koken:categories>
+                              <p>
+                                   <strong>Category: </strong>
+                                   <koken:loop separator=", ">
+                                        <koken:link>
+                                             <koken:print data="category.title" />
+                                        </koken:link>
+                                   </koken:loop>
+                              </p>
+                         </koken:categories>
 
-                    <koken:tags>
-                         <p>
-                              <strong>Tags: </strong>
-                              <koken:loop separator=", ">
-                                   <koken:link>
-                                        <koken:print data="tag.title" />
-                                   </koken:link>
-                              </koken:loop>
-                         </p>
-                    </koken:tags>      
-               </article>
-          </koken:loop>
+                         <koken:tags>
+                              <p>
+                                   <strong>Tags: </strong>
+                                   <koken:loop separator=", ">
+                                        <koken:link>
+                                             <koken:print data="tag.title" />
+                                        </koken:link>
+                                   </koken:loop>
+                              </p>
+                         </koken:tags>      
+                    </article>
+               </koken:loop>
 
+          </div> <!-- close .lcol -->
+
+          <div class="rcol">
+
+               <!-- Links to essays archived by date, categories and tags -->
+               <h2>Archives</h2>
+               <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
+                    <h3>Date</h3> 
+                    <koken:loop>
+                         <koken:link to="essays">
+                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                         </koken:link>
+                         <br>
+                    </koken:loop>
+               </koken:load>
+               <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
+                    <h3>Categories</h3>
+                    <koken:loop>
+                         <koken:link to="essays">
+                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                         </koken:link>
+                         <br>
+                    </koken:loop>
+               </koken:load>
+               <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
+                    <h3>Tags</h3>
+                    <koken:loop>
+                         <koken:link to="essays">
+                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                         </koken:link>
+                         <br>
+                    </koken:loop>
+               </koken:load>
+
+          </div> <!-- close .rcol -->
+
+          <!-- Fallback content if no data was loaded by koken:load -->
           <koken:else>
 
-               <!-- Displayed if no essays have been published -->
                Nothing essays published
 
-          </koken:load>
+     </koken:load>
 
-     </div>
-
-     <div class="rcol">
-
-          <!-- Links to essays archived by date, categories and tags -->
-          <h2>Archives</h2>
-          <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
-               <h3>Date</h3> 
-               <koken:loop>
-                    <koken:link to="essays">
-                         <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                    </koken:link>
-                    <br>
-               </koken:loop>
-          </koken:load>
-          <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
-               <h3>Categories</h3>
-               <koken:loop>
-                    <koken:link to="essays">
-                         <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                    </koken:link>
-                    <br>
-               </koken:loop>
-          </koken:load>
-          <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
-               <h3>Tags</h3>
-               <koken:loop>
-                    <koken:link to="essays">
-                         <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                    </koken:link>
-                    <br>
-               </koken:loop>
-          </koken:load>
-
-     </div>
-
-</div>
+</div> <!-- close #content -->
 
 <koken:include file="inc/footer.html" />

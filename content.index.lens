@@ -2,6 +2,7 @@
 
 <div id="content">
 
+	<!-- Load this template's source data (contents) -->
 	<koken:load limit="50">
 
 		<div class="lcol">
@@ -28,7 +29,7 @@
 			<!-- Paginate the results -->
 			<koken:include file="inc/pagination.html" />
 
-		</div>
+		</div> <!-- close .lcol -->
 
 		<div class="rcol">
 
@@ -62,11 +63,11 @@
 				</koken:loop>
 			</koken:load>
 
-		</div>
+		</div> <!-- close .rcol -->
 
+		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			<!-- Displayed if no data is loaded -->
 			Nothing loaded
 
 	</koken:load>

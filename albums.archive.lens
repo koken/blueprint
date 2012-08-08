@@ -2,6 +2,7 @@
 
 <div id="content">
 
+	<!-- Load this template's source data (albums) -->
 	<koken:load>
 
 	<div class="lcol">
@@ -92,9 +93,9 @@
 		
 	</div> <!-- close .rcol -->
 
+	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>
 
-		<!-- Displayed if no data is loaded -->
 		Nothing loaded
 
 	</koken:load>

@@ -81,6 +81,10 @@ nav ul li {
 	margin:0 15px 0 0;
 }
 
+/*
+	LAYOUT
+*/
+
 div#content ol {
 	margin:0;
 	padding:0;
@@ -95,7 +99,7 @@ div#content img {
 	margin-bottom:10px;
 }
 
-div#content h2, div#text h2 {
+div#content h2 {
 	margin-bottom:20px;
 }
 
