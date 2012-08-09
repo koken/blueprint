@@ -15,18 +15,23 @@
 			</koken:loop>
 		</koken:head>
 
+		<!-- Displays links to neighbor albums, link back to albums index -->
+		<div id="content-pag">
+
+			<koken:previous>
+				<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
+			</koken:previous>
+			&nbsp;
+			<koken:link source="albums">View all</koken:link>
+			&nbsp;
+			<koken:next>
+				<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
+			</koken:next>
+
+		</div>
+
+		<!-- Display the album's title --> 
 		<h2>
-			<!-- Displays links to neighbor albums, link back to albums index -->
-			<div id="content-pag">
-				<koken:not empty="album.context.neighbors.previous">
-					&larr;&nbsp;&nbsp;<koken:link data="album.context.neighbors.previous" title="Previous: {album.context.neighbors.previous.title}"><koken:print data="album.context.neighbors.previous.title" /></koken:link>
-				</koken:not>
-				&nbsp;&nbsp;&nbsp;<koken:link source="albums">View all</koken:link>&nbsp;&nbsp;&nbsp;
-				<koken:not empty="album.context.neighbors.next">
-					<koken:link data="album.context.neighbors.next" title="Next: {album.context.neighbors.next.title}"><koken:print data="album.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
-				</koken:not>
-			</div>
-			<!-- Display the album's title --> 
 			<koken:print data="album.title" />
 		</h2>
 

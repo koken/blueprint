@@ -14,18 +14,23 @@
 
 		<div class="lcol">
 
-			<article>  
+			<article>
+
+				<div id="content-pag">
+
+					<koken:previous>
+						<koken:link title="Read {essay.title}">&larr; <koken:print data="essay.title" /></koken:link>
+					</koken:previous>
+				
+					&nbsp;&nbsp;<koken:link source="essays">View all</koken:link>&nbsp;&nbsp;
+
+					<koken:next>
+						<koken:link title="Read {essay.title}"><koken:print data="essay.title" /> &rarr; </koken:link>
+					</koken:next>
+
+				</div>
 
 				<h2>
-					<div style="float:right;">
-						<koken:not empty="essay.context.neighbors.previous">
-							&larr;&nbsp;&nbsp;<koken:link data="essay.context.neighbors.previous" title="Previous: {essay.context.neighbors.previous.title}"><koken:print data="essay.context.neighbors.previous.title" /></koken:link>
-						</koken:not>
-						&nbsp;&nbsp;
-						<koken:not empty="essay.context.neighbors.next">
-							<koken:link data="essay.context.neighbors.next" title="Next: {essay.context.neighbors.next.title}"><koken:print data="essay.context.neighbors.next.title" /></koken:link>&nbsp;&nbsp;&rarr;
-						</koken:not>
-					</div>
 					<koken:link><koken:print data="essay.title" /></koken:link>
 				</h2>
 
