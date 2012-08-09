@@ -15,32 +15,34 @@
 			</koken:loop>
 		</koken:head>
 
-		<!-- Displays links to neighbor albums, link back to albums index -->
-		<div id="content-pag">
+		<div class="lcol nofloat">
+		
+			<!-- Displays links to neighbor albums, link back to albums index -->
+			<div id="content-pag">
 
-			<koken:previous>
-				<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
-			</koken:previous>
-			&nbsp;
-			<koken:link source="albums">View all</koken:link>
-			&nbsp;
-			<koken:next>
-				<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
-			</koken:next>
+				<koken:previous>
+					<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
+				</koken:previous>
+				&nbsp;
+				<koken:link source="albums">View all</koken:link>
+				&nbsp;
+				<koken:next>
+					<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
+				</koken:next>
+
+			</div>
+
+			<!-- Display the set's title --> 
+			<h2>
+				<koken:print data="album.title" />
+			</h2>
 
 		</div>
 
-		<!-- Display the set's title --> 
-		<h2>
-			Set: <koken:print data="album.title" />
-		</h2>
-
-		<p><koken:print data="album.description" /></p>
+		<!-- Display the set's description -->
+		<koken:print data="album.description" paragraphs="true" />
 
 		<div class="lcol">
-
-			<h2><koken:print data="album.title" /></h2>
-			<p><koken:print data="album.description" /></p>
 
 			<ol>
 				
@@ -48,10 +50,10 @@
 				<koken:loop>
 
 				<li>
+					<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
 					<koken:link>
-						<koken:img data="album.covers.first" size="1:1" />
+						<koken:img data="album.covers.first" size="8:5" />
 					</koken:link>
-					<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
 					<p><koken:print data="album.summary" /></p>
 
 					<!-- Display the set's categories --> 
