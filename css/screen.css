@@ -4,7 +4,7 @@
 
 body,html {
 	background:#fff;
-	color:#777;
+	color:#000;
 	font:14px/21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	margin:20px;
 	text-align:center;
@@ -126,7 +126,25 @@ article {
 ol.archive li {
 	width:210px;
 	margin-right:10px;
+	margin-bottom:10px !important;
 	display:inline-block;
+}
+
+ol.archive.content li {
+	width:148px;
+}
+
+ol.archive.albums li {
+	width:227px;
+}
+
+ol.archive.essays li {
+	width:310px;
+	margin-bottom:20px !important;
+}
+
+ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archive.essays li:nth-child(3) {
+	margin-right:0;
 }
 
 /*

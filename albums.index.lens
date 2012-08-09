@@ -19,7 +19,7 @@
 
 					<!-- Display each album's first album cover, link to albums.detail.lens -->
 					<koken:link>
-						<koken:img data="album.covers.first" size="3:2" />
+						<koken:img data="album.covers.first" size="8:5" />
 					</koken:link>
 
 					<!-- Display the album's (shorter) summary -->

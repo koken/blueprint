@@ -7,7 +7,7 @@
 
 		<h3>
 			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-			<koken:link source="albums">Albums</koken:link> / View by <koken:print data="archive.type" /> / <em><koken:print data="archive.title" /></em>
+			<koken:link source="albums">Albums</koken:link> / View by <koken:print data="archive.type" /> / <koken:print data="archive.title" />
 		</h3>
 
 		<div class="lcol">
@@ -23,7 +23,7 @@
 
 					<koken:link>
 						<!-- Load the most recently assigned album cover -->
-						<koken:img data="album.covers.first" size="16:9" />
+						<koken:img data="album.covers.first" size="8:5" />
 					</koken:link>
 
 					<!-- Display the album's (shorter) summary -->
