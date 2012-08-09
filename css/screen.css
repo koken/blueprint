@@ -123,22 +123,10 @@ article {
 	margin-bottom:30px;
 }
 
-/*
-	ARCHIVE INDEX
-*/
-
-div#content div.row {
-	clear:both;
-	width:100%;
-	float:left;
-	border-bottom:1px solid #000;
-	margin-bottom:20px;
-}
-
-div#content div.row section {
-	float:left;
-	width:225px;
-	margin-right:20px;
+ol.archive li {
+	width:210px;
+	margin-right:10px;
+	display:inline-block;
 }
 
 /*

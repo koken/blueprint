@@ -54,13 +54,13 @@
                               </p>
                          </koken:tags>      
                     </article>
-                    
+
                </koken:loop>
 
                <br>
 
-               <!-- Display pagination links -->
-               <p>
+                <!-- Display pagination links -->
+                <p>
                     <koken:include file="inc/pagination.html" />
                 </p>
 

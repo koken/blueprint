@@ -7,7 +7,7 @@
 
         <h3>
           <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-        	Essay archive (<koken:print data="archive.type" case="titlecase" />) / <em><koken:print data="archive.title" /></em> / <koken:link source="essays">View all essays</koken:link>
+        	<koken:link source="essays">Essays</koken:link> / View by <koken:print data="archive.type" /> / <em><koken:print data="archive.title" /></em>
         </h3>
 
         <div class="lcol">

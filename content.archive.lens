@@ -5,22 +5,24 @@
 	<!-- Load this template's source data (contents) -->
 	<koken:load limit="50">
 
-		<div class="lcol">
+		<h3>
+			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
+			<koken:link source="contents">Content</koken:link> / View by <koken:print data="archive.type" /> / <em><koken:print data="archive.title" /></em>
+		</h3>
 
-			<h2>
-				<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-				Content archive (<koken:print data="archive.type" case="titlecase" />) / <em><koken:print data="archive.title" /></em> / <koken:link source="contents">View all</koken:link>
-			</h2>
+		<div class="lcol">
 
 			<ol>
 				<!-- Loop over loaded archival data and render content with each pass -->
 				<koken:loop>
 					<li>
+						<h2>
+							<koken:link title="View {content.filename}">
+								<koken:print data="content.title" fallback="content.filename" />
+							</koken:link>
+						</h2>
 						<koken:link title="View {content.filename}">
 							<koken:img />
-						</koken:link>
-						<koken:link title="View {content.filename}">
-							<koken:print data="content.title" fallback="content.filename" />
 						</koken:link>
 					</li>
 				</koken:loop>

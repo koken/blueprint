@@ -2,8 +2,8 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (albums) -->
-	<koken:load>
+	<!-- Load this template's source data (albums), limit for pagination -->
+	<koken:load limit="20">
 
 		<div class="lcol">
 			
@@ -54,6 +54,11 @@
 				</koken:loop>
 
 			</ol>
+
+			<!-- Display pagination links -->
+			<p>
+				<koken:include file="inc/pagination.html" />
+			</p>
 
 		</div> <!-- close .lcol -->
 
