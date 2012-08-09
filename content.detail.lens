@@ -13,28 +13,33 @@
 			<meta property="og:image" koken:content="{content.presets.small.url}" />	
 		</koken:head>
 	     
-		<h2>
-			<div style="float:right;">
-				<koken:if empty="content.context.album">
-					<koken:variable name="previous_label" value="Older" />
-					<koken:variable name="next_label" value="Newer" />
-				<koken:else>
-					<koken:variable name="previous_label" value="Previous" />
-					<koken:variable name="next_label" value="Next" />
-				</koken:if>
+		<div id="content-pag">
+			
+			<koken:if empty="content.context.album">
+				<koken:variable name="previous_label" value="Newer" />
+				<koken:variable name="next_label" value="Older" />
+			<koken:else>
+				<koken:variable name="previous_label" value="Previous" />
+				<koken:variable name="next_label" value="Next" />
+			</koken:if>
 
-				<koken:if empty="content.context.neighbors.previous">
-					&larr; <koken:print data="previous_label" />
-				<koken:else>
-					&larr; <koken:link data="content.context.neighbors.previous" title="{previous_label}"><koken:print data="previous_label" /></koken:link>
-				</koken:if>
-				&nbsp;&nbsp;
-				<koken:if empty="content.context.neighbors.next">
-					<koken:print data="next_label" /> &rarr;
-				<koken:else>
-					<koken:link data="content.context.neighbors.next" title="{next_label}"><koken:print data="next_label" /></koken:link> &rarr;
-				</koken:if>
-			</div>
+			<koken:previous>
+				<koken:link title="{_parent.previous_label}">&larr; <koken:print data="_parent.previous_label" /></koken:link>
+			<koken:else>
+				&larr; <koken:print data="_parent.previous_label" />
+			</koken:previous>
+		
+			&nbsp;
+
+			<koken:next>
+				<koken:link title="{_parent.next_label}"><koken:print data="_parent.next_label" />  &rarr;</koken:link>
+			<koken:else>
+				<koken:print data="_parent.next_label" /> &rarr;
+			</koken:next>
+
+		</div>
+
+		<h2>
 			<koken:print data="content.title" fallback="content.filename" />
 		</h2>
 
