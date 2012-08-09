@@ -47,7 +47,7 @@ img {
 */
 
 div#container {
-	width:740px;
+	width:960px;
 	margin:0 auto;
 	text-align:left;
 }
@@ -92,11 +92,11 @@ div#content ol {
 }
 
 div#content ol li {
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 div#content img {
-	margin-bottom:10px;
+	/*margin-bottom:10px;*/
 }
 
 div#content h2 {
@@ -117,6 +117,10 @@ div.lcol {
 div.rcol {
 	width:25%;
 	float:left;
+}
+
+article {
+	margin-bottom:30px;
 }
 
 /*

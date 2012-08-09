@@ -37,7 +37,7 @@
 				<koken:print data="essay.content" />
 
 				<p>
-					<strong>Published: </strong>
+					<strong>Published:</strong>
 					<koken:time data="essay.published_on" />
 				</p>
 
@@ -54,11 +54,11 @@
 			<aside>
 
 				<koken:topics>
-					<strong>Related content</strong>
+					<h3>Related content</h3>
 					<koken:loop>
 						<p>
 							<koken:link>
-								<koken:img data="album.covers.first" />
+								<koken:img data="album.covers.first" crop="true" size="3:2" />
 							</koken:link>
 							<koken:link>
 								<koken:print data="album.title" /> (<koken:print data="album.counts.total" /> images)
@@ -68,34 +68,33 @@
 				</koken:topics>
 
 				<!-- Links to essays archived by date, categories and tags -->
-               <h2>Archives</h2>
-               <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
-                    <h3>Date</h3> 
-                    <koken:loop>
-                         <koken:link to="essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                         </koken:link>
-                         <br>
-                    </koken:loop>
-               </koken:load>
-               <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
-                    <h3>Categories</h3>
-                    <koken:loop>
-                         <koken:link to="essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                         </koken:link>
-                         <br>
-                    </koken:loop>
-               </koken:load>
-               <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
-                    <h3>Tags</h3>
-                    <koken:loop>
-                         <koken:link to="essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                         </koken:link>
-                         <br>
-                    </koken:loop>
-               </koken:load>
+		       <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
+		            <h3>View essays by date</h3> 
+		            <koken:loop>
+		                 <koken:link to="essays">
+		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+		                 </koken:link>
+		                 <br>
+		            </koken:loop>
+		       </koken:load>
+		       <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
+		            <h3>View essays by category</h3>
+		            <koken:loop>
+		                 <koken:link to="essays">
+		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+		                 </koken:link>
+		                 <br>
+		            </koken:loop>
+		       </koken:load>
+		       <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
+		            <h3>View essays by tag</h3>
+		            <koken:loop>
+		                 <koken:link to="essays">
+		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+		                 </koken:link>
+		                 <br>
+		            </koken:loop>
+		       </koken:load>
 
 			</aside>
 

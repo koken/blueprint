@@ -34,9 +34,8 @@
 		<div class="rcol">
 
 			<!-- Links to content archived by date, categories and tags -->
-			<h2>Archives</h2>
 			<koken:load source="archives" summary="true" limit_to="content">
-				<h3>Date</h3> 
+				<h3>View content by date</h3> 
 				<koken:loop>
 					<koken:link to="content">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
@@ -44,8 +43,8 @@
 					<br>
 				</koken:loop>
 			</koken:load>
-			<koken:load source="categories" summary="true" limit_to="content" order_by="content">
-				<h3>Categories</h3>
+			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
+				<h3>View content by category</h3>
 				<koken:loop>
 					<koken:link to="content">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
@@ -53,8 +52,8 @@
 					<br>
 				</koken:loop>
 			</koken:load>
-			<koken:load source="tags" summary="true" limit_to="content" order_by="content">
-				<h3>Tags</h3>
+			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
+				<h3>View content by tag</h3>
 				<koken:loop>
 					<koken:link to="content">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)

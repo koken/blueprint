@@ -7,8 +7,6 @@
 
 		<div class="lcol">
 			
-			<h2>Albums index</h2>
-
 			<ol>
 
 				<!-- Loop over all albums, render each with the following -->
@@ -16,13 +14,13 @@
 
 				<li>
 
+					<!-- Display each album's title, link to albums.detail.lens -->
+					<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
+
 					<!-- Display each album's first album cover, link to albums.detail.lens -->
 					<koken:link>
-						<koken:img data="album.covers.first" size="16:9" />
+						<koken:img data="album.covers.first" size="3:2" />
 					</koken:link>
-
-					<!-- Display each album's title, link to albums.detail.lens -->
-					<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
 
 					<!-- Display the album's (shorter) summary -->
 					<koken:print data="album.summary" paragraphs="true" />
@@ -30,7 +28,7 @@
 					<!-- Display album categories, link each to albums.archive -->
 					<koken:categories>
 						<p>
-							<strong>Categories: </strong>
+							<strong>Categories:</strong>
 							<koken:loop separator=", ">
 								<koken:link>
 									<koken:print data="category.title" />
@@ -42,7 +40,7 @@
 					<!-- Display album tags, link each to albums.archive -->
 					<koken:tags>
 						<p>
-							<strong>Tags: </strong>
+							<strong>Tags:</strong>
 							<koken:loop separator=", ">
 								<koken:link>
 									<koken:print data="tag.title" />
@@ -62,9 +60,8 @@
 		<div class="rcol">
 
 			<!-- Links to albums archived by date, categories and tags -->
-			<h2>Archives</h2>
 			<koken:load source="archives" summary="true" limit_to="albums">
-				<h3>Date</h3> 
+				<h3>View albums by date</h3> 
 				<koken:loop>
 					<koken:link to="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
@@ -73,7 +70,7 @@
 				</koken:loop>
 			</koken:load>
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
-				<h3>Categories</h3>
+				<h3>View albums by category</h3>
 				<koken:loop>
 					<koken:link to="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
@@ -82,7 +79,7 @@
 				</koken:loop>
 			</koken:load>
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
-				<h3>Tags</h3>
+				<h3>View albums by tag</h3>
 				<koken:loop>
 					<koken:link to="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)

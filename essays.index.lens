@@ -2,22 +2,28 @@
 
 <div id="content">
 
-     <!-- Load this template's source data (essays) -->
-     <koken:load>
+     <!-- Load this template's source data (essays) and limit to 30 for pagination -->
+     <koken:load limit="20">
 
           <div class="lcol">
 
-               <koken:loop>
+                <!-- Loop over and display each essay -->
+                <koken:loop>
+
                     <article>  
-                         <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
-                         <koken:print data="essay.content" />
-                    	<p>
-          				<strong>Published: </strong>
-          				<koken:time data="essay.published_on" />
-          			</p>
+                        
+                        <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
+                        
+                        <koken:print data="essay.content" />
+                    	
+                        <p>
+                            <strong>Published:</strong>
+                            <koken:time data="essay.published_on" />
+                        </p>
+                        
                          <koken:topics>
                               <p>
-                                   <strong>Topics: </strong>
+                                   <strong>Topics:</strong>
                                    <koken:loop separator=", ">
                                         <koken:link>
                                              <koken:print data="album.title" />
@@ -28,7 +34,7 @@
 
                          <koken:categories>
                               <p>
-                                   <strong>Category: </strong>
+                                   <strong>Category:</strong>
                                    <koken:loop separator=", ">
                                         <koken:link>
                                              <koken:print data="category.title" />
@@ -39,7 +45,7 @@
 
                          <koken:tags>
                               <p>
-                                   <strong>Tags: </strong>
+                                   <strong>Tags:</strong>
                                    <koken:loop separator=", ">
                                         <koken:link>
                                              <koken:print data="tag.title" />
@@ -48,40 +54,47 @@
                               </p>
                          </koken:tags>      
                     </article>
+                    
                </koken:loop>
+
+               <br>
+
+               <!-- Display pagination links -->
+               <p>
+                    <koken:include file="inc/pagination.html" />
+                </p>
 
           </div> <!-- close .lcol -->
 
           <div class="rcol">
 
                <!-- Links to essays archived by date, categories and tags -->
-               <h2>Archives</h2>
                <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
-                    <h3>Date</h3> 
-                    <koken:loop>
-                         <koken:link to="essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                         </koken:link>
-                         <br>
-                    </koken:loop>
+                 <h3>View essays by date</h3> 
+                 <koken:loop>
+                      <koken:link to="essays">
+                           <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                      </koken:link>
+                      <br>
+                 </koken:loop>
                </koken:load>
                <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
-                    <h3>Categories</h3>
-                    <koken:loop>
-                         <koken:link to="essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                         </koken:link>
-                         <br>
-                    </koken:loop>
+                 <h3>View essays by category</h3>
+                 <koken:loop>
+                      <koken:link to="essays">
+                           <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                      </koken:link>
+                      <br>
+                 </koken:loop>
                </koken:load>
                <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
-                    <h3>Tags</h3>
-                    <koken:loop>
-                         <koken:link to="essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
-                         </koken:link>
-                         <br>
-                    </koken:loop>
+                 <h3>View essays by tag</h3>
+                 <koken:loop>
+                      <koken:link to="essays">
+                           <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                      </koken:link>
+                      <br>
+                 </koken:loop>
                </koken:load>
 
           </div> <!-- close .rcol -->

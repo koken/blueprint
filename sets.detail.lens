@@ -57,7 +57,7 @@
 					<!-- Display the set's categories --> 
 					<koken:categories>
 						<p>
-							<strong>Categories: </strong>
+							<strong>Categories:</strong>
 							<koken:loop separator=", ">
 								<koken:link>
 									<koken:print data="category.title" />
@@ -69,7 +69,7 @@
 					<!-- Display the set's tags --> 
 					<koken:tags>
 						<p>
-							<strong>Tags: </strong>
+							<strong>Tags:</strong>
 							<koken:loop separator=", ">
 								<koken:link>
 									<koken:print data="title" />
@@ -89,9 +89,9 @@
 		<div class="rcol">
 
 			<!-- Links to albums archived by date, categories and tags -->
-			<h2>Archives</h2>
+			<h3>Archives</h3>
 			<koken:load source="archives" summary="true" limit_to="albums">
-				<h3>Date</h3> 
+				<h4>Date</h4> 
 				<koken:loop>
 					<koken:link to="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
@@ -100,7 +100,7 @@
 				</koken:loop>
 			</koken:load>
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
-				<h3>Categories</h3>
+				<h4>Categories</h4>
 				<koken:loop>
 					<koken:link to="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
@@ -109,7 +109,7 @@
 				</koken:loop>
 			</koken:load>
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
-				<h3>Tags</h3>
+				<h4>Tags</h4>
 				<koken:loop>
 					<koken:link to="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)

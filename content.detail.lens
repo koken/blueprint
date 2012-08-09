@@ -60,16 +60,16 @@
 		<koken:print data="content.caption" paragraphs="true" />
 
 		<p>
-			<strong>Uploaded: </strong> <koken:print data="content.uploaded_on" />
+			<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
 		</p>
 
 		<p>
-			<strong>Captured: </strong> <koken:print data="content.captured_on" />
+			<strong>Captured:</strong> <koken:print data="content.captured_on" />
 		</p>
 
 		<koken:categories>
 			<p>
-				<strong>Categories: </strong>
+				<strong>Categories:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
 						<koken:print data="category.title" />
@@ -80,7 +80,7 @@
 	     
 		<koken:tags>
 			<p>
-				<strong>Tags: </strong>
+				<strong>Tags:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
 						<koken:print data="tag.title" />
@@ -91,22 +91,22 @@
 
 		<koken:exif>
 			<koken:not empty="exif.model">
-				<p><strong>Camera: </strong> <koken:print data="exif.model" /></p>
+				<p><strong>Camera:</strong> <koken:print data="exif.model" /></p>
 			</koken:not>
 
 			<koken:not empty="exif.exposure">
-				<p><strong>Exposure: </strong> <koken:print data="exif.exposure" /></p>
+				<p><strong>Exposure:</strong> <koken:print data="exif.exposure" /></p>
 			</koken:not>
 		</koken:exif>
 
 		<p>
-			<strong>License: </strong>
+			<strong>License:</strong>
 			<koken:print data="content.license.clean" />
 		</p>
 
 		<koken:max_download>
 			<p>
-				<strong>Download image: </strong> <koken:link>
+				<strong>Download image:</strong> <koken:link>
 					<koken:print data="max_download.label" />&nbsp;(<koken:print data="max_download.width" />x<koken:print data="max_download.height" />)
 				</koken:link>
 			</p>

@@ -7,20 +7,23 @@
 
 		<div class="lcol">
 
-			<h2>Content index</h2>
-
 			<ol>
 				<!-- Loop over all public content, display info about each, link to content.detail.lens -->
 				<koken:loop>
 				<li>
+					<h2>
+						<koken:link title="View {content.filename}">
+							<koken:print data="content.title" fallback="content.filename" />
+						</koken:link>
+					</h2>
 					<koken:link title="View {content.filename}">
 						<koken:img />
 					</koken:link>
-					<koken:link title="View {content.filename}">
-						<koken:print data="content.title" fallback="content.filename" />
-					</koken:link>
 					<p>
-						<strong>Uploaded: </strong> <koken:print data="content.uploaded_on" />
+						<koken:print data="content.caption" />
+					</p>
+					<p>
+						<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
 					</p>
 				</li>
 				</koken:loop>
@@ -34,9 +37,8 @@
 		<div class="rcol">
 
 			<!-- Links to content archived by date, categories and tags -->
-			<h2>Archives</h2>
 			<koken:load source="archives" summary="true" limit_to="content">
-				<h3>Date</h3> 
+				<h3>View content by date</h3> 
 				<koken:loop>
 					<koken:link to="content">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
@@ -45,7 +47,7 @@
 				</koken:loop>
 			</koken:load>
 			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
-				<h3>Categories</h3>
+				<h3>View content by category</h3>
 				<koken:loop>
 					<koken:link to="content">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
@@ -54,7 +56,7 @@
 				</koken:loop>
 			</koken:load>
 			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
-				<h3>Tags</h3>
+				<h3>View content by tag</h3>
 				<koken:loop>
 					<koken:link to="content">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
