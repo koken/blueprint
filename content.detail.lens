@@ -16,26 +16,27 @@
 	    <!-- Display pagination links -->
 		<div id="content-pag">
 			
-			<koken:if empty="content.context.album">
+			<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
+			<koken:parent>
 				<koken:variable name="previous_label" value="Newer" />
 				<koken:variable name="next_label" value="Older" />
 			<koken:else>
 				<koken:variable name="previous_label" value="Previous" />
 				<koken:variable name="next_label" value="Next" />
-			</koken:if>
+			</koken:parent>
 
 			<koken:previous>
-				<koken:link title="{_parent.previous_label}">&larr; <koken:print data="_parent.previous_label" /></koken:link>
+				<koken:link title="{previous_label}">&larr; <koken:print data="previous_label" /></koken:link>
 			<koken:else>
-				&larr; <koken:print data="_parent.previous_label" />
+				&larr; <koken:print data="previous_label" />
 			</koken:previous>
 		
 			&nbsp;
 
 			<koken:next>
-				<koken:link title="{_parent.next_label}"><koken:print data="_parent.next_label" />  &rarr;</koken:link>
+				<koken:link title="{next_label}"><koken:print data="next_label" />  &rarr;</koken:link>
 			<koken:else>
-				<koken:print data="_parent.next_label" /> &rarr;
+				<koken:print data="next_label" /> &rarr;
 			</koken:next>
 
 		</div>
@@ -48,7 +49,10 @@
 		<!-- Displayed if the asset is an image -->
 		<koken:if data="content.file_type" equals="image">
 
-			<koken:link lightbox="true"><koken:img /></koken:link>
+			<!-- Load image in lightbox viewer if clicked -->
+			<koken:link lightbox="true">
+				<koken:img />
+			</koken:link>
 
 		</koken:if>
 
