@@ -13,6 +13,7 @@
 			<meta property="og:image" koken:content="{content.presets.small.url}" />	
 		</koken:head>
 	     
+	    <!-- Display pagination links -->
 		<div id="content-pag">
 			
 			<koken:if empty="content.context.album">
@@ -39,34 +40,42 @@
 
 		</div>
 
+		<!-- Display the content title -->
 		<h2>
 			<koken:print data="content.title" fallback="content.filename" />
 		</h2>
 
+		<!-- Displayed if the asset is an image -->
 		<koken:if data="content.file_type" equals="image">
 
 			<koken:link lightbox="true"><koken:img /></koken:link>
 
 		</koken:if>
 
+		<!-- Displayed if the asset is a video -->
 		<koken:if data="content.file_type" equals="video">
 
 			<koken:video width="100%" controls="true" />
 
 		</koken:if>
 
+		<!-- Opens the image in the lightbox viewer -->
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
 
+		<!-- Display the content caption and wrap with p tags -->
 		<koken:print data="content.caption" paragraphs="true" />
 
+		<!-- Display uploaded date -->
 		<p>
 			<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
 		</p>
 
+		<!-- Display captured date -->
 		<p>
 			<strong>Captured:</strong> <koken:print data="content.captured_on" />
 		</p>
 
+		<!-- Display assigned categories -->
 		<koken:categories>
 			<p>
 				<strong>Categories:</strong>
@@ -78,6 +87,7 @@
 			</p>
 		</koken:categories>
 	     
+	    <!-- Display assigned tags -->
 		<koken:tags>
 			<p>
 				<strong>Tags:</strong>
@@ -89,21 +99,35 @@
 			</p>
 		</koken:tags>
 
+		<!-- Display EXIF data -->
 		<koken:exif>
-			<koken:not empty="exif.model">
-				<p><strong>Camera:</strong> <koken:print data="exif.model" /></p>
-			</koken:not>
-
-			<koken:not empty="exif.exposure">
-				<p><strong>Exposure:</strong> <koken:print data="exif.exposure" /></p>
-			</koken:not>
+			<p>
+				<strong>EXIF:</strong> 
+				<koken:not empty="exif.model">
+					<koken:print data="exif.model" />,
+				</koken:not>
+				<koken:not empty="exif.exposure">
+					<koken:print data="exif.exposure" />,
+				</koken:not>
+				<koken:not empty="exif.aperture">
+					<koken:print data="exif.aperture" />,
+				</koken:not>
+				<koken:not empty="exif.focal_length">
+					<koken:print data="exif.focal_length" />,
+				</koken:not>
+				<koken:not empty="exif.iso_speed_ratings">
+					<koken:print data="exif.iso_speed_ratings" />
+				</koken:not>
+			</p>
 		</koken:exif>
 
+		<!-- Display content license -->
 		<p>
 			<strong>License:</strong>
 			<koken:print data="content.license.clean" />
 		</p>
 
+		<!-- If item is an image and allows downloading, show download link -->
 		<koken:max_download>
 			<p>
 				<strong>Download image:</strong> <koken:link>
@@ -115,6 +139,14 @@
 				<strong>Download image: </strong>User has disabled downloads for this image.
 			</p>	
 		</koken:max_download>
+
+		<!-- If content is part of an album, display a link to it -->
+		<koken:parent>
+			<p>
+				<strong>From the album:</strong> <koken:link title="View {album.title}">
+				<koken:print data="album.title" /></koken:link>
+			</p>
+		</koken:parent>
 
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>

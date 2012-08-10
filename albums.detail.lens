@@ -76,6 +76,14 @@
 			</p>
 		</koken:tags>
 
+		<!-- If album is part of a set, display link to it -->
+		<koken:parent>
+			<p>
+				<strong>From the set:</strong> <koken:link title="View {album.title}">
+				<koken:print data="album.title" /></koken:link>
+			</p>
+		</koken:parent>
+
 		<ol>
 			<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
 			<koken:loop>
