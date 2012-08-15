@@ -23,7 +23,7 @@
 
 					<koken:link>
 						<!-- Load the most recently assigned album cover -->
-						<koken:img data="album.covers.first" size="8:5" />
+						<koken:img size="8:5" />
 					</koken:link>
 
 					<!-- Display the album's (shorter) summary -->

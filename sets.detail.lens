@@ -52,7 +52,7 @@
 				<li>
 					<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
 					<koken:link>
-						<koken:img data="album.covers.first" size="8:5" />
+						<koken:img size="8:5" />
 					</koken:link>
 					<p><koken:print data="album.summary" /></p>
 
