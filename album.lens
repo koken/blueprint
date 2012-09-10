@@ -87,13 +87,21 @@
 		<ol>
 			<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
 			<koken:loop>
-			<li>
-				<koken:link>
-					<koken:img />
-				</koken:link>
-				<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
-				<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
-			</li>
+				<li>
+					<!-- Displayed if the asset is an image -->
+					<koken:if data="content.file_type" equals="image">
+						<!-- Load image in lightbox viewer if clicked -->
+						<koken:link>
+							<koken:img />
+						</koken:link>
+					</koken:if>
+					<!-- Displayed if the asset is a video -->
+					<koken:if data="content.file_type" equals="video">
+						<koken:video />
+					</koken:if>
+					<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
+					<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
+				</li>
 			</koken:loop>
 		</ol>
 

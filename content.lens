@@ -59,8 +59,9 @@
 		<!-- Displayed if the asset is a video -->
 		<koken:if data="content.file_type" equals="video">
 
-			<koken:video width="100%" controls="true" />
-
+			<!-- Load the video -->
+			<koken:video />
+		
 		</koken:if>
 
 		<!-- Opens the image in the lightbox viewer -->
