@@ -47,22 +47,22 @@
 		</h2>
 
 		<!-- Displayed if the asset is an image -->
-		<koken:if data="content.file_type" equals="image">
+		<koken:content_image>
 
 			<!-- Load image in lightbox viewer if clicked -->
 			<koken:link lightbox="true">
 				<koken:img />
 			</koken:link>
 
-		</koken:if>
+		</koken:content_image>
 
 		<!-- Displayed if the asset is a video -->
-		<koken:if data="content.file_type" equals="video">
+		<koken:content_video>
 
 			<!-- Load the video -->
 			<koken:video />
 		
-		</koken:if>
+		</koken:content_video>
 
 		<!-- Opens the image in the lightbox viewer -->
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>

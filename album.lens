@@ -89,16 +89,15 @@
 			<koken:loop>
 				<li>
 					<!-- Displayed if the asset is an image -->
-					<koken:if data="content.file_type" equals="image">
-						<!-- Load image in lightbox viewer if clicked -->
+					<koken:content_image>
 						<koken:link>
 							<koken:img />
 						</koken:link>
-					</koken:if>
+					</koken:content_image>
 					<!-- Displayed if the asset is a video -->
-					<koken:if data="content.file_type" equals="video">
+					<koken:content_video>
 						<koken:video />
-					</koken:if>
+					</koken:content_video>
 					<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
 					<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
 				</li>
