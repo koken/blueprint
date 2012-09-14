@@ -58,7 +58,7 @@
 					<koken:loop>
 						<p>
 							<koken:link>
-								<koken:img crop="true" size="3:2" />
+								<koken:img width="100" height="100" />
 							</koken:link>
 							<koken:link>
 								<koken:print data="album.title" /> (<koken:print data="album.counts.total" /> images)
