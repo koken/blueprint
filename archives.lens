@@ -14,7 +14,7 @@
 
                     <h2>
                          <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title -->
-                        <koken:print data="archive.type" /> / <koken:print data="archive.title" />
+                        <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
                     </h2>
 
                     <!-- If the archive has assigned content, render previews of 10 most recent. Otherwise skip. -->

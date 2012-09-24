@@ -7,7 +7,7 @@
 
 		<h3>
 			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-			<koken:link source="contents">Content</koken:link> / View by <koken:print data="archive.type" /> / <koken:print data="archive.title" />
+			<koken:link source="contents">Content</koken:link> / View by <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
 		</h3>
 
 		<div class="lcol">
