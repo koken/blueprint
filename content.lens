@@ -33,6 +33,11 @@
 		
 			&nbsp;
 
+			<!-- Display the current and total #s -->
+			<koken:print data="content.context.position" /> of <koken:print data="content.context.total" />
+
+			&nbsp;
+
 			<koken:next>
 				<koken:link title="{next_label}"><koken:print data="next_label" />  &rarr;</koken:link>
 			<koken:else>
