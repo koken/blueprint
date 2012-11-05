@@ -11,7 +11,7 @@
 			<meta property="og:description" koken:content="{album.summary}" />
 			<meta name="medium" content="mult" />
 			<koken:loop data="album.covers">
-				<meta property="og:image" koken:content="{content.presets.small.url}" />	
+				<meta property="og:image" koken:content="{content.presets.medium.url}" />	
 			</koken:loop>
 		</koken:head>
 

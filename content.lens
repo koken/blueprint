@@ -10,7 +10,7 @@
 			<meta property="og:title" koken:content="{site.title}: {content.title|content.filename}" />
 			<meta property="og:description" koken:content="{content.caption}" />
 			<meta name="medium" content="{content.file_type}" />
-			<meta property="og:image" koken:content="{content.presets.small.url}" />	
+			<meta property="og:image" koken:content="{content.presets.medium.url}" />	
 		</koken:head>
 	     
 	    <!-- Display pagination links -->
