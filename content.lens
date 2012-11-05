@@ -7,6 +7,7 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
+			<meta property="og:site_name" koken:content="{site.title}" />
 			<meta property="og:title" koken:content="{site.title}: {content.title|content.filename}" />
 			<meta property="og:description" koken:content="{content.caption}" />
 			<meta name="medium" koken:content="{content.file_type}" />
