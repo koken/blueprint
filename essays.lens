@@ -102,7 +102,7 @@
           <!-- Fallback content if no data was loaded by koken:load -->
           <koken:else>
 
-               Nothing essays published
+               No essays published
 
      </koken:load>
 
