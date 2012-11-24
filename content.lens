@@ -10,7 +10,7 @@
 			<meta property="og:site_name" koken:content="{site.title}" />
 			<meta property="og:title" koken:content="{content.title|content.filename}" />
 			<meta property="og:description" koken:content="{content.caption}" />
-			<meta name="medium" koken:content="{content.file_type}" />
+			<meta property="og:type" koken:content="website" />
 			<meta property="og:image" koken:content="{content.presets.medium.url}" />	
 		</koken:head>
 	     
