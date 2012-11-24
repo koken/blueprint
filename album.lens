@@ -10,7 +10,7 @@
 			<meta property="og:site_name" koken:content="{site.title}" />
 			<meta property="og:title" koken:content="{album.title}" />
 			<meta property="og:description" koken:content="{album.summary}" />
-			<meta name="medium" content="mult" />
+			<meta property="og:type" koken:content="website" />
 			<koken:loop data="album.covers">
 				<meta property="og:image" koken:content="{content.presets.medium.url}" />	
 			</koken:loop>
