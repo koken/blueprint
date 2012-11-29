@@ -32,7 +32,7 @@
 				</div>
 
 				<h2>
-					<koken:link><koken:print data="essay.title" /></koken:link>
+					<koken:print data="essay.title" />
 				</h2>
 
 				<koken:print data="essay.content" />
