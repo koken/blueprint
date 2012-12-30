@@ -6,7 +6,7 @@
 	<koken:load>
 
 		<!-- Slideshow that loads template data (Featured Content by default) -->
-		<koken:pulse size="3:2" autostart="true" timer:enabled="true" />
+		<koken:pulse />
 
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
