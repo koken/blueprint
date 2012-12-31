@@ -88,7 +88,7 @@
 			<koken:load source="archives" summary="true" limit_to="albums">
 				<h4>Date</h4>
 				<koken:loop>
-					<koken:link type="albums">
+					<koken:link to="archive_albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
@@ -97,7 +97,7 @@
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
 				<h4>Categories</h4>
 				<koken:loop>
-					<koken:link type="albums">
+					<koken:link to="archive_albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
@@ -106,7 +106,7 @@
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
 				<h4>Tags</h4>
 				<koken:loop>
-					<koken:link type="albums">
+					<koken:link to="archive_albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>

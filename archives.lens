@@ -20,7 +20,7 @@
                     <!-- If the archive has assigned content, render previews of 10 most recent. Otherwise skip. -->
                     <koken:not empty="preview.content">
                          <!-- Display total content shown, total content available, link to view all content matching archive type -->
-                         <h3>Content (<koken:print data="preview.content.length" /> of <koken:print data="counts.content" />&nbsp;/&nbsp;<koken:link type="content">View all</koken:link>)</h3>
+                         <h3>Content (<koken:print data="preview.content.length" /> of <koken:print data="counts.content" />&nbsp;/&nbsp;<koken:link to="archive_content">View all</koken:link>)</h3>
                          <ol class="archive content">
                               <!-- Loop over preview data, link each to content.detail.lens -->
                               <koken:loop data="preview.content">
@@ -35,7 +35,7 @@
                     <!-- If the archive has assigned albums, render previews of 10 most recent. Otherwise skip. -->
                     <koken:not empty="preview.albums">
                          <!-- Display total albums shown, total albums available, link to view all albums matching archive type -->
-                         <h3>Albums (<koken:print data="preview.albums.length" /> of <koken:print data="counts.albums" />&nbsp;/&nbsp;<koken:link type="albums">View all</koken:link>)</h3>
+                         <h3>Albums (<koken:print data="preview.albums.length" /> of <koken:print data="counts.albums" />&nbsp;/&nbsp;<koken:link to="archive_albums">View all</koken:link>)</h3>
                          <ol class="archive albums">
                               <!-- Loop over preview data, link each to albums.detail.lens. -->
                               <koken:loop data="preview.albums">
@@ -53,7 +53,7 @@
                     <!-- If the archive has assigned essays, render previews of 10 most recent. Otherwise skip. -->
                     <koken:not empty="preview.essays">
                          <!-- Display total essays shown, total essays available, link to view all essays matching archive type -->
-                         <h3>Essays (<koken:print data="preview.essays.length" /> of <koken:print data="counts.essays" />&nbsp;/&nbsp;<koken:link type="essays">View all</koken:link>)</h3>
+                         <h3>Essays (<koken:print data="preview.essays.length" /> of <koken:print data="counts.essays" />&nbsp;/&nbsp;<koken:link to="archive_essays">View all</koken:link>)</h3>
                          <ol class="archive essays">
                               <!-- Loop over preview data. Render following with each pass -->
                               <koken:loop data="preview.essays">
