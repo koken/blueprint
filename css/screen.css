@@ -150,7 +150,7 @@ ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archiv
 */
 
 /* highlights navigation link for current page */
-a.k-nav-current {
+nav a.k-nav-current {
 	color:#ff6e00;
 }
 
