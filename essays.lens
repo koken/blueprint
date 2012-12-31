@@ -13,13 +13,13 @@
                     <article>  
                         
                         <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
-                        
-                        <koken:print data="essay.content" />
-                    	
+
                         <p>
                             <strong>Published:</strong>
                             <koken:time data="essay.published_on" />
                         </p>
+                        
+                        <koken:print data="essay.content" />
                         
                          <koken:topics>
                               <p>

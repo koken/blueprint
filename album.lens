@@ -85,25 +85,21 @@
 			</p>
 		</koken:parent>
 
-		<ol>
-			<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
-			<koken:loop>
-				<li>
-					<!-- Displayed if the asset is an image -->
-					<koken:content_image>
-						<koken:link>
-							<koken:img />
-						</koken:link>
-					</koken:content_image>
-					<!-- Displayed if the asset is a video -->
-					<koken:content_video>
-						<koken:video />
-					</koken:content_video>
-					<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
-					<p><koken:print data="content.caption" truncate="130" /> <koken:link>more</koken:link></p>
-				</li>
-			</koken:loop>
-		</ol>
+		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
+		<koken:loop>
+			<!-- Displayed if the asset is an image -->
+			<koken:content_image>
+				<koken:link>
+					<koken:img />
+				</koken:link>
+			</koken:content_image>
+			<!-- Displayed if the asset is a video -->
+			<koken:content_video>
+				<koken:video />
+			</koken:content_video>
+			<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
+			<koken:print data="content.caption" paragraphs="true" />
+		</koken:loop>
 
 		<!-- Paginate the results -->
 		<koken:include file="inc/pagination.html" />

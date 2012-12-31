@@ -7,27 +7,23 @@
 
 		<div class="lcol">
 
-			<ol>
-				<!-- Loop over all public content, display info about each, link to content.detail.lens -->
-				<koken:loop>
-				<li>
-					<h2>
-						<koken:link title="View {content.filename}">
-							<koken:print data="content.title" fallback="content.filename" />
-						</koken:link>
-					</h2>
+			<!-- Loop over all public content, display info about each, link to content.detail.lens -->
+			<koken:loop>
+				<h2>
 					<koken:link title="View {content.filename}">
-						<koken:img />
+						<koken:print data="content.title" fallback="content.filename" />
 					</koken:link>
-					<p>
-						<koken:print data="content.caption" />
-					</p>
-					<p>
-						<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
-					</p>
-				</li>
-				</koken:loop>
-			</ol>
+				</h2>
+				<koken:link title="View {content.filename}">
+					<koken:img />
+				</koken:link>
+				<p>
+					<koken:print data="content.caption" />
+				</p>
+				<p>
+					<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
+				</p>
+			</koken:loop>
 
 			<!-- Paginate the results -->
 			<koken:include file="inc/pagination.html" />

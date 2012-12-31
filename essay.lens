@@ -35,12 +35,12 @@
 					<koken:print data="essay.title" />
 				</h2>
 
-				<koken:print data="essay.content" />
-
 				<p>
 					<strong>Published:</strong>
 					<koken:time data="essay.published_on" />
 				</p>
+
+				<koken:print data="essay.content" />
 
 				<p>
 					<koken:link>Permalink</koken:link>

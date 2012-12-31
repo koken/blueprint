@@ -5,7 +5,7 @@
 body,html {
 	background:#fff;
 	color:#000;
-	font:14px/21px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font:16px/24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	margin:20px;
 	text-align:center;
 }
@@ -40,6 +40,11 @@ a.button:hover {
 
 img {
 	-ms-interpolation-mode: bicubic;
+	vertical-align: bottom;
+}
+
+blockquote {
+	font-style:italic;
 }
 
 /*
@@ -84,16 +89,6 @@ nav ul li {
 /*
 	LAYOUT
 */
-
-div#content ol {
-	margin:0;
-	padding:0;
-	list-style:none;
-}
-
-div#content ol li {
-	margin-bottom:30px;
-}
 
 div#content img {
 	/*margin-bottom:10px;*/
@@ -164,18 +159,18 @@ a.k-nav-current {
 
 /* wrapper for inserted media */
 .k-content-embed {
-	margin-bottom:1.6364em;
+	margin:1em 0;
 }
 
 /* wrapper of the media asset itself */
 .k-content {
 	line-height:0; /* resolves html whitespace */
+	margin:0 0 1em 0;
 }
 
 /* wrapper for title/caption underneath photo/video, if turned on */
 .k-content-text {
 	padding:0 0 1em;
-	margin:0 0 1em;
 }
 
 /* wrapper for the media's title */

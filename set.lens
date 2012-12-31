@@ -43,49 +43,42 @@
 		<koken:print data="album.description" paragraphs="true" />
 
 		<div class="lcol">
-
-			<ol>
 				
-				<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
-				<koken:loop>
+			<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
+			<koken:loop>
 
-				<li>
-					<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
-					<koken:link>
-						<koken:img size="8:5" />
-					</koken:link>
-					<p><koken:print data="album.summary" /></p>
+				<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
+				<koken:link>
+					<koken:img size="8:5" />
+				</koken:link>
+				<p><koken:print data="album.summary" /></p>
 
-					<!-- Display the set's categories --> 
-					<koken:categories>
-						<p>
-							<strong>Categories:</strong>
-							<koken:loop separator=", ">
-								<koken:link>
-									<koken:print data="category.title" />
-								</koken:link>
-							</koken:loop>
-						</p>
-					</koken:categories>
+				<!-- Display the set's categories --> 
+				<koken:categories>
+					<p>
+						<strong>Categories:</strong>
+						<koken:loop separator=", ">
+							<koken:link>
+								<koken:print data="category.title" />
+							</koken:link>
+						</koken:loop>
+					</p>
+				</koken:categories>
 
-					<!-- Display the set's tags --> 
-					<koken:tags>
-						<p>
-							<strong>Tags:</strong>
-							<koken:loop separator=", ">
-								<koken:link>
-									<koken:print data="title" />
-								</koken:link>
-							</koken:loop>
-						</p>
-					</koken:tags>
-
-				</li>
-				
-				</koken:loop>
+				<!-- Display the set's tags --> 
+				<koken:tags>
+					<p>
+						<strong>Tags:</strong>
+						<koken:loop separator=", ">
+							<koken:link>
+								<koken:print data="title" />
+							</koken:link>
+						</koken:loop>
+					</p>
+				</koken:tags>
 			
-			</ol>
-
+			</koken:loop>
+			
 		</div> <!-- close .lcol -->
 
 		<div class="rcol">
