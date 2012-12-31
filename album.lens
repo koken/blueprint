@@ -12,7 +12,7 @@
 			<meta property="og:description" koken:content="{album.summary}" />
 			<meta property="og:type" koken:content="website" />
 			<koken:loop data="album.covers">
-				<meta property="og:image" koken:content="{content.presets.medium.url}" />	
+				<meta property="og:image" koken:content="{content.presets.medium.url}" />
 			</koken:loop>
 		</koken:head>
 
@@ -23,7 +23,7 @@
 				<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
 			</koken:previous>
 			&nbsp;
-			<koken:link source="albums">View all</koken:link>
+			<koken:link to="albums">View all</koken:link>
 			&nbsp;
 			<koken:next>
 				<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
@@ -31,16 +31,16 @@
 
 		</div>
 
-		<!-- Display the album's title --> 
+		<!-- Display the album's title -->
 		<h2>
 			<koken:print data="album.title" />
 		</h2>
 
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
 
-		<!-- Display the album's description --> 
+		<!-- Display the album's description -->
 		<koken:print data="album.description" paragraphs="true" />
-			 
+
 		<!-- Display essays/pages written about this album -->
 		<koken:topics>
 			<p>
@@ -53,7 +53,7 @@
 			</p>
 		</koken:topics>
 
-		<!-- Display the album's categories --> 
+		<!-- Display the album's categories -->
 		<koken:categories>
 			<p>
 				<strong>Categories:</strong>
@@ -65,7 +65,7 @@
 			</p>
 		</koken:categories>
 
-		<!-- Display the album's tags --> 
+		<!-- Display the album's tags -->
 		<koken:tags>
 			<p>
 				<strong>Tags:</strong>

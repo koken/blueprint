@@ -11,12 +11,12 @@
 			<meta property="og:description" koken:content="{album.summary}" />
 			<meta name="medium" content="mult" />
 			<koken:loop data="album.covers">
-				<meta property="og:image" koken:content="{content.presets.medium.url}" />	
+				<meta property="og:image" koken:content="{content.presets.medium.url}" />
 			</koken:loop>
 		</koken:head>
 
 		<div class="lcol nofloat">
-		
+
 			<!-- Displays links to neighbor albums, link back to albums index -->
 			<div id="content-pag">
 
@@ -24,7 +24,7 @@
 					<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
 				</koken:previous>
 				&nbsp;
-				<koken:link source="albums">View all</koken:link>
+				<koken:link to="albums">View all</koken:link>
 				&nbsp;
 				<koken:next>
 					<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
@@ -32,7 +32,7 @@
 
 			</div>
 
-			<!-- Display the set's title --> 
+			<!-- Display the set's title -->
 			<h2>
 				<koken:print data="album.title" />
 			</h2>
@@ -43,7 +43,7 @@
 		<koken:print data="album.description" paragraphs="true" />
 
 		<div class="lcol">
-				
+
 			<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
 			<koken:loop>
 
@@ -53,7 +53,7 @@
 				</koken:link>
 				<p><koken:print data="album.summary" /></p>
 
-				<!-- Display the set's categories --> 
+				<!-- Display the set's categories -->
 				<koken:categories>
 					<p>
 						<strong>Categories:</strong>
@@ -65,7 +65,7 @@
 					</p>
 				</koken:categories>
 
-				<!-- Display the set's tags --> 
+				<!-- Display the set's tags -->
 				<koken:tags>
 					<p>
 						<strong>Tags:</strong>
@@ -76,9 +76,9 @@
 						</koken:loop>
 					</p>
 				</koken:tags>
-			
+
 			</koken:loop>
-			
+
 		</div> <!-- close .lcol -->
 
 		<div class="rcol">
@@ -86,9 +86,9 @@
 			<!-- Links to albums archived by date, categories and tags -->
 			<h3>Archives</h3>
 			<koken:load source="archives" summary="true" limit_to="albums">
-				<h4>Date</h4> 
+				<h4>Date</h4>
 				<koken:loop>
-					<koken:link to="albums">
+					<koken:link type="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
@@ -97,7 +97,7 @@
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
 				<h4>Categories</h4>
 				<koken:loop>
-					<koken:link to="albums">
+					<koken:link type="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
@@ -106,7 +106,7 @@
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
 				<h4>Tags</h4>
 				<koken:loop>
-					<koken:link to="albums">
+					<koken:link type="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>

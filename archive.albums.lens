@@ -7,7 +7,7 @@
 
 		<h3>
 			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-			<koken:link source="albums">Albums</koken:link> / View by <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
+			<koken:link to="albums">Albums</koken:link> / View by <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
 		</h3>
 
 		<div class="lcol">
@@ -54,7 +54,7 @@
 					</koken:tags>
 
 				</li>
-				
+
 				</koken:loop>
 
 			</ol>
@@ -62,12 +62,12 @@
 		</div> <!-- close .lcol -->
 
 		<div class="rcol">
-			
+
 			<!-- Links to albums archived by date, categories and tags -->
 			<koken:load source="archives" summary="true" limit_to="albums">
-				<h3>View albums by date</h3> 
+				<h3>View albums by date</h3>
 				<koken:loop>
-					<koken:link to="albums">
+					<koken:link type="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
@@ -76,7 +76,7 @@
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
 				<h3>View albums by category</h3>
 				<koken:loop>
-					<koken:link to="albums">
+					<koken:link type="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
@@ -85,13 +85,13 @@
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
 				<h3>View albums by tag</h3>
 				<koken:loop>
-					<koken:link to="albums">
+					<koken:link type="albums">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
 					</koken:link>
 					<br>
 				</koken:loop>
 			</koken:load>
-			
+
 		</div> <!-- close .rcol -->
 
 	<!-- Fallback content if no data was loaded by koken:load -->

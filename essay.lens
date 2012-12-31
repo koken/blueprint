@@ -22,8 +22,8 @@
 					<koken:previous>
 						<koken:link title="Read {essay.title}">&larr; <koken:print data="essay.title" /></koken:link>
 					</koken:previous>
-				
-					&nbsp;&nbsp;<koken:link source="essays">View all</koken:link>&nbsp;&nbsp;
+
+					&nbsp;&nbsp;<koken:link to="essays">View all</koken:link>&nbsp;&nbsp;
 
 					<koken:next>
 						<koken:link title="Read {essay.title}"><koken:print data="essay.title" /> &rarr; </koken:link>
@@ -70,9 +70,9 @@
 
 				<!-- Links to essays archived by date, categories and tags -->
 		       <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
-		            <h3>View essays by date</h3> 
+		            <h3>View essays by date</h3>
 		            <koken:loop>
-		                 <koken:link to="essays">
+		                 <koken:link type="essays">
 		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
 		                 </koken:link>
 		                 <br>
@@ -81,7 +81,7 @@
 		       <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
 		            <h3>View essays by category</h3>
 		            <koken:loop>
-		                 <koken:link to="essays">
+		                 <koken:link type="essays">
 		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
 		                 </koken:link>
 		                 <br>
@@ -90,7 +90,7 @@
 		       <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
 		            <h3>View essays by tag</h3>
 		            <koken:loop>
-		                 <koken:link to="essays">
+		                 <koken:link type="essays">
 		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
 		                 </koken:link>
 		                 <br>

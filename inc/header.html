@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<!-- Site description editable in console Settings -->
 	<meta name="description" koken:content="{site.description}" />
 	<!-- Site title editable in console Settings -->
@@ -12,11 +12,11 @@
 
 	<!-- Publishes dynamic page title in each template -->
 	<koken:title />
-	
+
 	<!-- css -->
 	<koken:asset file="css/normalize.css" />
 	<koken:asset file="css/screen.css" />
-	
+
 </head>
 
 <body>
@@ -27,7 +27,7 @@
 
 			<hgroup>
 				<!-- Site title editable in console Settings -->
-				<h1><a koken:href="/" title="Home"><koken:print data="site.title" /></a></h1>
+				<h1><koken:link to="front" title="Home"><koken:print data="site.title" /></koken:link></h1>
 				<!-- Site tagline editable in console Settings -->
 				<h2><koken:print data="site.tagline" /></h2>
 			</hgroup>
