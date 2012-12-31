@@ -150,8 +150,17 @@ ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archiv
 }
 
 /*
-	ESSAY / PAGE MARKUP
+	ASSIGNED CLASSES
+	See: http://help.koken.me/customer/portal/articles/828695-css-classes
 */
+
+/* highlights navigation link for current page */
+a.k-nav-current {
+	color:#ff6e00;
+}
+
+/* used for fallback text in console */
+.k-note {}
 
 /* wrapper for inserted media */
 .k-content-embed {
@@ -170,28 +179,12 @@ ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archiv
 }
 
 /* wrapper for the media's title */
-.k-content-title {}
-
-/* wrapper for the media's caption */
-.k-content-caption {}
-
-/*
-	ASSIGNED CLASSES
-	See: http://koken.me/docs/themes-css-classes.html
-*/
-
-a.k-nav-current {
-	color:#ff6e00;
+.k-content-title {
+	display:block;
+	font-weight:bold;
 }
 
-.k-note {}
-
-.k-content-embed {}
-
-.k-content {}
-
-.k-content-text {}
-
-.k-content-title {}
-
-.k-content-caption {}
+/* wrapper for the media's caption */
+.k-content-caption {
+	font-style:italic;
+}
