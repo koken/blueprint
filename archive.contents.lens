@@ -12,21 +12,17 @@
 
 		<div class="lcol">
 
-			<ol>
-				<!-- Loop over loaded archival data and render content with each pass -->
-				<koken:loop>
-					<li>
-						<h2>
-							<koken:link title="View {content.filename}">
-								<koken:print data="content.title" fallback="content.filename" />
-							</koken:link>
-						</h2>
-						<koken:link title="View {content.filename}">
-							<koken:img />
-						</koken:link>
-					</li>
-				</koken:loop>
-			</ol>
+			<!-- Loop over loaded archival data and render content with each pass -->
+			<koken:loop>
+				<h2>
+					<koken:link title="View {content.filename}">
+						<koken:print data="content.title" fallback="content.filename" />
+					</koken:link>
+				</h2>
+				<koken:link title="View {content.filename}">
+					<koken:img />
+				</koken:link>
+			</koken:loop>
 
 			<!-- Paginate the results -->
 			<koken:include file="inc/pagination.html" />

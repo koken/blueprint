@@ -12,52 +12,45 @@
 
 		<div class="lcol">
 
-			<ol>
-				<!-- Loop over loaded archival data and execute with each pass -->
-				<koken:loop>
+			<!-- Loop over loaded archival data and execute with each pass -->
+			<koken:loop>
 
-				<li>
+				<!-- Display each album's title, link to albums.detail.lens -->
+				<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
 
-					<!-- Display each album's title, link to albums.detail.lens -->
-					<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
+				<koken:link>
+					<!-- Load the most recently assigned album cover -->
+					<koken:img size="8:5" />
+				</koken:link>
 
-					<koken:link>
-						<!-- Load the most recently assigned album cover -->
-						<koken:img size="8:5" />
-					</koken:link>
+				<!-- Display the album's (shorter) summary -->
+				<koken:print data="album.summary" paragraphs="true" />
 
-					<!-- Display the album's (shorter) summary -->
-					<koken:print data="album.summary" paragraphs="true" />
+				<!-- Display album categories, link each to albums.archive -->
+				<koken:categories>
+					<p>
+						<strong>Categories:</strong>
+						<koken:loop separator=", ">
+							<koken:link>
+								<koken:print data="category.title" />
+							</koken:link>
+						</koken:loop>
+					</p>
+				</koken:categories>
 
-					<!-- Display album categories, link each to albums.archive -->
-					<koken:categories>
-						<p>
-							<strong>Categories:</strong>
-							<koken:loop separator=", ">
-								<koken:link>
-									<koken:print data="category.title" />
-								</koken:link>
-							</koken:loop>
-						</p>
-					</koken:categories>
+				<!-- Display album tags, link each to albums.archive -->
+				<koken:tags>
+					<p>
+						<strong>Tags:</strong>
+						<koken:loop separator=", ">
+							<koken:link>
+								<koken:print data="title" />
+							</koken:link>
+						</koken:loop>
+					</p>
+				</koken:tags>
 
-					<!-- Display album tags, link each to albums.archive -->
-					<koken:tags>
-						<p>
-							<strong>Tags:</strong>
-							<koken:loop separator=", ">
-								<koken:link>
-									<koken:print data="title" />
-								</koken:link>
-							</koken:loop>
-						</p>
-					</koken:tags>
-
-				</li>
-
-				</koken:loop>
-
-			</ol>
+			</koken:loop>
 
 		</div> <!-- close .lcol -->
 
