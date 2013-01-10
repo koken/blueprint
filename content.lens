@@ -11,12 +11,12 @@
 			<meta property="og:title" koken:content="{content.title|content.filename}" />
 			<meta property="og:description" koken:content="{content.caption}" />
 			<meta property="og:type" koken:content="website" />
-			<meta property="og:image" koken:content="{content.presets.medium.url}" />	
+			<meta property="og:image" koken:content="{content.presets.medium.url}" />
 		</koken:head>
-	     
+
 	    <!-- Display pagination links -->
 		<div id="content-pag">
-			
+
 			<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
 			<koken:parent>
 				<koken:variable name="previous_label" value="Newer" />
@@ -31,7 +31,7 @@
 			<koken:else>
 				&larr; <koken:print data="previous_label" />
 			</koken:previous>
-		
+
 			&nbsp;
 
 			<!-- Display the current and total #s -->
@@ -67,8 +67,10 @@
 
 			<!-- Load the video -->
 			<koken:video />
-		
+
 		</koken:content_video>
+
+		<br>
 
 		<!-- Opens the image in the lightbox viewer -->
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
@@ -97,7 +99,7 @@
 				</koken:loop>
 			</p>
 		</koken:categories>
-	     
+
 	    <!-- Display assigned tags -->
 		<koken:tags>
 			<p>
@@ -113,7 +115,7 @@
 		<!-- Display EXIF data -->
 		<koken:exif>
 			<p>
-				<strong>EXIF:</strong> 
+				<strong>EXIF:</strong>
 				<koken:not empty="exif.model">
 					<koken:print data="exif.model" />,
 				</koken:not>
@@ -145,10 +147,10 @@
 					<koken:print data="max_download.label" />&nbsp;(<koken:print data="max_download.width" />x<koken:print data="max_download.height" />)
 				</koken:link>
 			</p>
-		</koken:else>
+		<koken:else>
 			<p>
 				<strong>Download image: </strong>User has disabled downloads for this image.
-			</p>	
+			</p>
 		</koken:max_download>
 
 		<!-- If content is part of an album, display a link to it -->
