@@ -161,6 +161,11 @@
 			</p>
 		</koken:parent>
 
+		<!-- Display a link to Google Maps to show where this photo was taken -->
+		<koken:geolocation>
+			<a koken:href="http://maps.google.com/?q={geolocation.latitude},{geolocation.longitude}" target="_blank">View map</a>
+		</koken:geolocation>
+
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
