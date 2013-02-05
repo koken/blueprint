@@ -35,7 +35,7 @@
 			<koken:load source="archives" summary="true" limit_to="content">
 				<h3>View content by date</h3>
 				<koken:loop>
-					<koken:link to="archive_content">
+					<koken:link to="archive_contents">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
 					</koken:link>
 					<br>
@@ -44,7 +44,7 @@
 			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
 				<h3>View content by category</h3>
 				<koken:loop>
-					<koken:link to="archive_content">
+					<koken:link to="archive_contents">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
 					</koken:link>
 					<br>
@@ -53,7 +53,7 @@
 			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
 				<h3>View content by tag</h3>
 				<koken:loop>
-					<koken:link to="archive_content">
+					<koken:link to="archive_contents">
 						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
 					</koken:link>
 					<br>
