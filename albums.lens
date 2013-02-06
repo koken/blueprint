@@ -90,7 +90,7 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			Nothing public albums found
+			No public albums found
 
 	</koken:load>
 
