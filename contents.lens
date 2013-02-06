@@ -10,18 +10,18 @@
 			<!-- Loop over all public content, display info about each, link to content.detail.lens -->
 			<koken:loop>
 				<h2>
-					<koken:link title="View {content.filename}">
-						<koken:print data="content.title" fallback="content.filename" />
+					<koken:link title="View {{ content.filename }}">
+						{{ content.title | content.filename }}
 					</koken:link>
 				</h2>
-				<koken:link title="View {content.filename}">
+				<koken:link title="View {{ content.filename }}">
 					<koken:img />
 				</koken:link>
 				<p>
-					<koken:print data="content.caption" />
+					{{ content.caption }}
 				</p>
 				<p>
-					<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
+					<strong>Uploaded:</strong> {{ content.uploaded_on }}
 				</p>
 			</koken:loop>
 
@@ -37,7 +37,7 @@
 				<h3>View content by date</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+						{{ title }}&nbsp;({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -46,7 +46,7 @@
 				<h3>View content by category</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+						{{ title }}&nbsp;({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -55,7 +55,7 @@
 				<h3>View content by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+						{{ title }}&nbsp;({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>

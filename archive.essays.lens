@@ -7,7 +7,7 @@
 
         <h3>
           <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-        	<koken:link to="essays">Essays</koken:link> / View by <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
+        	<koken:link to="essays">Essays</koken:link> / View by {{ archive.type.plural }} / {{ archive.title }}
         </h3>
 
         <div class="lcol">
@@ -15,8 +15,8 @@
           <!-- Loop over all returned essays, link to their essays.detail.lens pages -->
           <koken:loop>
                <article>
-                    <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
-                    <koken:print data="essay.content" />
+                    <h2><koken:link>{{ essay.title }}</koken:link></h2>
+                    {{ essay.content }}
                     	<p>
           				<strong>Published:</strong>
           				<koken:time data="essay.published_on" />
@@ -33,7 +33,7 @@
                     <h3>View essays by date</h3>
                     <koken:loop>
                          <koken:link to="archive_essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                              {{ title }}&nbsp;({{ counts.essays }})
                          </koken:link>
                          <br>
                     </koken:loop>
@@ -42,7 +42,7 @@
                     <h3>View essays by category</h3>
                     <koken:loop>
                          <koken:link to="archive_essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                              {{ title }}&nbsp;({{ counts.essays }})
                          </koken:link>
                          <br>
                     </koken:loop>
@@ -51,7 +51,7 @@
                     <h3>View essays by tag</h3>
                     <koken:loop>
                          <koken:link to="archive_essays">
-                              <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                              {{ title }}&nbsp;({{ counts.essays }})
                          </koken:link>
                          <br>
                     </koken:loop>

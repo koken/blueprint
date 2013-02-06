@@ -7,11 +7,11 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
-			<meta property="og:title" koken:content="{album.title}" />
-			<meta property="og:description" koken:content="{album.summary}" />
+			<meta property="og:title" content="{{ album.title }}" />
+			<meta property="og:description" content="{{ album.summary }}" />
 			<meta name="medium" content="mult" />
 			<koken:loop data="album.covers">
-				<meta property="og:image" koken:content="{content.presets.medium.url}" />
+				<meta property="og:image" content="{{ content.presets.medium.url }}" />
 			</koken:loop>
 		</koken:head>
 
@@ -21,37 +21,37 @@
 			<div id="content-pag">
 
 				<koken:previous>
-					<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
 				</koken:previous>
 				&nbsp;
 				<koken:link to="albums">View all</koken:link>
 				&nbsp;
 				<koken:next>
-					<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
+					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
 				</koken:next>
 
 			</div>
 
 			<!-- Display the set's title -->
 			<h2>
-				<koken:print data="album.title" />
+				{{ album.title }}
 			</h2>
 
 		</div>
 
 		<!-- Display the set's description -->
-		<koken:print data="album.description" paragraphs="true" />
+		{{ album.description paragraphs="true" }}
 
 		<div class="lcol">
 
 			<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
 			<koken:loop>
 
-				<h3><koken:link><koken:print data="album.title" /></koken:link></h3>
+				<h3><koken:link>{{ album.title }}</koken:link></h3>
 				<koken:link>
 					<koken:img size="8:5" />
 				</koken:link>
-				<p><koken:print data="album.summary" /></p>
+				<p>{{ album.summary }}</p>
 
 				<!-- Display the set's categories -->
 				<koken:categories>
@@ -59,7 +59,7 @@
 						<strong>Categories:</strong>
 						<koken:loop separator=", ">
 							<koken:link>
-								<koken:print data="category.title" />
+								{{ category.title }}
 							</koken:link>
 						</koken:loop>
 					</p>
@@ -71,7 +71,7 @@
 						<strong>Tags:</strong>
 						<koken:loop separator=", ">
 							<koken:link>
-								<koken:print data="title" />
+								{{ title }}
 							</koken:link>
 						</koken:loop>
 					</p>
@@ -89,7 +89,7 @@
 				<h4>Date</h4>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+						{{ title }}&nbsp;({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -98,7 +98,7 @@
 				<h4>Categories</h4>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+						{{ title }}&nbsp;({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -107,7 +107,7 @@
 				<h4>Tags</h4>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+						{{ title }}&nbsp;({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>

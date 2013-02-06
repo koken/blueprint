@@ -7,12 +7,12 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
-			<meta property="og:site_name" koken:content="{site.title}" />
-			<meta property="og:title" koken:content="{album.title}" />
-			<meta property="og:description" koken:content="{album.summary}" />
-			<meta property="og:type" koken:content="website" />
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{{ album.title }}" />
+			<meta property="og:description" content="{{ album.summary }}" />
+			<meta property="og:type" content="website" />
 			<koken:loop data="album.covers">
-				<meta property="og:image" koken:content="{content.presets.medium.url}" />
+				<meta property="og:image" content="{{ content.presets.medium.url }}" />
 			</koken:loop>
 		</koken:head>
 
@@ -20,26 +20,26 @@
 		<div id="content-pag">
 
 			<koken:previous>
-				<koken:link title="View {album.title}">&larr; <koken:print data="album.title" /></koken:link>
+				<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
 			</koken:previous>
 			&nbsp;
 			<koken:link to="albums">View all</koken:link>
 			&nbsp;
 			<koken:next>
-				<koken:link title="View {album.title}"><koken:print data="album.title" /> &rarr;</koken:link>
+				<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
 			</koken:next>
 
 		</div>
 
 		<!-- Display the album's title -->
 		<h2>
-			<koken:print data="album.title" />
+			{{ album.title }}
 		</h2>
 
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
 
 		<!-- Display the album's description -->
-		<koken:print data="album.description" paragraphs="true" />
+		{{ album.description paragraphs="true" }}
 
 		<!-- Display essays/pages written about this album -->
 		<koken:topics>
@@ -47,7 +47,7 @@
 				<strong>Related content:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
-						<koken:print data="essay.title" />
+						{{ essay.title }}
 					</koken:link>
 				</koken:loop>
 			</p>
@@ -59,7 +59,7 @@
 				<strong>Categories:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
-						<koken:print data="category.title" />
+						{{ category.title }}
 					</koken:link>
 				</koken:loop>
 			</p>
@@ -71,7 +71,7 @@
 				<strong>Tags:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
-						<koken:print data="tag.title" />
+						{{ tag.title }}
 					</koken:link>
 				</koken:loop>
 			</p>
@@ -80,8 +80,8 @@
 		<!-- If album is part of a set, display link to it -->
 		<koken:parent>
 			<p>
-				<strong>From the set:</strong> <koken:link title="View {album.title}">
-				<koken:print data="album.title" /></koken:link>
+				<strong>From the set:</strong> <koken:link title="View {{ album.title }}">
+				{{ album.title }}</koken:link>
 			</p>
 		</koken:parent>
 
@@ -97,8 +97,8 @@
 			<koken:content_video>
 				<koken:video />
 			</koken:content_video>
-			<h3><koken:link><koken:print data="content.title" fallback="content.filename" /></koken:link></h3>
-			<koken:print data="content.caption" paragraphs="true" />
+			<h3><koken:link>{{ content.title | content.filename }}</koken:link></h3>
+			{{ content.caption paragraphs="true" }}
 		</koken:loop>
 
 		<!-- Paginate the results -->

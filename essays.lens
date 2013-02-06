@@ -12,21 +12,21 @@
 
                     <article>
 
-                        <h2><koken:link><koken:print data="essay.title" /></koken:link></h2>
+                        <h2><koken:link>{{ essay.title }}</koken:link></h2>
 
                         <p>
                             <strong>Published:</strong>
                             <koken:time data="essay.published_on" />
                         </p>
 
-                        <koken:print data="essay.content" />
+                        {{ essay.content }}
 
                          <koken:topics>
                               <p>
                                    <strong>Topics:</strong>
                                    <koken:loop separator=", ">
                                         <koken:link>
-                                             <koken:print data="album.title" />
+                                             {{ album.title }}
                                         </koken:link>
                                    </koken:loop>
                               </p>
@@ -37,7 +37,7 @@
                                    <strong>Category:</strong>
                                    <koken:loop separator=", ">
                                         <koken:link>
-                                             <koken:print data="category.title" />
+                                             {{ category.title }}
                                         </koken:link>
                                    </koken:loop>
                               </p>
@@ -48,7 +48,7 @@
                                    <strong>Tags:</strong>
                                    <koken:loop separator=", ">
                                         <koken:link>
-                                             <koken:print data="tag.title" />
+                                             {{ tag.title }}
                                         </koken:link>
                                    </koken:loop>
                               </p>
@@ -73,7 +73,7 @@
                  <h3>View essays by date</h3>
                  <koken:loop>
                       <koken:link to="archive_essays">
-                           <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                           {{ title }}&nbsp;({{ counts.essays }})
                       </koken:link>
                       <br>
                  </koken:loop>
@@ -82,7 +82,7 @@
                  <h3>View essays by category</h3>
                  <koken:loop>
                       <koken:link to="archive_essays">
-                           <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                           {{ title }}&nbsp;({{ counts.essays }})
                       </koken:link>
                       <br>
                  </koken:loop>
@@ -91,7 +91,7 @@
                  <h3>View essays by tag</h3>
                  <koken:loop>
                       <koken:link to="archive_essays">
-                           <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+                           {{ title }}&nbsp;({{ counts.essays }})
                       </koken:link>
                       <br>
                  </koken:loop>

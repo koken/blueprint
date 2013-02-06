@@ -7,9 +7,9 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
-			<meta property="og:site_name" koken:content="{site.title}" />
-			<meta property="og:title" koken:content="{essay.title}" />
-			<meta property="og:description" koken:content="{essay.excerpt}" />
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{{ essay.title }}" />
+			<meta property="og:description" content="{{ essay.excerpt }}" />
 			<meta name="medium" content="article" />
 		</koken:head>
 
@@ -20,19 +20,19 @@
 				<div id="content-pag">
 
 					<koken:previous>
-						<koken:link title="Read {essay.title}">&larr; <koken:print data="essay.title" /></koken:link>
+						<koken:link title="Read {{ essay.title }}">&larr; {{ essay.title }}</koken:link>
 					</koken:previous>
 
 					&nbsp;&nbsp;<koken:link to="essays">View all</koken:link>&nbsp;&nbsp;
 
 					<koken:next>
-						<koken:link title="Read {essay.title}"><koken:print data="essay.title" /> &rarr; </koken:link>
+						<koken:link title="Read {{ essay.title }}">{{ essay.title }} &rarr; </koken:link>
 					</koken:next>
 
 				</div>
 
 				<h2>
-					<koken:print data="essay.title" />
+					{{ essay.title }}
 				</h2>
 
 				<p>
@@ -40,7 +40,7 @@
 					<koken:time data="essay.published_on" />
 				</p>
 
-				<koken:print data="essay.content" />
+				{{ essay.content }}
 
 				<p>
 					<koken:link>Permalink</koken:link>
@@ -62,7 +62,7 @@
 								<koken:img width="100" height="100" />
 							</koken:link>
 							<koken:link>
-								<koken:print data="album.title" /> (<koken:print data="album.counts.total" /> images)
+								{{ album.title }} ({{ album.counts.total }} images)
 							</koken:link>
 						</p>
 					</koken:loop>
@@ -73,7 +73,7 @@
 		            <h3>View essays by date</h3>
 		            <koken:loop>
 		                 <koken:link to="archive_essays">
-		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+		                      {{ title }}&nbsp;({{ counts.essays }})
 		                 </koken:link>
 		                 <br>
 		            </koken:loop>
@@ -82,7 +82,7 @@
 		            <h3>View essays by category</h3>
 		            <koken:loop>
 		                 <koken:link to="archive_essays">
-		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+		                      {{ title }}&nbsp;({{ counts.essays }})
 		                 </koken:link>
 		                 <br>
 		            </koken:loop>
@@ -91,7 +91,7 @@
 		            <h3>View essays by tag</h3>
 		            <koken:loop>
 		                 <koken:link to="archive_essays">
-		                      <koken:print data="title" />&nbsp;(<koken:print data="counts.essays" />)
+		                      {{ title }}&nbsp;({{ counts.essays }})
 		                 </koken:link>
 		                 <br>
 		            </koken:loop>

@@ -7,7 +7,7 @@
 
 		<h3>
 			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-			<koken:link to="contents">Content</koken:link> / View by <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
+			<koken:link to="contents">Content</koken:link> / View by {{ archive.type.plural }} / {{ archive.title }}
 		</h3>
 
 		<div class="lcol">
@@ -15,11 +15,11 @@
 			<!-- Loop over loaded archival data and render content with each pass -->
 			<koken:loop>
 				<h2>
-					<koken:link title="View {content.filename}">
-						<koken:print data="content.title" fallback="content.filename" />
+					<koken:link title="View {{ content.filename }}">
+						{{ content.title | content.filename }}
 					</koken:link>
 				</h2>
-				<koken:link title="View {content.filename}">
+				<koken:link title="View {{ content.filename }}">
 					<koken:img />
 				</koken:link>
 			</koken:loop>
@@ -36,7 +36,7 @@
 				<h3>View content by date</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+						{{ title }}&nbsp;({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -45,7 +45,7 @@
 				<h3>View content by category</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+						{{ title }}&nbsp;({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -54,7 +54,7 @@
 				<h3>View content by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.content" />)
+						{{ title }}&nbsp;({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>

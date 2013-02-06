@@ -7,7 +7,7 @@
 
 		<h3>
 			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-			<koken:link to="albums">Albums</koken:link> / View by <koken:print data="archive.type.plural" /> / <koken:print data="archive.title" />
+			<koken:link to="albums">Albums</koken:link> / View by {{ archive.type.plural }} / {{ archive.title }}
 		</h3>
 
 		<div class="lcol">
@@ -16,7 +16,7 @@
 			<koken:loop>
 
 				<!-- Display each album's title, link to albums.detail.lens -->
-				<h2><koken:link><koken:print data="album.title" /></koken:link></h2>
+				<h2><koken:link>{{ album.title }}</koken:link></h2>
 
 				<koken:link>
 					<!-- Load the most recently assigned album cover -->
@@ -24,7 +24,7 @@
 				</koken:link>
 
 				<!-- Display the album's (shorter) summary -->
-				<koken:print data="album.summary" paragraphs="true" />
+				{{ album.summary paragraphs="true" }}
 
 				<!-- Display album categories, link each to albums.archive -->
 				<koken:categories>
@@ -32,7 +32,7 @@
 						<strong>Categories:</strong>
 						<koken:loop separator=", ">
 							<koken:link>
-								<koken:print data="category.title" />
+								{{ category.title }}
 							</koken:link>
 						</koken:loop>
 					</p>
@@ -44,7 +44,7 @@
 						<strong>Tags:</strong>
 						<koken:loop separator=", ">
 							<koken:link>
-								<koken:print data="title" />
+								{{ title }}
 							</koken:link>
 						</koken:loop>
 					</p>
@@ -61,7 +61,7 @@
 				<h3>View albums by date</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+						{{ title }}&nbsp;({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -70,7 +70,7 @@
 				<h3>View albums by category</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+						{{ title }}&nbsp;({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -79,7 +79,7 @@
 				<h3>View albums by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						<koken:print data="title" />&nbsp;(<koken:print data="counts.albums" />)
+						{{ title }}&nbsp;({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>

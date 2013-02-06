@@ -7,11 +7,11 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
-			<meta property="og:site_name" koken:content="{site.title}" />
-			<meta property="og:title" koken:content="{content.title|content.filename}" />
-			<meta property="og:description" koken:content="{content.caption}" />
-			<meta property="og:type" koken:content="website" />
-			<meta property="og:image" koken:content="{content.presets.medium.url}" />
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{content.title|content.filename}" />
+			<meta property="og:description" content="{{ content.caption }}" />
+			<meta property="og:type" content="website" />
+			<meta property="og:image" content="{{ content.presets.medium.url }}" />
 		</koken:head>
 
 	    <!-- Display pagination links -->
@@ -27,29 +27,29 @@
 			</koken:parent>
 
 			<koken:previous>
-				<koken:link title="{previous_label}">&larr; <koken:print data="previous_label" /></koken:link>
+				<koken:link title="{{ previous_label }}">&larr; {{ previous_label }}</koken:link>
 			<koken:else>
-				&larr; <koken:print data="previous_label" />
+				&larr; {{ previous_label }}
 			</koken:previous>
 
 			&nbsp;
 
 			<!-- Display the current and total #s -->
-			<koken:print data="content.context.position" /> of <koken:print data="content.context.total" />
+			{{ content.context.position }} of {{ content.context.total }}
 
 			&nbsp;
 
 			<koken:next>
-				<koken:link title="{next_label}"><koken:print data="next_label" />  &rarr;</koken:link>
+				<koken:link title="{{ next_label }}">{{ next_label }}  &rarr;</koken:link>
 			<koken:else>
-				<koken:print data="next_label" /> &rarr;
+				{{ next_label }} &rarr;
 			</koken:next>
 
 		</div>
 
 		<!-- Display the content title -->
 		<h2>
-			<koken:print data="content.title" fallback="content.filename" />
+			{{ content.title | content.filename }}
 		</h2>
 
 		<!-- Displayed if the asset is an image -->
@@ -76,16 +76,16 @@
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
 
 		<!-- Display the content caption and wrap with p tags -->
-		<koken:print data="content.caption" paragraphs="true" />
+		{{ content.caption paragraphs="true" }}
 
 		<!-- Display uploaded date -->
 		<p>
-			<strong>Uploaded:</strong> <koken:print data="content.uploaded_on" />
+			<strong>Uploaded:</strong> {{ content.uploaded_on }}
 		</p>
 
 		<!-- Display captured date -->
 		<p>
-			<strong>Captured:</strong> <koken:print data="content.captured_on" />
+			<strong>Captured:</strong> {{ content.captured_on }}
 		</p>
 
 		<!-- Display assigned categories -->
@@ -94,7 +94,7 @@
 				<strong>Categories:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
-						<koken:print data="category.title" />
+						{{ category.title }}
 					</koken:link>
 				</koken:loop>
 			</p>
@@ -106,7 +106,7 @@
 				<strong>Tags:</strong>
 				<koken:loop separator=", ">
 					<koken:link>
-						<koken:print data="tag.title" />
+						{{ tag.title }}
 					</koken:link>
 				</koken:loop>
 			</p>
@@ -117,19 +117,19 @@
 			<p>
 				<strong>EXIF:</strong>
 				<koken:not empty="exif.model">
-					<koken:print data="exif.model" />,
+					{{ exif.model }},
 				</koken:not>
 				<koken:not empty="exif.exposure">
-					<koken:print data="exif.exposure" />,
+					{{ exif.exposure }},
 				</koken:not>
 				<koken:not empty="exif.aperture">
-					<koken:print data="exif.aperture" />,
+					{{ exif.aperture }},
 				</koken:not>
 				<koken:not empty="exif.focal_length">
-					<koken:print data="exif.focal_length" />,
+					{{ exif.focal_length }},
 				</koken:not>
 				<koken:not empty="exif.iso_speed_ratings">
-					<koken:print data="exif.iso_speed_ratings" />
+					{{ exif.iso_speed_ratings }}
 				</koken:not>
 			</p>
 		</koken:exif>
@@ -137,14 +137,14 @@
 		<!-- Display content license -->
 		<p>
 			<strong>License:</strong>
-			<koken:print data="content.license.clean" />
+			{{ content.license.clean }}
 		</p>
 
 		<!-- If item is an image and allows downloading, show download link -->
 		<koken:max_download>
 			<p>
 				<strong>Download image:</strong> <koken:link>
-					<koken:print data="max_download.label" />&nbsp;(<koken:print data="max_download.width" />x<koken:print data="max_download.height" />)
+					{{ max_download.label }}&nbsp;({{ max_download.width }}x{{ max_download.height }})
 				</koken:link>
 			</p>
 		<koken:else>
@@ -156,14 +156,14 @@
 		<!-- If content is part of an album, display a link to it -->
 		<koken:parent>
 			<p>
-				<strong>From the album:</strong> <koken:link title="View {album.title}">
-				<koken:print data="album.title" /></koken:link>
+				<strong>From the album:</strong> <koken:link title="View {{ album.title }}">
+				{{ album.title }}</koken:link>
 			</p>
 		</koken:parent>
 
 		<!-- Display a link to Google Maps to show where this photo was taken -->
 		<koken:geolocation>
-			<a koken:href="http://maps.google.com/?q={geolocation.latitude},{geolocation.longitude}" target="_blank">View map</a>
+			<a href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}" target="_blank">View map</a>
 		</koken:geolocation>
 
 		<!-- Fallback content if no data was loaded by koken:load -->
