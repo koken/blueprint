@@ -14,16 +14,19 @@
 			<meta property="og:image" content="{{ content.presets.medium.url }}" />
 			<meta property="og:image:width" content="{{ content.presets.medium.width }}" />
 			<meta property="og:image:height" content="{{ content.presets.medium.height }}" />
-			<koken:not empty="profile.twitter">
-				<meta name="twitter:card" content="photo" />
-				<meta name="twitter:site" content="{{ profile.twitter }}" />
-				<meta name="twitter:creator" content="{{ profile.twitter }}" />
-				<meta name="twitter:title" content="{{ content.title|content.filename }}" />
-				<meta name="twitter:description" content="{{ content.caption }}" />
-				<meta name="twitter:image" content="{{ content.presets.medium.url }}" />
-				<meta name="twitter:image:width" content="{{ content.presets.medium.width }}" />
-				<meta name="twitter:image:height" content="{{ content.presets.medium.height }}" />
-			</koken:not>
+			<!-- Only publish if content is an image and if user entered a Twitter username in settings -->
+			<koken:content_image>
+				<koken:not empty="profile.twitter">
+					<meta name="twitter:card" content="photo" />
+					<meta name="twitter:site" content="{{ profile.twitter }}" />
+					<meta name="twitter:creator" content="{{ profile.twitter }}" />
+					<meta name="twitter:title" content="{{ content.title|content.filename }}" />
+					<meta name="twitter:description" content="{{ content.caption }}" />
+					<meta name="twitter:image" content="{{ content.presets.medium.url }}" />
+					<meta name="twitter:image:width" content="{{ content.presets.medium.width }}" />
+					<meta name="twitter:image:height" content="{{ content.presets.medium.height }}" />
+				</koken:not>
+			</koken:content_image>
 		</koken:head>
 
 	    <!-- Display pagination links -->
