@@ -8,10 +8,22 @@
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
 			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{content.title|content.filename}" />
+			<meta property="og:title" content="{{ content.title|content.filename }}" />
 			<meta property="og:description" content="{{ content.caption }}" />
 			<meta property="og:type" content="website" />
 			<meta property="og:image" content="{{ content.presets.medium.url }}" />
+			<meta property="og:image:width" content="{{ content.presets.medium.width }}" />
+			<meta property="og:image:height" content="{{ content.presets.medium.height }}" />
+			<koken:not empty="profile.twitter">
+				<meta name="twitter:card" content="photo" />
+				<meta name="twitter:site" content="{{ profile.twitter }}" />
+				<meta name="twitter:creator" content="{{ profile.twitter }}" />
+				<meta name="twitter:title" content="{{ content.title|content.filename }}" />
+				<meta name="twitter:description" content="{{ content.caption }}" />
+				<meta name="twitter:image" content="{{ content.presets.medium.url }}" />
+				<meta name="twitter:image:width" content="{{ content.presets.medium.width }}" />
+				<meta name="twitter:image:height" content="{{ content.presets.medium.height }}" />
+			</koken:not>
 		</koken:head>
 
 	    <!-- Display pagination links -->
