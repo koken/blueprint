@@ -44,7 +44,7 @@
 			<koken:previous>
 				<koken:link title="{{ previous_label }}">&larr; {{ previous_label }}</koken:link>
 			<koken:else>
-				&larr; {{ previous_label }}
+				<!-- display no link -->
 			</koken:previous>
 
 			&nbsp;
@@ -55,9 +55,9 @@
 			&nbsp;
 
 			<koken:next>
-				<koken:link title="{{ next_label }}">{{ next_label }}  &rarr;</koken:link>
+				<koken:link title="{{ next_label }}">{{ next_label }} &rarr;</koken:link>
 			<koken:else>
-				{{ next_label }} &rarr;
+				<!-- display no link -->
 			</koken:next>
 
 		</div>

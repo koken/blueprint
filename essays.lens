@@ -2,7 +2,7 @@
 
 <div id="content">
 
-     <!-- Load this template's source data (essays) and limit to 30 for pagination -->
+     <!-- Load this template's source data (essays) and limit to 20 for pagination -->
      <koken:load limit="20">
 
           <div class="lcol">
@@ -12,16 +12,23 @@
 
                     <article>
 
-                        <h2><koken:link>{{ essay.title }}</koken:link></h2>
+                        <header>
 
-                        <p>
-                            <strong>Published:</strong>
-                            <koken:time data="essay.published_on" />
-                        </p>
+                          <h2><koken:link>{{ essay.title }}</koken:link></h2>
+
+                          <p>
+                              <strong>Published:</strong>
+                              <koken:time data="essay.published_on" />
+                          </p>
+
+                        </header>
 
                         {{ essay.content }}
 
-                         <koken:topics>
+                        <footer>
+
+                           <!-- Link to any albums assigned as the essay's topic -->
+                            <koken:topics>
                               <p>
                                    <strong>Topics:</strong>
                                    <koken:loop separator=", ">
@@ -30,20 +37,22 @@
                                         </koken:link>
                                    </koken:loop>
                               </p>
-                         </koken:topics>
+                            </koken:topics>
 
-                         <koken:categories>
-                              <p>
-                                   <strong>Category:</strong>
-                                   <koken:loop separator=", ">
-                                        <koken:link>
-                                             {{ category.title }}
-                                        </koken:link>
-                                   </koken:loop>
-                              </p>
-                         </koken:categories>
+                            <!-- Publish the essay's categories. Links to archive.essays.lens -->
+                            <koken:categories>
+                            <p>
+                                 <strong>Category:</strong>
+                                 <koken:loop separator=", ">
+                                      <koken:link>
+                                           {{ category.title }}
+                                      </koken:link>
+                                 </koken:loop>
+                            </p>
+                            </koken:categories>
 
-                         <koken:tags>
+                            <!-- Publish the essays' tags. Links to archive.essays.lens -->
+                            <koken:tags>
                               <p>
                                    <strong>Tags:</strong>
                                    <koken:loop separator=", ">
@@ -52,7 +61,10 @@
                                         </koken:link>
                                    </koken:loop>
                               </p>
-                         </koken:tags>
+                            </koken:tags>
+
+                        </footer>
+
                     </article>
 
                </koken:loop>

@@ -17,34 +17,43 @@
 
 			<article>
 
+				<!-- Pagination to view neighboring essays -->
 				<div id="content-pag">
 
 					<koken:previous>
-						<koken:link title="Read {{ essay.title }}">&larr; {{ essay.title }}</koken:link>
+						<koken:link title="Read {{ essay.title }}">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;
 					</koken:previous>
 
-					&nbsp;&nbsp;<koken:link to="essays">View all</koken:link>&nbsp;&nbsp;
+					<koken:link to="essays">View all</koken:link>
 
 					<koken:next>
-						<koken:link title="Read {{ essay.title }}">{{ essay.title }} &rarr; </koken:link>
+						&nbsp;&nbsp;<koken:link title="Read {{ essay.title }}">{{ essay.title }} &rarr; </koken:link>
 					</koken:next>
 
 				</div>
 
-				<h2>
-					{{ essay.title }}
-				</h2>
+				<header>
 
-				<p>
-					<strong>Published:</strong>
-					<koken:time data="essay.published_on" />
-				</p>
+					<h2>
+						{{ essay.title }}
+					</h2>
+
+					<p>
+						<strong>Published:</strong>
+						<koken:time />
+					</p>
+
+				</header>
 
 				{{ essay.content }}
 
-				<p>
-					<koken:link>Permalink</koken:link>
-				</p>
+				<footer>
+
+					<p>
+						<koken:link>Permalink</koken:link>
+					</p>
+
+				</footer>
 
 			</article>
 
@@ -54,6 +63,7 @@
 
 			<aside>
 
+				<!-- Display image and info about album assigned as essay topic -->
 				<koken:topics>
 					<h3>Related content</h3>
 					<koken:loop>

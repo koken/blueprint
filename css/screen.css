@@ -57,11 +57,11 @@ div#container {
 	text-align:left;
 }
 
-header {
+header.main {
 	margin-bottom:40px;
 }
 
-footer {
+footer.main {
 	padding:40px 0;
 	clear:both;
 	text-align:left;
