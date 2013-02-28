@@ -14,14 +14,32 @@
 
 			<!-- Loop over loaded archival data and render content with each pass -->
 			<koken:loop>
+
+				<!-- Display each item's title, fallback to file name if empty, link to content.lens -->
 				<h2>
 					<koken:link title="View {{ content.filename }}">
 						{{ content.title | content.filename }}
 					</koken:link>
 				</h2>
-				<koken:link title="View {{ content.filename }}">
-					<koken:img />
-				</koken:link>
+
+				<!-- Displayed if the asset is an image -->
+				<koken:content_image>
+
+					<!-- Display image title, fallback to file name if empty, link to content.lens -->
+					<koken:link title="View {{ content.filename }}">
+						<koken:img />
+					</koken:link>
+
+				</koken:content_image>
+
+				<!-- Displayed if the asset is a video -->
+				<koken:content_video>
+
+					<!-- Load the video -->
+					<koken:video />
+
+				</koken:content_video>
+
 			</koken:loop>
 
 			<!-- Paginate the results -->
@@ -41,6 +59,7 @@
 					<br>
 				</koken:loop>
 			</koken:load>
+
 			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
 				<h3>View content by category</h3>
 				<koken:loop>
@@ -50,6 +69,7 @@
 					<br>
 				</koken:loop>
 			</koken:load>
+
 			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
 				<h3>View content by tag</h3>
 				<koken:loop>
