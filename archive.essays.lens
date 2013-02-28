@@ -6,22 +6,74 @@
     <koken:load>
 
         <h3>
-          <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
+          <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all essays -->
         	<koken:link to="essays">Essays</koken:link> / View by {{ archive.type.plural }} / {{ archive.title }}
         </h3>
 
         <div class="lcol">
 
-          <!-- Loop over all returned essays, link to their essays.detail.lens pages -->
+          <!-- Loop over all returned essays, link to their essay.lens pages -->
           <koken:loop>
+
                <article>
-                    <h2><koken:link>{{ essay.title }}</koken:link></h2>
-                    {{ essay.content }}
-                    	<p>
-          				<strong>Published:</strong>
-          				<koken:time data="essay.published_on" />
-          			</p>
+
+                  <header>
+
+                    <h2>
+                      <koken:link>{{ essay.title }}</koken:link>
+                    </h2>
+
+                  </header>
+
+                  {{ essay.content }}
+
+                  <footer>
+
+                    <!-- Publishes the link for this essay -->
+                    <p>
+                      <koken:link>Permalink</koken:link>
+                    </p>
+
+                    <!-- Link to any albums assigned as the essay's topic -->
+                    <koken:topics>
+                      <p>
+                           <strong>Topics:</strong>
+                           <koken:loop separator=", ">
+                                <koken:link>
+                                     {{ album.title }}
+                                </koken:link>
+                           </koken:loop>
+                      </p>
+                    </koken:topics>
+
+                    <!-- Publish the essay's categories. Links to archive.essays.lens -->
+                    <koken:categories>
+                    <p>
+                         <strong>Category:</strong>
+                         <koken:loop separator=", ">
+                              <koken:link>
+                                   {{ category.title }}
+                              </koken:link>
+                         </koken:loop>
+                    </p>
+                    </koken:categories>
+
+                    <!-- Publish the essays' tags. Links to archive.essays.lens -->
+                    <koken:tags>
+                      <p>
+                           <strong>Tags:</strong>
+                           <koken:loop separator=", ">
+                                <koken:link>
+                                     {{ tag.title }}
+                                </koken:link>
+                           </koken:loop>
+                      </p>
+                    </koken:tags>
+
+                  </footer>
+
                </article>
+
           </koken:loop>
 
           </div> <!-- close .lcol -->
@@ -38,6 +90,7 @@
                          <br>
                     </koken:loop>
                </koken:load>
+
                <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
                     <h3>View essays by category</h3>
                     <koken:loop>
@@ -47,6 +100,7 @@
                          <br>
                     </koken:loop>
                </koken:load>
+
                <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
                     <h3>View essays by tag</h3>
                     <koken:loop>
@@ -57,7 +111,7 @@
                     </koken:loop>
                </koken:load>
 
-         </div> <!-- close .rcol -->
+          </div> <!-- close .rcol -->
 
         <!-- Fallback content if no data was loaded by koken:load -->
         <koken:else>
