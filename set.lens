@@ -17,17 +17,17 @@
 
 		<div class="lcol nofloat">
 
-			<!-- Displays links to neighbor albums, link back to albums index -->
+			<!-- Displays links to neighbouring albums plus link to albums.lens to view all -->
 			<div id="content-pag">
 
 				<koken:previous>
-					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>&nbsp;&nbsp;
 				</koken:previous>
-				&nbsp;
+
 				<koken:link to="albums">View all</koken:link>
-				&nbsp;
+
 				<koken:next>
-					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+					&nbsp;&nbsp;<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
 				</koken:next>
 
 			</div>
@@ -47,10 +47,14 @@
 			<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
 			<koken:loop>
 
-				<h3><koken:link>{{ album.title }}</koken:link></h3>
+				<h3>
+					<koken:link>{{ album.title }}</koken:link>
+				</h3>
+
 				<koken:link>
 					<koken:img size="8:5" />
 				</koken:link>
+
 				<p>{{ album.summary }}</p>
 
 				<!-- Display the set's categories -->
@@ -94,6 +98,7 @@
 					<br>
 				</koken:loop>
 			</koken:load>
+
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
 				<h4>Categories</h4>
 				<koken:loop>
@@ -103,6 +108,7 @@
 					<br>
 				</koken:loop>
 			</koken:load>
+
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
 				<h4>Tags</h4>
 				<koken:loop>
