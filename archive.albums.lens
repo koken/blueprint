@@ -15,18 +15,20 @@
 			<!-- Loop over loaded archival data and execute with each pass -->
 			<koken:loop>
 
-				<!-- Display each album's title, link to albums.detail.lens -->
-				<h2><koken:link>{{ album.title }}</koken:link></h2>
+				<!-- Display each album's title, link to album.lens -->
+				<h2>
+					<koken:link>{{ album.title }}</koken:link>
+				</h2>
 
+				<!-- Load the most recently assigned album cover, link to album.lens -->
 				<koken:link>
-					<!-- Load the most recently assigned album cover -->
 					<koken:img size="8:5" />
 				</koken:link>
 
 				<!-- Display the album's (shorter) summary -->
 				{{ album.summary paragraphs="true" }}
 
-				<!-- Display album categories, link each to albums.archive -->
+				<!-- Display album categories, link each to this template to change criteria -->
 				<koken:categories>
 					<p>
 						<strong>Categories:</strong>
@@ -38,7 +40,7 @@
 					</p>
 				</koken:categories>
 
-				<!-- Display album tags, link each to albums.archive -->
+				<!-- Display album tags, link each to this template to change criteria -->
 				<koken:tags>
 					<p>
 						<strong>Tags:</strong>
@@ -66,6 +68,7 @@
 					<br>
 				</koken:loop>
 			</koken:load>
+
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
 				<h3>View albums by category</h3>
 				<koken:loop>
@@ -75,6 +78,7 @@
 					<br>
 				</koken:loop>
 			</koken:load>
+
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
 				<h3>View albums by tag</h3>
 				<koken:loop>
