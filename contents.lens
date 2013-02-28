@@ -9,20 +9,27 @@
 
 			<!-- Loop over all public content, display info about each, link to content.detail.lens -->
 			<koken:loop>
-				<h2>
+
+				<!-- wrapper used for keyboard navigation targetting -->
+				<div class="item">
+
+					<h2>
+						<koken:link title="View {{ content.filename }}">
+							{{ content.title | content.filename }}
+						</koken:link>
+					</h2>
 					<koken:link title="View {{ content.filename }}">
-						{{ content.title | content.filename }}
+						<koken:img />
 					</koken:link>
-				</h2>
-				<koken:link title="View {{ content.filename }}">
-					<koken:img />
-				</koken:link>
-				<p>
-					{{ content.caption }}
-				</p>
-				<p>
-					<strong>Uploaded:</strong> {{ content.uploaded_on }}
-				</p>
+					<p>
+						{{ content.caption }}
+					</p>
+					<p>
+						<strong>Uploaded:</strong> {{ content.uploaded_on }}
+					</p>
+
+				</div>
+
 			</koken:loop>
 
 			<!-- Paginate the results -->
@@ -71,5 +78,8 @@
 	</koken:load>
 
 </div> <!-- close #content -->
+
+<!-- Turn on keyboard scrolling (left/right arrow keys). Target each album. -->
+<koken:keyboard_scroll element="div.item" />
 
 <koken:include file="inc/footer.html" />
