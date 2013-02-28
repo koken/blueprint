@@ -61,11 +61,6 @@ header {
 	margin-bottom:40px;
 }
 
-header h2 {
-	font-size:14px;
-	font-weight:normal;
-}
-
 footer {
 	padding:40px 0;
 	clear:both;
@@ -86,13 +81,14 @@ nav ul li {
 	margin:0 15px 0 0;
 }
 
-/*
-	LAYOUT
-*/
-
-div#content img {
-	/*margin-bottom:10px;*/
+/* highlights navigation link for current page - assigned automatically by Koken */
+nav a.k-nav-current {
+	color:#ff6e00;
 }
+
+/*
+	LAYOUT (JUST ENOUGH TO ORGANIZE THINGS)
+*/
 
 div#content h2 {
 	margin-bottom:20px;
@@ -115,10 +111,6 @@ div.rcol {
 }
 
 div.lcol.nofloat, div.rcol.nofloat { float:none; }
-
-article {
-	margin-bottom:30px;
-}
 
 ol.archive li {
 	width:210px;
@@ -145,17 +137,57 @@ ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archiv
 }
 
 /*
-	ASSIGNED CLASSES
-	See: http://help.koken.me/customer/portal/articles/828695-css-classes
+	ARTICLES
+	Used for essays and pages.
+	Markup shown below contains all possible elements and classes
+	generated from the editor's rich text formatting.
 */
 
-/* highlights navigation link for current page */
-nav a.k-nav-current {
-	color:#ff6e00;
+article {
 }
 
-/* used for fallback text in console */
-.k-note {}
+article h1 {
+}
+
+article h2 {
+}
+
+article h3 {
+}
+
+article h4 {
+}
+
+article time {
+}
+
+article p {
+	margin-bottom:20px;
+}
+
+article ul {
+	list-style:disc;
+	list-style-position: inside;
+	padding:0;
+}
+
+article ol {
+	list-style:decimal;
+	list-style-position: inside;
+	padding:0;
+}
+
+article blockquote {
+}
+
+article blockquote p {
+	padding:0;
+}
+
+/*
+	Classes assigned to inserted media
+	See: http://help.koken.me/customer/portal/articles/828695-css-classes
+*/
 
 /* wrapper for inserted media */
 .k-content-embed {
@@ -176,10 +208,16 @@ nav a.k-nav-current {
 /* wrapper for the media's title */
 .k-content-title {
 	display:block;
-	font-weight:bold;
 }
 
 /* wrapper for the media's caption */
 .k-content-caption {
-	font-style:italic;
 }
+
+/*
+	MORE CLASSES
+	See: http://help.koken.me/customer/portal/articles/828695-css-classes
+*/
+
+/* used for fallback text in console */
+.k-note {}
