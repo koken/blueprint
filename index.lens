@@ -10,9 +10,9 @@
 
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
-			
+
 			<p>
-				No featured or favorite content found. Assign either in the Library then edit the page filter if necessary.
+				No featured content found. Assign content in the Library.
 			</p>
 
 	</koken:load>
