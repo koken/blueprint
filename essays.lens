@@ -17,8 +17,7 @@
                           <h2><koken:link>{{ essay.title }}</koken:link></h2>
 
                           <p>
-                              <strong>Published:</strong>
-                              <koken:time data="essay.published_on" />
+                              <strong>Published:</strong> <koken:time />
                           </p>
 
                         </header>
