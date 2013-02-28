@@ -43,10 +43,6 @@ img {
 	vertical-align: bottom;
 }
 
-blockquote {
-	font-style:italic;
-}
-
 /*
 	LAYOUT
 */
@@ -178,6 +174,7 @@ article ol {
 }
 
 article blockquote {
+	font-style:italic;
 }
 
 article blockquote p {
