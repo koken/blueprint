@@ -7,8 +7,8 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
-			<meta property="og:title" content="{{ album.title }}" />
-			<meta property="og:description" content="{{ album.summary }}" />
+			<meta property="og:title" content="{{ album.title strip_html="true" }}" />
+			<meta property="og:description" content="{{ album.summary strip_html="true" }}" />
 			<meta name="medium" content="mult" />
 			<koken:loop data="album.covers">
 				<meta property="og:image" content="{{ content.presets.medium.url }}" />
