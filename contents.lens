@@ -7,7 +7,7 @@
 
 		<div class="lcol">
 
-			<!-- Loop over all public content, display info about each, link to content.detail.lens -->
+			<!-- Loop over all public content, display info about each, link to content.lens -->
 			<koken:loop>
 
 				<!-- wrapper used for keyboard navigation targetting -->

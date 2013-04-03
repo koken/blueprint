@@ -85,7 +85,7 @@
 			</p>
 		</koken:parent>
 
-		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.detail.lens -->
+		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.lens -->
 		<koken:loop>
 			<!-- Displayed if the asset is an image -->
 			<koken:content_image>

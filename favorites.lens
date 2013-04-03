@@ -7,7 +7,7 @@
 
 		<div class="lcol">
 
-			<!-- Loop over all favorited content, display info about each, link to content.detail.lens -->
+			<!-- Loop over all favorited content, display info about each, link to content.lens -->
 			<koken:loop>
 
 				<h2>

@@ -18,7 +18,7 @@
                     <!-- Display total content shown, total content available, link to view all content matching archive type -->
                     <h3>Content ({{ preview.content.length }} of {{ counts.content }}&nbsp;/&nbsp;<koken:link to="archive_contents">View all</koken:link>)</h3>
                     <ol class="archive content">
-                         <!-- Loop over preview data, link each to content.detail.lens -->
+                         <!-- Loop over preview data, link each to content.lens -->
                          <koken:loop data="preview.content">
                          <li>
                               <koken:link>
