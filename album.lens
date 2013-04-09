@@ -5,14 +5,22 @@
 	<!-- Load this template's source data (album), limit for pagination -->
 	<koken:load limit="30">
 
-		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
 		<koken:head>
 			<meta property="og:site_name" content="{{ site.title }}" />
 			<meta property="og:title" content="{{ album.title strip_html="true" }}" />
 			<meta property="og:description" content="{{ album.summary strip_html="true" }}" />
 			<meta property="og:type" content="website" />
+			<koken:not empty="profile.twitter">
+				<meta name="twitter:card" content="gallery" />
+				<meta name="twitter:site" content="@{{ profile.twitter }}" />
+				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			</koken:not>
 			<koken:loop data="album.covers">
 				<meta property="og:image" content="{{ content.presets.medium.url }}" />
+				<koken:not empty="profile.twitter">
+					<meta name="twitter:image{{ index }}" content="{{ content.presets.medium.url }}">
+				</koken:not>
 			</koken:loop>
 		</koken:head>
 
