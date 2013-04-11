@@ -18,7 +18,7 @@
 
 					<!-- Display each album's first album cover, link to albums.detail.lens -->
 					<koken:link>
-						<koken:img size="8:5" />
+						<koken:img size="8:5" alt="{{ content.title | content.filename }}" />
 					</koken:link>
 
 					<!-- Display the album's (shorter) summary -->

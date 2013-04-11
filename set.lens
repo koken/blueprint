@@ -61,7 +61,7 @@
 				</h3>
 
 				<koken:link>
-					<koken:img size="8:5" />
+					<koken:img size="8:5" alt="{{ content.title | content.filename }}" />
 				</koken:link>
 
 				<p>{{ album.summary }}</p>

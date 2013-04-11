@@ -98,7 +98,7 @@
 			<!-- Displayed if the asset is an image -->
 			<koken:content_image>
 				<koken:link>
-					<koken:img />
+					<koken:img alt="{{ content.title | content.filename }}" />
 				</koken:link>
 			</koken:content_image>
 			<!-- Displayed if the asset is a video -->

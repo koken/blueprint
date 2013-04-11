@@ -27,7 +27,7 @@
 
 					<!-- Display image title, fallback to file name if empty, link to content.lens -->
 					<koken:link title="View {{ content.filename }}">
-						<koken:img />
+						<koken:img alt="{{ content.title | content.filename }}" />
 					</koken:link>
 
 				</koken:content_image>
