@@ -17,7 +17,7 @@
 				</h2>
 
 				<koken:link title="View {{ content.filename }}">
-					<koken:img alt="{{ content.title | content.filename }}" />
+					<koken:img />
 				</koken:link>
 
 				<p>

@@ -67,7 +67,7 @@
 
 			<!-- Load image in lightbox viewer if clicked -->
 			<koken:link lightbox="true">
-				<koken:img alt="{{ content.title | content.filename }}" />
+				<koken:img />
 			</koken:link>
 
 		</koken:content_image>

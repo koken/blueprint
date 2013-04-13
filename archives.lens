@@ -22,7 +22,7 @@
                          <koken:loop data="preview.content">
                          <li>
                               <koken:link>
-                                   <koken:img crop="true" size="1:1" alt="{{ content.title | content.filename }}" />
+                                   <koken:img crop="true" size="1:1" />
                               </koken:link>
                          </li>
                          </koken:loop>
