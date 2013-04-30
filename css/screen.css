@@ -10,13 +10,8 @@ body {
 	text-align:center;
 }
 
-h1,h2,h3,h4,h5,h6,strong {
-	color:#000;
-	font-weight:bold;
-}
-
-a, a:visited {
-	color:#000;
+a {
+	color:#75c4e5;
 	cursor:pointer;
 	text-decoration:none;
 }
@@ -26,16 +21,27 @@ a:hover {
 }
 
 a.button {
-	background:#000;
 	padding:6px 12px;
-	color:#fff;
+	border:1px solid #999;
+	color:#000;
 	font-size:13px;
+	font-weight:bold;
 	margin:1em 0;
 	display:inline-block;
 }
 
 a.button:hover {
 	text-decoration:none;
+	border:1px solid #000;
+}
+
+h1,h2,h3,h4,h5,h6,strong {
+	color:#000;
+	font-weight:bold;
+}
+
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
+	color:inherit;
 }
 
 img {
@@ -55,6 +61,10 @@ div#container {
 
 header.main {
 	margin-bottom:40px;
+}
+
+header.main h1 a {
+	color:inherit;
 }
 
 footer.main {
@@ -77,9 +87,13 @@ nav ul li {
 	margin:0 15px 0 0;
 }
 
+nav a, nav a:visited {
+	color:#000;
+}
+
 /* highlights navigation link for current page - assigned automatically by Koken */
 nav a.k-nav-current {
-	color:#ff6e00;
+	color:#75c4e5;
 }
 
 /*

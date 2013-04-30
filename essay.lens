@@ -91,6 +91,16 @@
 
 				</footer>
 
+
+				<!-- Display discussions or other data if enabled via a plugin (eg, our Disqus plugin) -->
+				<koken:discussion>
+
+					<h3>Comments</h3>
+
+					{{ discussion }}
+
+				</koken:discussion>
+
 			</article>
 
 		</div> <!-- close .lcol -->
