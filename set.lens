@@ -20,7 +20,7 @@
 				<koken:loop>
 					<meta property="og:image" content="{{ content.presets.medium.url }}" />
 					<koken:not empty="profile.twitter">
-						<meta name="twitter:image{{ index }}" content="{{ content.presets.medium.url }}">
+						<meta name="twitter:image{{ index }}" content="{{ content.presets.medium.cropped.url }}">
 					</koken:not>
 				</koken:loop>
 			</koken:covers>
