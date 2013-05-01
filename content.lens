@@ -37,7 +37,7 @@
 			</koken:parent>
 
 			<koken:previous>
-				<koken:link title="{{ previous_label }}">&larr; {{ previous_label }}</koken:link>
+				<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
 			<koken:else>
 				<!-- display no link -->
 			</koken:previous>
@@ -50,7 +50,7 @@
 			&nbsp;
 
 			<koken:next>
-				<koken:link title="{{ next_label }}">{{ next_label }} &rarr;</koken:link>
+				<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
 			<koken:else>
 				<!-- display no link -->
 			</koken:next>
