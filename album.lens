@@ -9,7 +9,7 @@
 		<koken:head>
 			<meta property="og:site_name" content="{{ site.title }}" />
 			<meta property="og:title" content="{{ album.title strip_html="true" }}" />
-			<meta property="og:description" content="{{ album.summary strip_html="true" }}" />
+			<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
 			<meta property="og:type" content="website" />
 			<koken:not empty="profile.twitter">
 				<meta name="twitter:card" content="gallery" />
