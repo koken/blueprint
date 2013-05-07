@@ -109,6 +109,23 @@
 
 			<aside>
 
+				<koken:categories>
+				    <koken:loop>
+				        <h3>Other essays in {{ category.title }}</h3>
+				        <ul>
+				        <koken:load source="essays" filter:category="{{ category.id }}">
+				            <koken:loop>
+				                <li>
+				                    <koken:link>
+				                        {{ essay.title }}
+				                    </koken:link>
+				                </li>
+				            </koken:loop>
+				        </koken:load>
+				        </ul>
+				    </koken:loop>
+				</koken:categories>
+
 				<!-- Display image and info about album assigned as essay topic -->
 				<koken:topics>
 					<h3>Related content</h3>
