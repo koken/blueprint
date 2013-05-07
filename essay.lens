@@ -109,20 +109,18 @@
 
 			<aside>
 
+				<!-- Display links to other essays in this category -->
 				<koken:categories>
 				    <koken:loop>
-				        <h3>Other essays in {{ category.title }}</h3>
-				        <ul>
+				        <h3>Other {{ labels.essay.plural case="lower" }} in {{ category.title }}</h3>
 				        <koken:load source="essays" filter:category="{{ category.id }}">
 				            <koken:loop>
-				                <li>
-				                    <koken:link>
-				                        {{ essay.title }}
-				                    </koken:link>
-				                </li>
+			                    <koken:link>
+			                        {{ essay.title }}
+			                    </koken:link>
+			                    <br>
 				            </koken:loop>
 				        </koken:load>
-				        </ul>
 				    </koken:loop>
 				</koken:categories>
 
