@@ -5,21 +5,10 @@
 
 		&nbsp;&nbsp;
 
-		<!-- Outputs link to publisher's Facebook page, if available. -->
-		<koken:profile_facebook>
-		  <a href="{{ profile.facebook }}">
-		    Facebook
-		  </a>
-		</koken:profile_facebook>
-
-		&nbsp;&nbsp;
-
-		<!-- Outputs link to publisher's Twitter page, if available. -->
-		<koken:profile_twitter>
-		  <a href="http://twitter.com/{{ profile.twitter }}">
-		    Twitter
-		  </a>
-		</koken:profile_twitter>
+		<!-- Outputs the footer navigation group as defined in info.json -->
+		<nav>
+			<koken:navigation group="footer" />
+		</nav>
 
 	</footer>
 

@@ -7,5 +7,14 @@
 		"name": "Your name",
 		"link": "http://koken.me"
 	},
-	"koken_version_required": "0.8.0-beta.1"
+	"koken_version_required": "0.8.0-beta.1",
+
+	"navigation_groups": {
+		"footer": {
+			"label": "Footer",
+			"defaults": [
+				"front", "albums", "contents", "essays", "twitter", "facebook", "gplus"
+			]
+		}
+	}
 }
