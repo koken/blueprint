@@ -7,10 +7,11 @@
 
 		<!-- Add Facebook open graph metadata for nicer sharing -->
 		<koken:head>
-			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{{ essay.title strip_html="true" }}" />
-			<meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
-			<meta name="medium" content="article" />
+		  <meta property="og:site_name" content="{{ site.title }}" />
+		  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+		  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+		  <meta property="og:url" content="{{ essay.url }}" />
+		  <meta name="medium" content="article" />
 		</koken:head>
 
 		<div class="lcol">
