@@ -55,7 +55,7 @@
 						<koken:loop>
 							<p>
 								<koken:link>
-									<koken:img width="100" height="100" />
+									<koken:img preset="small" />
 								</koken:link>
 								<br>
 								<koken:link>
