@@ -49,22 +49,27 @@
 
 				<footer>
 
+					<!-- Display image and info about album assigned as essay topic -->
+					<koken:topics>
+						<h3>Related content</h3>
+						<koken:loop>
+							<p>
+								<koken:link>
+									<koken:img width="100" height="100" />
+								</koken:link>
+								<br>
+								<koken:link>
+									{{ album.title }}
+								</koken:link>
+								({{ album.counts.total }} images)
+							</p>
+						</koken:loop>
+					</koken:topics>
+
 					<!-- Publishes the link for this essay -->
 					<p>
 						<koken:link>Permalink</koken:link>
 					</p>
-
-					<!-- Link to any albums assigned as the essay's topic -->
-					<koken:topics>
-						<p>
-						     <strong>Topics:</strong>
-						     <koken:loop separator=", ">
-						          <koken:link>
-						               {{ album.title }}
-						          </koken:link>
-						     </koken:loop>
-						</p>
-					</koken:topics>
 
 					<!-- Publish the essay's categories. Links to archive.essays.lens -->
 					<koken:categories>
@@ -124,21 +129,6 @@
 				        </koken:load>
 				    </koken:loop>
 				</koken:categories>
-
-				<!-- Display image and info about album assigned as essay topic -->
-				<koken:topics>
-					<h3>Related content</h3>
-					<koken:loop>
-						<p>
-							<koken:link>
-								<koken:img width="100" height="100" />
-							</koken:link>
-							<koken:link>
-								{{ album.title }} ({{ album.counts.total }} images)
-							</koken:link>
-						</p>
-					</koken:loop>
-				</koken:topics>
 
 				<!-- Links to essays archived by date, categories and tags -->
 		       <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
