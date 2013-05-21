@@ -2,7 +2,7 @@
 
 <div id="content">
 
-     <!-- Load this template's source data (archives), limit for pagination -->
+     <!-- Load this template's source data (archives) and limit for pagination -->
      <koken:load limit="20">
 
           <!-- Loop over archives data (tags, dates, categories) render following with each pass -->
@@ -66,9 +66,10 @@
 
           </koken:loop>
 
-          <!-- Paginate the results -->
-          <koken:include file="inc/pagination.html" />
-
+          <!-- Display pagination links -->
+          <p>
+               <koken:include file="inc/pagination.html" />
+          </p>
 
           <!-- Fallback content if no data was loaded by koken:load -->
           <koken:else>

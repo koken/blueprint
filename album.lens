@@ -2,8 +2,8 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (album), limit for pagination -->
-	<koken:load limit="30">
+	<!-- Load this template's source data (album) and limit for pagination -->
+	<koken:load limit="50">
 
 		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
 		<koken:head>
@@ -114,8 +114,10 @@
 			{{ content.caption paragraphs="true" }}
 		</koken:loop>
 
-		<!-- Paginate the results -->
-		<koken:include file="inc/pagination.html" />
+		<!-- Display pagination links -->
+		<p>
+			<koken:include file="inc/pagination.html" />
+		</p>
 
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>

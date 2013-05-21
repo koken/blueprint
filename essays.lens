@@ -2,7 +2,7 @@
 
 <div id="content">
 
-     <!-- Load this template's source data (essays) and limit to 20 for pagination -->
+     <!-- Load this template's source data (essays) and limit for pagination -->
      <koken:load limit="20">
 
           <div class="lcol">

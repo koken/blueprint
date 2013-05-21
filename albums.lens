@@ -2,7 +2,7 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (albums), limit for pagination -->
+	<!-- Load this template's source data (albums) and limit for pagination -->
 	<koken:load limit="20">
 
 		<div class="lcol">

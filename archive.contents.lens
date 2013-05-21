@@ -2,7 +2,7 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (contents) -->
+	<!-- Load this template's source data (contents) and limit for pagination -->
 	<koken:load limit="50">
 
 		<h3>
@@ -42,8 +42,10 @@
 
 			</koken:loop>
 
-			<!-- Paginate the results -->
-			<koken:include file="inc/pagination.html" />
+			<!-- Display pagination links -->
+			<p>
+				<koken:include file="inc/pagination.html" />
+			</p>
 
 		</div> <!-- close .lcol -->
 

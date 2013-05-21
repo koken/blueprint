@@ -2,8 +2,8 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (favorites), limit for pagination -->
-	<koken:load limit="30">
+	<!-- Load this template's source data (favorites) and limit for pagination -->
+	<koken:load limit="50">
 
 		<div class="lcol">
 
@@ -30,8 +30,10 @@
 
 			</koken:loop>
 
-			<!-- Paginate the results -->
-			<koken:include file="inc/pagination.html" />
+			<!-- Display pagination links -->
+			<p>
+				<koken:include file="inc/pagination.html" />
+			</p>
 
 		</div> <!-- close .lcol -->
 

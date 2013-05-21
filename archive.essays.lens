@@ -2,8 +2,8 @@
 
 <div id="content">
 
-    <!-- Load this template's source data (essays) -->
-    <koken:load>
+    <!-- Load this template's source data (essays) and limit for pagination -->
+    <koken:load limit="20">
 
         <h3>
           <!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all essays -->
@@ -75,6 +75,13 @@
                </article>
 
           </koken:loop>
+
+          <br>
+
+          <!-- Display pagination links -->
+          <p>
+              <koken:include file="inc/pagination.html" />
+          </p>
 
           </div> <!-- close .lcol -->
 

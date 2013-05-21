@@ -2,8 +2,8 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (set) -->
-	<koken:load>
+	<!-- Load this template's source data (set) and limit for pagination -->
+	<koken:load limit="20">
 
 		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
 		<koken:head>
@@ -96,6 +96,11 @@
 				</koken:tags>
 
 			</koken:loop>
+
+			<!-- Display pagination links -->
+			<p>
+				<koken:include file="inc/pagination.html" />
+			</p>
 
 		</div> <!-- close .lcol -->
 
