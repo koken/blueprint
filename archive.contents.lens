@@ -15,30 +15,43 @@
 			<!-- Loop over loaded archival data and render content with each pass -->
 			<koken:loop>
 
-				<!-- Display each item's title, fallback to file name if empty, link to content.lens -->
-				<h2>
-					<koken:link title="View {{ content.filename }}">
-						{{ content.title | content.filename }}
-					</koken:link>
-				</h2>
+				<!-- wrapper used for keyboard navigation targetting -->
+				<div class="item">
 
-				<!-- Displayed if the asset is an image -->
-				<koken:content_image>
+					<!-- Display each item's title, fallback to file name if empty, link to content.lens -->
+					<h2>
+						<koken:link title="View {{ content.filename }}">
+							{{ content.title | content.filename }}
+						</koken:link>
+					</h2>
 
-					<!-- Display image title, fallback to file name if empty, link to content.lens -->
-					<koken:link title="View {{ content.filename }}">
-						<koken:img />
-					</koken:link>
+					<!-- Displayed if the asset is an image -->
+					<koken:content_image>
 
-				</koken:content_image>
+						<!-- Display image title, fallback to file name if empty, link to content.lens -->
+						<koken:link title="View {{ content.filename }}">
+							<koken:img />
+						</koken:link>
 
-				<!-- Displayed if the asset is a video -->
-				<koken:content_video>
+					</koken:content_image>
 
-					<!-- Load the video -->
-					<koken:video />
+					<!-- Displayed if the asset is a video -->
+					<koken:content_video>
 
-				</koken:content_video>
+						<!-- Load the video -->
+						<koken:video />
+
+					</koken:content_video>
+
+					<p>
+						{{ content.caption }}
+					</p>
+
+					<p>
+						<strong>Uploaded:</strong> {{ content.uploaded_on }}
+					</p>
+
+				</div>
 
 			</koken:loop>
 
@@ -92,5 +105,8 @@
 	</koken:load>
 
 </div> <!-- close #content -->
+
+<!-- Turn on keyboard scrolling (left/right arrow keys) for items -->
+<koken:keyboard_scroll element="div.item" />
 
 <koken:include file="inc/footer.html" />

@@ -66,7 +66,7 @@
 		<koken:content_image>
 
 			<!-- Load image in lightbox viewer if clicked -->
-			<koken:link lightbox="true">
+			<koken:link lightbox="true" bind_to_key="l">
 				<koken:img />
 			</koken:link>
 

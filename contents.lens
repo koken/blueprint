@@ -19,9 +19,23 @@
 						</koken:link>
 					</h2>
 
-					<koken:link title="View {{ content.filename }}">
-						<koken:img />
-					</koken:link>
+					<!-- Displayed if the asset is an image -->
+					<koken:content_image>
+
+						<!-- Display image title, fallback to file name if empty, link to content.lens -->
+						<koken:link title="View {{ content.filename }}">
+							<koken:img />
+						</koken:link>
+
+					</koken:content_image>
+
+					<!-- Displayed if the asset is a video -->
+					<koken:content_video>
+
+						<!-- Load the video -->
+						<koken:video />
+
+					</koken:content_video>
 
 					<p>
 						{{ content.caption }}
@@ -86,7 +100,7 @@
 
 </div> <!-- close #content -->
 
-<!-- Turn on keyboard scrolling (left/right arrow keys). Target each album. -->
+<!-- Turn on keyboard scrolling (left/right arrow keys) for items -->
 <koken:keyboard_scroll element="div.item" />
 
 <koken:include file="inc/footer.html" />

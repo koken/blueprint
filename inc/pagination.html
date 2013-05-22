@@ -5,7 +5,7 @@
 
 	<koken:if condition="{{ page }} > 1">
 
-		<koken:link data="previous_page" title="View page {{ previous_page.number }}" bind_to_key="left">
+		<koken:link data="previous_page" title="View page {{ previous_page.number }}">
 			&larr; Previous&nbsp;&nbsp;
 		</koken:link>
 
@@ -23,7 +23,7 @@
 
 	<koken:if condition="{{ page }} < {{ pages }}">
 
-		<koken:link data="next_page" title="View page {{ next_page.number }}" bind_to_key="right">
+		<koken:link data="next_page" title="View page {{ next_page.number }}">
 			&nbsp;&nbsp;Next &rarr;
 		</koken:link>
 
