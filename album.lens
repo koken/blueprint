@@ -98,6 +98,17 @@
 			</p>
 		</koken:parent>
 
+		<!-- Display social share links if album has public visibility -->
+		<koken:if true="album.public">
+			<p>
+				<strong>Share:</strong>
+				<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ album.title url_encode="true" }}&url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ album.title url_encode="true" }}&url={{ album.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ album.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
+				<a href="https://www.facebook.com/sharer.php?u={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Facebook" target="_blank" >Facebook</a>
+				<a href="http://pinterest.com/pin/create/button/?url={{ album.url url_encode="true" }}&media={{ album.covers.first.presets.large.url url_encode="true" }}&description={{ album.title url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Pinterest">Pinterest</a>
+				<a href="https://plus.google.com/share?url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Google+" target="_blank">Google+</a>
+			</p>
+		</koken:if>
+
 		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.lens -->
 		<koken:loop>
 
