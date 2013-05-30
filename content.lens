@@ -176,6 +176,17 @@
 			<a href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}" target="_blank">View map</a>
 		</koken:geolocation>
 
+		<!-- Display social share links if the content has public visibility -->
+		<koken:if true="content.public">
+			<p>
+				<strong>Share:</strong>
+				<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ content.title|content.filename url_encode="true" }}&url={{ content.url url_encode="true" }}" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ content.title|content.filename url_encode="true" }}&url={{ content.url url_encode="true" }}&via={{ profile.twitter }}" target="_blank"></koken:if>Twitter</a>
+				<a href="https://www.facebook.com/sharer.php?u={{ content.url url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Facebook" target="_blank">Facebook</a>
+				<a href="http://pinterest.com/pin/create/button/?url={{ content.url url_encode="true" }}&media={{ content.presets.large.url url_encode="true" }}&description={{ content.title url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Pinterest" target="_blank">Pinterest</a>
+				<a href="https://plus.google.com/share?url={{ content.url url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Google+" target="_blank">Google+</a>
+			</p>
+		</koken:if>
+
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
