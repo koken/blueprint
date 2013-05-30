@@ -95,6 +95,14 @@
 						</p>
 					</koken:tags>
 
+					<!-- Display share links -->
+					<p>
+						<strong>Share:</strong>
+						<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
+						<a href="https://www.facebook.com/sharer.php?u={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Facebook" target="_blank">Facebook</a>
+						<a href="https://plus.google.com/share?url={{ essay.url url_encode="true" }}" title="Share {{ essay.url url_encode="true" }} on Google+" target="_blank">Google+</a></li>
+					</p>
+
 				</footer>
 
 
