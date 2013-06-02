@@ -1,6 +1,6 @@
 #Blueprint theme for Koken
 
-Blueprint is a simple, bare bones theme for [Koken](http://koken.me). The theme isn't intended for actual use, but rather as a learning tool for web designers and developers interested in building their own themes. The theme includes examples of all types of data being published and is fully commented throughout to explain how it all works.
+Blueprint is a very basic [Koken](http://koken.me) theme that demonstrates in the simplest way possible to Lens templates, variables and tags that may be used to built a site theme. Every document is fully commented and incorporates only what's necessary to publish data. Blueprint isn't intended for actual site use but rather as a learning aid for web developers and designers interested in building their own theme.
 
 ###Installation
 
