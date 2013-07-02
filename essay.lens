@@ -5,13 +5,25 @@
 	<!-- Load this template's source data (essay) -->
 	<koken:load>
 
-		<!-- Add Facebook open graph metadata for nicer sharing -->
+		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
 		<koken:head>
-		  <meta property="og:site_name" content="{{ site.title }}" />
-		  <meta property="og:title" content="{{ essay.title strip_html="true" }}" />
-		  <meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
-		  <meta property="og:url" content="{{ essay.url }}" />
-		  <meta name="medium" content="article" />
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{{ essay.title strip_html="true" }}" />
+			<meta property="og:description" content="{{ essay.excerpt strip_html="true" }}" />
+			<meta property="og:url" content="{{ essay.url }}" />
+			<meta property="og:type" content="website" />
+			<meta property="og:image" content="{{ essay.featured_image.presets.medium_large.url }}" />
+			<meta property="og:image:width" content="{{ essay.featured_image.presets.medium_large.width }}" />
+			<meta property="og:image:height" content="{{ essay.featured_image.presets.medium_large.height }}" />
+			<meta name="medium" content="article" />
+			<koken:not empty="profile.twitter">
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content="{{ essay.title truncate="70" }}" />
+				<meta name="twitter:site" content="@{{ profile.twitter }}" />
+				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+				<meta name="twitter:description" content="{{ essay.excerpt truncate="200" strip_html="true" }}" />
+				<meta name="twitter:image" content="{{ essay.featured_image.presets.medium_large.url }}" />
+			</koken:not>
 		</koken:head>
 
 		<!-- Display breadcrumb navigation -->
