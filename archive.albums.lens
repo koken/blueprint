@@ -63,32 +63,34 @@
 
 		<div class="rcol">
 
-			<!-- Links to albums archived by date, categories and tags -->
+            <!-- Links to albums and sets archived by date -->
 			<koken:load source="archives" summary="true" limit_to="albums">
 				<h3>View albums by date</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						{{ title }}&nbsp;({{ counts.albums }})
+						{{ title }} ({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
 			</koken:load>
 
+			<!-- Links to albums and sets archived by category -->
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
 				<h3>View albums by category</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						{{ title }}&nbsp;({{ counts.albums }})
+						{{ title }} ({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
 			</koken:load>
 
+			<!-- Links to albums and sets archived by tag -->
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
 				<h3>View albums by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						{{ title }}&nbsp;({{ counts.albums }})
+						{{ title }} ({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -99,7 +101,10 @@
 	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>
 
-		Nothing loaded
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No albums found
+		</koken:note>
 
 	</koken:load>
 

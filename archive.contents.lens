@@ -64,32 +64,34 @@
 
 		<div class="rcol">
 
-			<!-- Links to content archived by date, categories and tags -->
+            <!-- Links to content archived by date -->
 			<koken:load source="archives" summary="true" limit_to="content">
 				<h3>View content by date</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						{{ title }}&nbsp;({{ counts.content }})
+						{{ title }} ({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
 			</koken:load>
 
+			<!-- Links to content archived by category -->
 			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
 				<h3>View content by category</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						{{ title }}&nbsp;({{ counts.content }})
+						{{ title }} ({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
 			</koken:load>
 
+			<!-- Links to content archived by tag -->
 			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
 				<h3>View content by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						{{ title }}&nbsp;({{ counts.content }})
+						{{ title }} ({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -100,7 +102,10 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			Nothing loaded
+			<!-- Display fallback message in Site editor only -->
+			<koken:note>
+				No content found
+			</koken:note>
 
 	</koken:load>
 
