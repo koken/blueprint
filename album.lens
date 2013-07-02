@@ -29,30 +29,40 @@
 			</koken:not>
 		</koken:head>
 
-		<!-- Displays links to neighbor albums, link back to albums index -->
-		<div id="content-pag">
+		<!-- Display breadcrumb navigation -->
+		<div id="bread">
+			<koken:breadcrumbs />
+		</div>
 
-			<koken:previous>
-				<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
-			</koken:previous>
-			&nbsp;
-			<koken:link to="albums">View all</koken:link>
-			&nbsp;
-			<koken:next>
-				<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
-			</koken:next>
+		<div>
+
+			<!-- Displays links to neighbor albums, link back to albums index -->
+			<div id="content-pag">
+
+				<koken:previous>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+				</koken:previous>
+				&nbsp;
+				<koken:link to="albums">View all</koken:link>
+				&nbsp;
+				<koken:next>
+					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+				</koken:next>
+
+			</div>
+
+			<!-- Display the album's title -->
+			<h2>
+				{{ album.title }}
+			</h2>
 
 		</div>
 
-		<!-- Display the album's title -->
-		<h2>
-			{{ album.title }}
-		</h2>
-
-		<koken:link lightbox="true" class="button" bind_to_key="l">View in lightbox</koken:link>
-
 		<!-- Display the album's description -->
 		{{ album.description paragraphs="true" }}
+
+		<!-- Display link to the full screen lightbox viewer -->
+		<koken:link lightbox="true" class="button" bind_to_key="l">View in lightbox</koken:link>
 
 		<!-- Display essays/pages written about this album -->
 		<koken:topics>

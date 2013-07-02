@@ -24,36 +24,45 @@
 			</koken:content_image>
 		</koken:head>
 
-	    <!-- Display pagination links -->
-		<div id="content-pag">
+		<!-- Display breadcrumb navigation -->
+		<div id="bread">
+			<koken:breadcrumbs />
+		</div>
 
-			<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
-			<koken:parent>
-				<koken:variable name="previous_label" value="Newer" />
-				<koken:variable name="next_label" value="Older" />
-			<koken:else>
-				<koken:variable name="previous_label" value="Previous" />
-				<koken:variable name="next_label" value="Next" />
-			</koken:parent>
+		<div>
 
-			<koken:previous>
-				<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
-			<koken:else>
-				<!-- display no link -->
-			</koken:previous>
+		    <!-- Display pagination links -->
+			<div id="content-pag">
 
-			&nbsp;
+				<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
+				<koken:parent>
+					<koken:variable name="previous_label" value="Newer" />
+					<koken:variable name="next_label" value="Older" />
+				<koken:else>
+					<koken:variable name="previous_label" value="Previous" />
+					<koken:variable name="next_label" value="Next" />
+				</koken:parent>
 
-			<!-- Display the current and total #s -->
-			{{ content.context.position }} of {{ content.context.total }}
+				<koken:previous>
+					<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
+				<koken:else>
+					<!-- display no link -->
+				</koken:previous>
 
-			&nbsp;
+				&nbsp;
 
-			<koken:next>
-				<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
-			<koken:else>
-				<!-- display no link -->
-			</koken:next>
+				<!-- Display the current and total #s -->
+				{{ content.context.position }} of {{ content.context.total }}
+
+				&nbsp;
+
+				<koken:next>
+					<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
+				<koken:else>
+					<!-- display no link -->
+				</koken:next>
+
+			</div>
 
 		</div>
 

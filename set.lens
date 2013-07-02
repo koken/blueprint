@@ -29,6 +29,11 @@
 			</koken:not>
 		</koken:head>
 
+		<!-- Display breadcrumb navigation -->
+		<div id="bread">
+			<koken:breadcrumbs />
+		</div>
+
 		<div class="lcol nofloat">
 
 			<!-- Displays links to neighbouring albums plus link to albums.lens to view all -->

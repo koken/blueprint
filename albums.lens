@@ -99,7 +99,10 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			No public albums found
+			<!-- Display fallback message in Site editor only -->
+			<koken:note>
+				No public albums found
+			</koken:note>
 
 	</koken:load>
 

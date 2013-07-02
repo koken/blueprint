@@ -5,10 +5,10 @@
 	<!-- Load this template's source data (albums) and limit for pagination -->
 	<koken:load limit="20">
 
-		<h3>
-			<!-- Displays the type of archive (Tag, Date, Category) plus the archive's title and a link to view all albums -->
-			<koken:link to="albums">Albums</koken:link> / View by {{ archive.type.plural }} / {{ archive.title }}
-		</h3>
+		<!-- Display breadcrumb navigation -->
+        <div id="bread">
+          <koken:breadcrumbs />
+        </div>
 
 		<div class="lcol">
 
