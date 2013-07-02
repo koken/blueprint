@@ -1,22 +1,74 @@
 <koken:include file="inc/header.html" />
 
-<div id="content">
+<main>
 
 	<!-- Load this template's source data (featured content) -->
 	<koken:load>
 
-		<!-- Slideshow that loads template data (Featured Content by default) -->
+		<!-- Slideshow that loads template data (featured content) -->
 		<koken:pulse />
 
-		<!-- Fallback content if no data was loaded by koken:load -->
-		<koken:else>
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
 
-			<p>
-				No featured content found. Assign content in the Library.
-			</p>
+		<!-- Use koken:note to display this message in the Site editor only -->
+		<koken:note>
+			No featured content found. Assign content in the Library.
+		</koken:note>
 
 	</koken:load>
 
-</div> <!-- close #content -->
+	<!-- Load featured essays -->
+	<koken:load source="essays" featured="true">
+
+		<h3>Featured essays</h3>
+
+		<ul class="feat-essays">
+
+		<!-- Loop over each featured essay -->
+		<koken:loop>
+
+			<li>
+
+				<!-- Display the essay's featured image -->
+				<koken:featured_image>
+
+					<!-- Link image to essay -->
+					<koken:link>
+
+						<!-- Display featured image cropped to 3:2 -->
+						<koken:img size="3:2" />
+
+					</koken:link>
+
+				</koken:featured_image>
+
+				<!-- Display essay title -->
+				<h4>
+					<koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link>
+				</h4>
+
+				<!-- Display truncated essay excerpt plus link to essay -->
+				<p>
+					{{ essay.excerpt truncate="160" }} <koken:link title="Read {{ essay.title }}">more</koken:link>
+				</p>
+
+			</li>
+
+		</koken:loop>
+
+		<ul>
+
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
+
+		<!-- Use koken:note to display this message in the Site editor only -->
+		<koken:note>
+			No featured essays found. Assign essays in Text.
+		</koken:note>
+
+	</koken:load>
+
+</main> <!-- close main -->
 
 <koken:include file="inc/footer.html" />

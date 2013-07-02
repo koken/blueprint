@@ -100,8 +100,37 @@ nav a.k-nav-current {
 	LAYOUT (JUST ENOUGH TO ORGANIZE THINGS)
 */
 
-div#content h2 {
+main {
+	display:block;
+}
+
+main h2 {
 	margin-bottom:20px;
+}
+
+ul.feat-essays {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+ul.feat-essays li {
+	margin:0;
+	padding:0;
+	float:left;
+	width:22%;
+}
+
+ul.feat-essays li {
+	margin-right:4%;
+}
+
+ul.feat-essays li:nth-child(4n+4) {
+	margin-right:0;
+}
+
+ul.feat-essays li:nth-child(4n+1) {
+	clear:left;
 }
 
 div#content-pag {
