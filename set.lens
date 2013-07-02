@@ -106,10 +106,9 @@
 
 		<div class="rcol">
 
-			<!-- Links to albums archived by date, categories and tags -->
-			<h3>Archives</h3>
+            <!-- Links to albums and sets archived by date -->
 			<koken:load source="archives" summary="true" limit_to="albums">
-				<h4>Date</h4>
+				<h3>View albums by date</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
 						{{ title }}&nbsp;({{ counts.albums }})
@@ -118,8 +117,9 @@
 				</koken:loop>
 			</koken:load>
 
+            <!-- Links to albums and sets archived by category -->
 			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
-				<h4>Categories</h4>
+				<h3>View albums by category</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
 						{{ title }}&nbsp;({{ counts.albums }})
@@ -128,8 +128,9 @@
 				</koken:loop>
 			</koken:load>
 
+			<!-- Links to lbums and sets archived by tag -->
 			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
-				<h4>Tags</h4>
+				<h3>View albums by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
 						{{ title }}&nbsp;({{ counts.albums }})
