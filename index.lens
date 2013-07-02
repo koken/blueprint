@@ -57,7 +57,7 @@
 
 		</koken:loop>
 
-		<ul>
+		</ul>
 
 	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>
