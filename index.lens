@@ -19,7 +19,7 @@
 	</koken:load>
 
 	<!-- Load featured essays -->
-	<koken:load source="essays" featured="true">
+	<koken:load source="featured_essays">
 
 		<h3>Featured essays</h3>
 
