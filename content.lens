@@ -144,6 +144,16 @@
 			</p>
 		</koken:exif>
 
+		<!-- Display IPTC data -->
+		<koken:iptc>
+			<p>
+				<strong>IPTC:</strong>
+			    <koken:loop separator="&nbsp;/">
+			        {{ iptc.label }}: {{ iptc.value }}
+			    </koken:loop>
+		  	</p>
+		</koken:iptc>
+
 		<!-- Display content license -->
 		<p>
 			<strong>License:</strong>
