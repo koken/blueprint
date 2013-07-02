@@ -63,7 +63,7 @@
 				<h3>View content by date</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						{{ title }}&nbsp;({{ counts.content }})
+						{{ title }} ({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -74,7 +74,7 @@
 				<h3>View content by category</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						{{ title }}&nbsp;({{ counts.content }})
+						{{ title }} ({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -85,7 +85,7 @@
 				<h3>View content by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">
-						{{ title }}&nbsp;({{ counts.content }})
+						{{ title }} ({{ counts.content }})
 					</koken:link>
 					<br>
 				</koken:loop>

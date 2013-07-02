@@ -111,7 +111,7 @@
 				<h3>View albums by date</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						{{ title }}&nbsp;({{ counts.albums }})
+						{{ title }} ({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -122,7 +122,7 @@
 				<h3>View albums by category</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						{{ title }}&nbsp;({{ counts.albums }})
+						{{ title }} ({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>
@@ -133,7 +133,7 @@
 				<h3>View albums by tag</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">
-						{{ title }}&nbsp;({{ counts.albums }})
+						{{ title }} ({{ counts.albums }})
 					</koken:link>
 					<br>
 				</koken:loop>

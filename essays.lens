@@ -84,7 +84,7 @@
                  <h3>View essays by date</h3>
                  <koken:loop>
                       <koken:link to="archive_essays">
-                           {{ title }}&nbsp;({{ counts.essays }})
+                           {{ title }} ({{ counts.essays }})
                       </koken:link>
                       <br>
                  </koken:loop>
@@ -95,7 +95,7 @@
                  <h3>View essays by category</h3>
                  <koken:loop>
                       <koken:link to="archive_essays">
-                           {{ title }}&nbsp;({{ counts.essays }})
+                           {{ title }} ({{ counts.essays }})
                       </koken:link>
                       <br>
                  </koken:loop>
@@ -106,7 +106,7 @@
                  <h3>View essays by tag</h3>
                  <koken:loop>
                       <koken:link to="archive_essays">
-                           {{ title }}&nbsp;({{ counts.essays }})
+                           {{ title }} ({{ counts.essays }})
                       </koken:link>
                       <br>
                  </koken:loop>
