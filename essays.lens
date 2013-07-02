@@ -123,7 +123,10 @@
           <!-- Fallback content if no data was loaded by koken:load -->
           <koken:else>
 
-               No essays published
+              <!-- Display fallback message in Site editor only -->
+              <koken:note>
+                No essays found. Create some in Text.
+              </koken:note>
 
      </koken:load>
 

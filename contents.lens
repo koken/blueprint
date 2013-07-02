@@ -102,7 +102,10 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			Nothing loaded
+			<!-- Display fallback message in Site editor only -->
+			<koken:note>
+				No uploads found. Upload some to the Library.
+			</koken:note>
 
 	</koken:load>
 

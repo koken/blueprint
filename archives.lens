@@ -74,7 +74,10 @@
           <!-- Fallback content if no data was loaded by koken:load -->
           <koken:else>
 
-               No archival data found.
+               <!-- Display fallback message in Site editor only -->
+               <koken:note>
+                    No archival data loaded
+               </koken:note>
 
      </koken:load>
 

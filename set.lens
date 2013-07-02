@@ -144,7 +144,10 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			Nothing loaded
+			<!-- Display fallback message in Site editor only -->
+			<koken:note>
+				No set found. Create one in the Library.
+			</koken:note>
 
 	</koken:load>
 

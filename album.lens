@@ -142,7 +142,10 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			Nothing loaded
+			<!-- Display fallback message in Site editor only -->
+			<koken:note>
+				No album loaded
+			</koken:note>
 
 	</koken:load>
 

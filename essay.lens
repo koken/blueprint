@@ -178,7 +178,10 @@
 		<!-- Fallback content if no data was loaded by koken:load -->
 		<koken:else>
 
-			Nothing loaded
+			<!-- Display fallback message in Site editor only -->
+			<koken:note>
+				No essay found. Create one in Text.
+			</koken:note>
 
 	</koken:load>
 
