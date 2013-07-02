@@ -79,7 +79,7 @@
 
           <div class="rcol">
 
-               <!-- Links to essays archived by date, categories and tags -->
+               <!-- Links to essays archived by date -->
                <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
                  <h3>View essays by date</h3>
                  <koken:loop>
@@ -89,6 +89,8 @@
                       <br>
                  </koken:loop>
                </koken:load>
+
+               <!-- Links to essays archived by category -->
                <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
                  <h3>View essays by category</h3>
                  <koken:loop>
@@ -98,6 +100,8 @@
                       <br>
                  </koken:loop>
                </koken:load>
+
+                <!-- Links to essays archived by tag -->
                <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
                  <h3>View essays by tag</h3>
                  <koken:loop>
@@ -107,6 +111,12 @@
                       <br>
                  </koken:loop>
                </koken:load>
+
+               <!-- Display a link to the "Essays" RSS feed -->
+              <h3>RSS</h3>
+              <p>
+                <a href="{{ rss.essays }}">Subscribe to latest essays</a>
+              </p>
 
           </div> <!-- close .rcol -->
 
