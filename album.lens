@@ -117,6 +117,9 @@
 				<a href="http://pinterest.com/pin/create/button/?url={{ album.url url_encode="true" }}&media={{ album.covers.first.presets.large.url url_encode="true" }}&description={{ album.title url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Pinterest">Pinterest</a>
 				<a href="http://www.tumblr.com/share/photo?source={{ album.covers.first.presets.large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ album.url url_encode="true" }}&quot; title=&quot;{{ album.title }}&quot;%3E{{ album.title }}%3C/a%3E%3C/strong%3E%3C/p%3E%3Cp%3E{{ album.description url_encode="true" }}%3C/p%3E&click_thru={{ album.url url_encode="true" }}" class="share-tumblr" title="Share {{ album.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
 				<a href="https://plus.google.com/share?url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Google+" target="_blank">Google+</a>
+				&nbsp;&nbsp;
+				<!-- Display a link to this album's RSS feed -->
+				<strong>RSS:</strong> <a href="{{ album.rss }}">Subscribe to this album</a>
 			</p>
 		</koken:if>
 
