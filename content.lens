@@ -36,11 +36,11 @@
 
 				<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
 				<koken:parent>
-					<koken:variable name="previous_label" value="Newer" />
-					<koken:variable name="next_label" value="Older" />
-				<koken:else>
 					<koken:variable name="previous_label" value="Previous" />
 					<koken:variable name="next_label" value="Next" />
+				<koken:else>
+					<koken:variable name="previous_label" value="Newer" />
+					<koken:variable name="next_label" value="Older" />
 				</koken:parent>
 
 				<koken:previous>
