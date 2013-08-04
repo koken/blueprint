@@ -96,6 +96,10 @@ a.k-nav-current {
 	color:#75c4e5 !important;
 	border-bottom:1px solid #75c4e5 !important;
 }
+header.main h1 a {
+	color:inherit !important;
+	border-bottom:none !important;
+}
 
 /*
 	LAYOUT (JUST ENOUGH TO ORGANIZE THINGS)
