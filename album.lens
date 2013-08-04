@@ -112,6 +112,12 @@
 			<p>
 				<strong>From the set:</strong> <koken:link title="View {{ album.title }}">
 				{{ album.title }}</koken:link>
+				&nbsp;&nbsp;
+				<!-- Display links to other albums part of the same set -->
+				<strong>Other albums in this set:</strong>
+				<koken:loop separator=",">
+					<koken:link>{{ album.title }}</koken:link>
+				</koken:loop>
 			</p>
 		</koken:parent>
 
