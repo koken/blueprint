@@ -64,7 +64,7 @@
 		<div class="rcol">
 
             <!-- Links to albums and sets archived by date -->
-			<koken:load source="archives" summary="true" limit_to="albums">
+			<koken:load source="date" summary="true" limit_to="albums">
 				<h3>View albums by date</h3>
 				<koken:loop>
 					<koken:link to="archive_albums">

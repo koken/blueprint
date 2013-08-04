@@ -65,7 +65,7 @@
 		<div class="rcol">
 
             <!-- Links to content archived by date -->
-			<koken:load source="archives" summary="true" limit_to="content">
+			<koken:load source="date" summary="true" limit_to="content">
 				<h3>View content by date</h3>
 				<koken:loop>
 					<koken:link to="archive_contents">

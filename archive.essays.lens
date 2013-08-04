@@ -88,7 +88,7 @@
           <div class="rcol">
 
                 <!-- Links to essays archived by date -->
-               <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
+               <koken:load source="date" summary="true" limit_to="essays" order_by="essay_count">
                     <h3>View essays by date</h3>
                     <koken:loop>
                          <koken:link to="archive_essays">
