@@ -36,20 +36,27 @@
 
 		<div class="lcol nofloat">
 
-			<!-- Displays links to neighbouring albums plus link to albums.lens to view all -->
-			<div id="content-pag">
+			<!-- Displays links to neighbor albums plus link back to albums index -->
+			<!-- Only show if the album is public, not unlisted -->
+			<koken:if true="album.public">
 
-				<koken:previous>
-					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>&nbsp;&nbsp;
-				</koken:previous>
+				<div id="content-pag">
 
-				<koken:link to="albums">View all</koken:link>
+					<koken:previous>
+						<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+					</koken:previous>
 
-				<koken:next>
-					&nbsp;&nbsp;<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
-				</koken:next>
+					&nbsp;
+					<koken:link to="albums">View all</koken:link>
+					&nbsp;
 
-			</div>
+					<koken:next>
+						<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+					</koken:next>
+
+				</div>
+
+			</koken:if>
 
 			<!-- Display the set's title -->
 			<h2>
