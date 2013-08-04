@@ -92,8 +92,9 @@ nav a, nav a:visited {
 }
 
 /* highlights navigation link for current page - assigned automatically by Koken */
-nav a.k-nav-current {
-	color:#75c4e5;
+a.k-nav-current {
+	color:#75c4e5 !important;
+	border-bottom:1px solid #75c4e5 !important;
 }
 
 /*
