@@ -1,35 +1,38 @@
-<!-- Paginates data for index page this is included in -->
-<koken:pagination>
+<!-- Paginates data for index page this is included in. Limit to 20 page links. -->
+<koken:pagination limit="20">
 
-<div id="pagination">
+	<div id="pagination">
 
-	<koken:if condition="{{ page }} > 1">
+		<koken:pagination_previous>
+			<koken:link title="Previous" bind_to_key="left">
+				&lt;&nbsp;
+			</koken:link>
+		</koken:pagination_previous>
 
-		<koken:link data="previous_page" title="View page {{ previous_page.number }}">
-			&larr; Previous&nbsp;&nbsp;
-		</koken:link>
+		<koken:pagination_limited_previous>
+			&nbsp;
+			<koken:link>...</koken:link>
+			&nbsp;
+		</koken:pagination_limited_previous>
 
+		<koken:loop>
+			<koken:link class="{{ is_current }}" title="{{ number }}">
+				{{ number }}
+			</koken:link>
+			&nbsp;
+		</koken:loop>
 
-	</koken:if>
+		<koken:pagination_limited_next>
+			<koken:link>...</koken:link>
+			&nbsp;
+		</koken:pagination_limited_next>
 
-	<koken:loop>
+		<koken:pagination_next>
+			<koken:link title="Next" bind_to_key="right">
+				&gt;
+			</koken:link>
+		</koken:pagination_next>
 
-		<koken:link class="{{ is_current }}" title="View page {{ number }}">
-			{{ number }}
-		</koken:link>
-		&nbsp;
-
-	</koken:loop>
-
-	<koken:if condition="{{ page }} < {{ pages }}">
-
-		<koken:link data="next_page" title="View page {{ next_page.number }}">
-			&nbsp;&nbsp;Next &rarr;
-		</koken:link>
-
-
-	</koken:if>
-
-</div>
+	</div>
 
 </koken:pagination>
