@@ -38,12 +38,37 @@
 					</koken:content_video>
 
 					<p>
+						<!-- Link to archive.contents.lens to view all content uploaded the same month -->
+						<koken:link to="archive">
+							<!-- Publish the date it was captured -->
+							<koken:time />
+						</koken:link> /
 						{{ content.caption }}
 					</p>
 
-					<p>
-						<strong>Uploaded:</strong> {{ content.uploaded_on }}
-					</p>
+					 <!-- Publish the asset's categories. Links to archive.contents.lens -->
+                    <koken:categories>
+                    <p>
+                         <strong>{{ labels.category.plural }}:</strong>
+                         <koken:loop separator=", ">
+                              <koken:link>
+                                   {{ category.title }}
+                              </koken:link>
+                         </koken:loop>
+                    </p>
+                    </koken:categories>
+
+                    <!-- Publish the asset' tags. Links to archive.contents.lens -->
+                    <koken:tags>
+                      <p>
+                           <strong>{{ labels.tag.plural }}:</strong>
+                           <koken:loop separator=" ">
+                                <koken:link>
+                                     #{{ tag.title }}
+                                </koken:link>
+                           </koken:loop>
+                      </p>
+                    </koken:tags>
 
 				</div>
 
@@ -58,38 +83,33 @@
 
 		<div class="rcol">
 
-			<!-- Links to content archived by date -->
-			<koken:load source="date" summary="true" limit_to="content">
-				<h3>View content by date</h3>
-				<koken:loop>
-					<koken:link to="archive_contents">
-						{{ title }} ({{ counts.content }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:load>
+			<!-- Links to view content by publish date in archive.contents.lens -->
+	       <h3>View {{ labels.content.plural case="lower" }} by date</h3>
+	        <koken:dates limit_to="content">
+	          <koken:select label="Select month" />
+	        </koken:dates>
 
-			<!-- Links to content archived by category -->
-			<koken:load source="categories" summary="true" limit_to="content" order_by="content_count">
-				<h3>View content by category</h3>
-				<koken:loop>
-					<koken:link to="archive_contents">
-						{{ title }} ({{ counts.content }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:load>
+	       <!-- Links to view content by category in archive.contents.lens -->
+	        <koken:categories limit_to="content" order_by="content_count">
+	          <h3>View {{ labels.content.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
+	          <koken:loop>
+	            <koken:link>
+	            {{ category.title }} ({{ category.counts.total }})
+	            </koken:link>
+	            <br>
+	          </koken:loop>
+	        </koken:categories>
 
-			<!-- Links to content archived by tag -->
-			<koken:load source="tags" summary="true" limit_to="content" order_by="content_count">
-				<h3>View content by tag</h3>
-				<koken:loop>
-					<koken:link to="archive_contents">
-						{{ title }} ({{ counts.content }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:load>
+	        <!-- Links to view content by tag in archive.contents.lens -->
+	         <koken:tags limit_to="content" order_by="content_count">
+	         <h3>View {{ labels.content.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
+	         <koken:loop>
+	            <koken:link>
+	              {{ tag.title }} ({{ tag.counts.total }})
+	            </koken:link>
+	            <br>
+	         </koken:loop>
+	       </koken:tags>
 
 			<!-- Display a link to the "All uploads" RSS feed -->
 			<h3>RSS</h3>

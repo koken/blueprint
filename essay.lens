@@ -42,7 +42,7 @@
 						<koken:link title="Read {{ essay.title }}" bind_to_key="left">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;
 					</koken:next>
 
-					<koken:link to="essays" bind_to_key="up">View all</koken:link>
+					<koken:link to="essays" bind_to_key="up">View all {{ labels.essay.plural }}</koken:link>
 
 					<koken:previous>
 						&nbsp;&nbsp;<koken:link title="Read {{ essay.title }}" bind_to_key="right">{{ essay.title }} &rarr; </koken:link>
@@ -52,17 +52,20 @@
 
 				<header>
 
-					<h2>
-						{{ essay.title }}
-					</h2>
+	              <h2><koken:link>{{ essay.title }}</koken:link></h2>
 
-					<p>
-						<strong>Published:</strong> <koken:time />
-					</p>
+	              <p>
+	                  <strong>Published:</strong>
+	                  <!-- Link to archive.essays.lens to view all essays published the same momth -->
+	                  <koken:link to="archive">
+	                    <!-- Display the date it was published -->
+	                    <koken:time />
+	                  </koken:link>
+	              </p>
 
-				</header>
+	            </header>
 
-				{{ essay.content }}
+	            {{ essay.content }}
 
 				<footer>
 
