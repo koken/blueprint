@@ -175,26 +175,32 @@
 
 						<!-- Display assigned tags -->
 						<koken:tags>
-							<!-- Loop over each assigned tag -->
-							<koken:loop>
-								<!-- Link each tag to tag.lens to view all content assigned the same tag -->
-								<!-- To link to archive.contents.lens instead, remove to="tag" -->
-								<koken:link to="tag">
-									#{{ tag.title }}
-								</koken:link>
-							</koken:loop>
+							<p>
+								<strong>{{ labels.tag.plural }}:</strong>
+								<!-- Loop over each assigned tag -->
+								<koken:loop>
+									<!-- Link each tag to tag.lens to view all content assigned the same tag -->
+									<!-- To link to archive.contents.lens instead, remove to="tag" -->
+									<koken:link to="tag">
+										#{{ tag.title }}
+									</koken:link>
+								</koken:loop>
+							</p>
 						</koken:tags>
 
 						<!-- Display assigned categories -->
 						<koken:categories>
-							<!-- Loop over each assigned category -->
-							<koken:loop>
-								<!-- Link each category to category.lens to view all content assigned the same category -->
-								<!-- To link to archive.content.lens instead, remove to="category" -->
-								<koken:link to="category">
-									{{ category.title }}
-								</koken:link>
-							</koken:loop>
+							<p>
+								<strong>{{ labels.category.plural }}:</strong>
+								<!-- Loop over each assigned category -->
+								<koken:loop>
+									<!-- Link each category to category.lens to view all content assigned the same category -->
+									<!-- To link to archive.contents.lens instead, remove to="category" -->
+									<koken:link to="category">
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</p>
 						</koken:categories>
 
 						<hr>
