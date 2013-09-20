@@ -1,0 +1,39 @@
+<koken:include file="inc/header.html" />
+
+<main>
+
+	<!-- Load this template's source data (tags) -->
+	<koken:load>
+
+		<ul>
+
+		<!-- Loop over them all -->
+		<koken:loop>
+
+			<li>
+
+				<!-- Link to tag.lens to view all published content assigned the tag -->
+				<koken:link>
+					<!-- Display the tag's title -->
+					{{ tag.title }} ({{ tag.counts.total }})
+				</koken:link>
+
+			</li>
+
+		</koken:loop>
+
+		</ul>
+
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
+
+		<!-- Use koken:note to display this message in the Site editor only -->
+		<koken:note>
+			No tags found
+		</koken:note>
+
+	</koken:load>
+
+</main> <!-- close main -->
+
+<koken:include file="inc/footer.html" />

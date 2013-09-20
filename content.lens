@@ -36,12 +36,12 @@
 
 				<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
 				<koken:parent>
-				<koken:variable name="previous_label" value="Previous" />
-				<koken:variable name="next_label" value="Next" />
-			<koken:else>
-				<koken:variable name="previous_label" value="Newer" />
-				<koken:variable name="next_label" value="Older" />
-			</koken:parent>
+					<koken:variable name="previous_label" value="Previous" />
+					<koken:variable name="next_label" value="Next" />
+				<koken:else>
+					<koken:variable name="previous_label" value="Newer" />
+					<koken:variable name="next_label" value="Older" />
+				</koken:parent>
 
 				<koken:previous>
 					<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
@@ -51,8 +51,18 @@
 
 				&nbsp;
 
-				<!-- Display the current and total #s -->
-				{{ content.context.position }} of {{ content.context.total }}
+				<!-- Display the context the image/video is being viewed in -->
+				<koken:context>
+					<!-- Viewing image/video with contextual criteria -->
+					<koken:link>
+						{{ context.title }}
+					</koken:link>
+					<span>({{ context.position }} of {{ context.total }})</span>
+				<koken:else>
+					<!-- Viewing image/video independently -->
+					<koken:link to="contents">{{ labels.content.plural }}</koken:link>
+					<span>({{ context.position }} of {{ context.total }})</span>
+				</koken:context>
 
 				&nbsp;
 
@@ -94,17 +104,19 @@
 		<!-- Opens the image in the lightbox viewer -->
 		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
 
-		<!-- Display the content caption and wrap with p tags -->
-		{{ content.caption paragraphs="true" }}
+		<!-- Display the content caption -->
+		<p>
+			<!-- Link to archive.contents.lens to view all content captured the same month -->
+			<koken:link to="archive">
+				<!-- Publish the date it was captured -->
+				<koken:time />
+			</koken:link> /
+			{{ content.caption }}
+		</p>
 
 		<!-- Display uploaded date -->
 		<p>
-			<strong>Uploaded:</strong> {{ content.uploaded_on }}
-		</p>
-
-		<!-- Display captured date -->
-		<p>
-			<strong>Captured:</strong> {{ content.captured_on }}
+			<strong>Uploaded:</strong> <koken:time data="date_uploaded" />
 		</p>
 
 		<!-- Display assigned categories -->
