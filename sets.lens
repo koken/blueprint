@@ -61,38 +61,33 @@
 
 		<div class="rcol">
 
-			<!-- Links to albums and sets archived by date -->
-			<koken:load source="date" summary="true" limit_to="albums">
-				<h3>View albums by date</h3>
-				<koken:loop>
-					<koken:link to="archive_albums">
-						{{ title }} ({{ counts.albums }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:load>
+			<!-- Links to view albums by publish date in archive.albums.lens -->
+           <h3>View {{ labels.album.plural case="lower" }} by date</h3>
+            <koken:dates limit_to="albums">
+              <koken:select label="Select month" />
+            </koken:dates>
 
-			<!-- Links to albums and sets archived by category -->
-			<koken:load source="categories" summary="true" limit_to="albums" order_by="album_count">
-				<h3>View albums by category</h3>
-				<koken:loop>
-					<koken:link to="archive_albums">
-						{{ title }} ({{ counts.albums }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:load>
+           <!-- Links to view albums by category in archive.albums.lens -->
+            <koken:categories limit_to="albums" order_by="album_count">
+              <h3>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
+              <koken:loop>
+                <koken:link>
+                {{ category.title }} ({{ category.counts.total }})
+                </koken:link>
+                <br>
+              </koken:loop>
+            </koken:categories>
 
-			<!-- Links to albums and sets archived by tag -->
-			<koken:load source="tags" summary="true" limit_to="albums" order_by="album_count">
-				<h3>View albums by tag</h3>
-				<koken:loop>
-					<koken:link to="archive_albums">
-						{{ title }} ({{ counts.albums }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:load>
+            <!-- Links to view albums by tag in archive.albums.lens -->
+             <koken:tags limit_to="albums" order_by="album_count">
+             <h3>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
+             <koken:loop>
+                <koken:link>
+                 {{ tag.title }} ({{ tag.counts.total }})
+                </koken:link>
+                <br>
+             </koken:loop>
+           </koken:tags>
 
 		</div> <!-- close .rcol -->
 

@@ -1,0 +1,39 @@
+<koken:include file="inc/header.html" />
+
+<main>
+
+	<!-- Load this template's source data (categories) -->
+	<koken:load>
+
+		<ul>
+
+		<!-- Loop over them all -->
+		<koken:loop>
+
+			<li>
+
+				<!-- Link to category.lens to view all published content assigned the category -->
+				<koken:link>
+					<!-- Display the category's title -->
+					{{ category.title }} ({{ category.counts.total }})
+				</koken:link>
+
+			</li>
+
+		</koken:loop>
+
+		</ul>
+
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
+
+		<!-- Use koken:note to display this message in the Site editor only -->
+		<koken:note>
+			No categories found
+		</koken:note>
+
+	</koken:load>
+
+</main> <!-- close main -->
+
+<koken:include file="inc/footer.html" />

@@ -7,7 +7,12 @@
 
 		<div class="lcol">
 
-			<!-- Loop over each day -->
+			<!-- Display breadcrumbs because it's an archive page -->
+			<p>
+				<koken:breadcrumbs separator="/" />
+			</p>
+
+			<!-- Loop over the items in the day -->
 			<koken:loop>
 
 				<h2>
@@ -268,7 +273,7 @@
 				<koken:include file="inc/pagination.html" />
 			</p>
 
-		</div> <!-- close lcol -->
+		</div> <!-- close .lcol -->
 
 		<div class="rcol">
 
@@ -300,7 +305,7 @@
 				</koken:loop>
 			</koken:categories>
 
-		</div>
+		</div> <!-- close .rcol -->
 
 	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>

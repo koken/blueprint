@@ -2,20 +2,22 @@
 
 <div id="content">
 
-	<!-- Load this template's source data (timeline). Limit to 20 days. -->
+	<!-- Load this template's source data (tag). Limit to 20 items. -->
 	<koken:load limit="20">
 
 		<div class="lcol">
 
-			<!-- Loop over each day -->
+			<!-- Display breadcrumbs because it's an archive page -->
+			<p>
+				<koken:breadcrumbs separator="/" />
+			</p>
+
+			<h2>All recent content tagged #{{ tag.title }}</h2>
+
+			<!-- Loop over each tagged item -->
 			<koken:loop>
 
-				<h2>
-					<!-- Display the day (eg, January 1, 2014) -->
-					<koken:time />
-				</h2>
-
-				<!-- Render each event in each day -->
+				<!-- Render each event in the tag -->
 				<!-- Markup below is the same across timeline.lens, date.lens, tag.lens, category.lens -->
 				<koken:event>
 
@@ -268,7 +270,7 @@
 				<koken:include file="inc/pagination.html" />
 			</p>
 
-		</div> <!-- close lcol -->
+		</div> <!-- close .lcol -->
 
 		<div class="rcol">
 
@@ -300,14 +302,14 @@
 				</koken:loop>
 			</koken:categories>
 
-		</div>
+		</div> <!-- close .rcol -->
 
 	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>
 
 		<!-- Use koken:note to display this message in the Site editor only -->
 		<koken:note>
-			No timeline events found
+			No tag events found
 		</koken:note>
 
 	</koken:load>
