@@ -42,7 +42,7 @@
 						<koken:link title="Read {{ essay.title }}" bind_to_key="left">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;
 					</koken:next>
 
-					<koken:link to="essays" bind_to_key="up">View all</koken:link>
+					<koken:link to="essays" bind_to_key="up">View all {{ labels.essay.plural }}</koken:link>
 
 					<koken:previous>
 						&nbsp;&nbsp;<koken:link title="Read {{ essay.title }}" bind_to_key="right">{{ essay.title }} &rarr; </koken:link>

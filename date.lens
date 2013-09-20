@@ -36,8 +36,11 @@
 						</h3>
 
 						<p>
-							<!-- Display timestamp -->
-							<koken:time /> /
+							<!-- Link to view all timeline events in this month -->
+							<koken:link to="date">
+								<!-- Display timestamp -->
+								<koken:time />
+							</koken:link> /
 							<!-- Display album title and summary (or description as fallback) -->
 							{{ album.summary | album.description }}
 						</p>
@@ -103,8 +106,11 @@
 							</h3>
 
 							<p>
-								<!-- Display timestamp -->
-								<koken:time /> /
+								<!-- Link to view all timeline events in this month -->
+								<koken:link to="date">
+									<!-- Display timestamp -->
+									<koken:time />
+								</koken:link> /
 								<!-- Display album title and summary (or description as fallback) -->
 								{{ album.summary | album.description }}
 							</p>
@@ -170,8 +176,11 @@
 						</h3>
 
 						<p>
-							<!-- Display timestamp -->
-							<koken:time /> /
+							<!-- Link to view all timeline events in this month -->
+							<koken:link to="date">
+								<!-- Display timestamp -->
+								<koken:time />
+							</koken:link> /
 							<!-- Display caption -->
 							{{ content.caption }}
 						</p>
@@ -230,8 +239,11 @@
 						</h3>
 
 						<p>
-							<!-- Display timestamp -->
-							<koken:time /> /
+							<!-- Link to view all timeline events in this month -->
+							<koken:link to="date">
+								<!-- Display timestamp -->
+								<koken:time />
+							</koken:link> /
 							<!-- Display excerpt -->
 							{{ essay.excerpt }}
 						</p>

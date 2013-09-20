@@ -47,7 +47,7 @@
 					</koken:previous>
 
 					&nbsp;
-					<koken:link to="albums">View all</koken:link>
+					<koken:link to="albums">View all {{ labels.album.plural case="lower" }}</koken:link>
 					&nbsp;
 
 					<koken:next>
@@ -58,9 +58,13 @@
 
 			</koken:if>
 
-			<!-- Display the album's title -->
 			<h2>
+				<!-- Display the album's title -->
 				{{ album.title }}
+				<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
+				<koken:filtered>
+					({{ filter.count }} of {{ album.counts.total }}) / <koken:link>View all</koken:link>
+				</koken:filtered>
 			</h2>
 
 		</div>
@@ -169,6 +173,13 @@
 			</div>
 
 		</koken:loop>
+
+		<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
+		<koken:filtered>
+			<p>
+				{{ filter.count }} of {{ album.counts.total }} / <koken:link>View all</koken:link>
+			</p>
+		</koken:filtered>
 
 		<!-- Display pagination links -->
 		<p>
