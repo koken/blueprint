@@ -31,7 +31,7 @@
 				<!-- Display album categories, link each to this template to change criteria -->
 				<koken:categories>
 					<p>
-						<strong>Categories:</strong>
+						<strong>{{ labels.category.plural }}:</strong>
 						<koken:loop separator=", ">
 							<koken:link>
 								{{ category.title }}
@@ -43,10 +43,10 @@
 				<!-- Display album tags, link each to this template to change criteria -->
 				<koken:tags>
 					<p>
-						<strong>Tags:</strong>
-						<koken:loop separator=", ">
+						<strong>{{ labels.tag.plural }}:</strong>
+						<koken:loop separator=" ">
 							<koken:link>
-								{{ title }}
+								#{{ tag.title }}
 							</koken:link>
 						</koken:loop>
 					</p>

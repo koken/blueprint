@@ -27,7 +27,7 @@
 					<!-- Display album categories, link each to archive.albums.lens -->
 					<koken:categories>
 						<p>
-							<strong>Categories:</strong>
+							<strong>{{ labels.category.plural }}:</strong>
 							<koken:loop separator=", ">
 								<koken:link>
 									{{ category.title }}
@@ -39,10 +39,10 @@
 					<!-- Display album tags, link each to archive.albums.lens -->
 					<koken:tags>
 						<p>
-							<strong>Tags:</strong>
-							<koken:loop separator=", ">
+							<strong>{{ labels.tag.plural }}:</strong>
+							<koken:loop separator=" ">
 								<koken:link>
-									{{ tag.title }}
+									#{{ tag.title }}
 								</koken:link>
 							</koken:loop>
 						</p>

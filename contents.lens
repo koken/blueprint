@@ -45,6 +45,30 @@
 						<strong>Uploaded:</strong> {{ content.uploaded_on }}
 					</p>
 
+					 <!-- Publish the asset's categories. Links to archive.contents.lens -->
+                    <koken:categories>
+                    <p>
+                         <strong>{{ labels.category.plural }}:</strong>
+                         <koken:loop separator=", ">
+                              <koken:link>
+                                   {{ category.title }}
+                              </koken:link>
+                         </koken:loop>
+                    </p>
+                    </koken:categories>
+
+                    <!-- Publish the asset' tags. Links to archive.contents.lens -->
+                    <koken:tags>
+                      <p>
+                           <strong>{{ labels.tag.plural }}:</strong>
+                           <koken:loop separator=" ">
+                                <koken:link>
+                                     #{{ tag.title }}
+                                </koken:link>
+                           </koken:loop>
+                      </p>
+                    </koken:tags>
+
 				</div>
 
 			</koken:loop>

@@ -41,7 +41,7 @@
                             <!-- Publish the essay's categories. Links to archive.essays.lens -->
                             <koken:categories>
                             <p>
-                                 <strong>Category:</strong>
+                                 <strong>{{ labels.category.plural }}:</strong>
                                  <koken:loop separator=", ">
                                       <koken:link>
                                            {{ category.title }}
@@ -53,10 +53,10 @@
                             <!-- Publish the essays' tags. Links to archive.essays.lens -->
                             <koken:tags>
                               <p>
-                                   <strong>Tags:</strong>
-                                   <koken:loop separator=", ">
+                                   <strong>{{ labels.tag.plural }}:</strong>
+                                   <koken:loop separator=" ">
                                         <koken:link>
-                                             {{ tag.title }}
+                                             #{{ tag.title }}
                                         </koken:link>
                                    </koken:loop>
                               </p>
