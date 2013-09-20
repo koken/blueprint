@@ -38,11 +38,12 @@
 					</koken:content_video>
 
 					<p>
+						<!-- Link to archive.contents.lens to view all content uploaded the same month -->
+						<koken:link to="archive">
+							<!-- Publish the date it was captured -->
+							<koken:time />
+						</koken:link> /
 						{{ content.caption }}
-					</p>
-
-					<p>
-						<strong>Uploaded:</strong> {{ content.uploaded_on }}
 					</p>
 
 					 <!-- Publish the asset's categories. Links to archive.contents.lens -->

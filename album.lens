@@ -65,6 +65,15 @@
 
 		</div>
 
+		<p>
+			<strong>Published:</strong>
+			<!-- Link to archive.albums.lens to view all albums published the same momth -->
+			<koken:link to="archive">
+				<!-- Display the date it was published -->
+				<koken:time />
+			</koken:link>
+		</p>
+
 		<!-- Display the album's description -->
 		{{ album.description paragraphs="true" }}
 
@@ -99,9 +108,9 @@
 		<koken:tags>
 			<p>
 				<strong>Tags:</strong>
-				<koken:loop separator=", ">
+				<koken:loop separator=" ">
 					<koken:link>
-						{{ tag.title }}
+						#{{ tag.title }}
 					</koken:link>
 				</koken:loop>
 			</p>

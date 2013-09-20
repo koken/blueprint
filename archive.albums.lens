@@ -25,6 +25,15 @@
 					<koken:img size="8:5" />
 				</koken:link>
 
+				<p>
+					<strong>Published:</strong>
+					<!-- Link to archive.albums.lens to view all albums published the same momth -->
+					<koken:link to="archive">
+						<!-- Display the date it was published -->
+						<koken:time />
+					</koken:link>
+				</p>
+
 				<!-- Display the album's (shorter) summary -->
 				{{ album.summary paragraphs="true" }}
 

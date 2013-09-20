@@ -52,17 +52,20 @@
 
 				<header>
 
-					<h2>
-						{{ essay.title }}
-					</h2>
+	              <h2><koken:link>{{ essay.title }}</koken:link></h2>
 
-					<p>
-						<strong>Published:</strong> <koken:time />
-					</p>
+	              <p>
+	                  <strong>Published:</strong>
+	                  <!-- Link to archive.essays.lens to view all essays published the same momth -->
+	                  <koken:link to="archive">
+	                    <!-- Display the date it was published -->
+	                    <koken:time />
+	                  </koken:link>
+	              </p>
 
-				</header>
+	            </header>
 
-				{{ essay.content }}
+	            {{ essay.content }}
 
 				<footer>
 
