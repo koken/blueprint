@@ -49,6 +49,14 @@ img {
 	vertical-align: bottom;
 }
 
+hr {
+	border:0;
+	height:1px;
+	background:black;
+	display:block;
+	margin:1em 0;
+}
+
 /*
 	LAYOUT
 */
