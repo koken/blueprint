@@ -89,7 +89,7 @@
 	        </koken:dates>
 
 	       <!-- Links to view content by category in archive.contents.lens -->
-	        <koken:categories limit_to="essays" order_by="content_count">
+	        <koken:categories limit_to="content" order_by="content_count">
 	          <h3>View {{ labels.content.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
 	          <koken:loop>
 	            <koken:link>
