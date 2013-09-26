@@ -52,12 +52,12 @@
 
 				<header>
 
-	              <h2><koken:link>{{ essay.title }}</koken:link></h2>
+	              <h2>{{ essay.title }}</h2>
 
 	              <p>
 	                  <strong>Published:</strong>
 	                  <!-- Link to archive.essays.lens to view all essays published the same momth -->
-	                  <koken:link to="archive">
+	                  <koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
 	                    <!-- Display the date it was published -->
 	                    <koken:time />
 	                  </koken:link>
@@ -74,11 +74,11 @@
 						<h3>Related content</h3>
 						<koken:loop>
 							<p>
-								<koken:link>
+								<koken:link title="View {{ album.title }}">
 									<koken:img preset="small" />
 								</koken:link>
 								<br>
-								<koken:link>
+								<koken:link title="View {{ album.title }}">
 									{{ album.title }}
 								</koken:link>
 								({{ album.counts.total }} images)
@@ -88,7 +88,7 @@
 
 					<!-- Publishes the link for this essay -->
 					<p>
-						<koken:link>Permalink</koken:link>
+						<koken:link title="{{ essay.title }}">Permalink</koken:link>
 					</p>
 
 					<!-- Publish the essay's categories. Links to archive.essays.lens -->
@@ -96,7 +96,7 @@
 					<p>
 					     <strong>Category:</strong>
 					     <koken:loop separator=", ">
-					          <koken:link>
+					          <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
 					               {{ category.title }}
 					          </koken:link>
 					     </koken:loop>
@@ -108,7 +108,7 @@
 						<p>
 						     <strong>Tags:</strong>
 						     <koken:loop separator=", ">
-						          <koken:link>
+						          <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
 						               {{ tag.title }}
 						          </koken:link>
 						     </koken:loop>
@@ -150,7 +150,7 @@
 				        <h3>Other {{ labels.essay.plural case="lower" }} in {{ category.title }}</h3>
 				        <koken:load source="essays" filter:category="{{ category.id }}">
 				            <koken:loop>
-			                    <koken:link>
+			                    <koken:link title="Read {{ essay.title }}">
 			                        {{ essay.title }}
 			                    </koken:link>
 			                    <br>
@@ -159,38 +159,33 @@
 				    </koken:loop>
 				</koken:categories>
 
-				<!-- Links to essays archived by date -->
-		       <koken:load source="archives" summary="true" limit_to="essays" order_by="essay_count">
-		            <h3>View essays by date</h3>
-		            <koken:loop>
-		                 <koken:link to="archive_essays">
-		                      {{ title }} ({{ counts.essays }})
-		                 </koken:link>
-		                 <br>
-		            </koken:loop>
-		       </koken:load>
+				<!-- Links to view essays by publish date in archive.essays.lens -->
+               <h3>View {{ labels.essay.plural case="lower" }} by date</h3>
+                <koken:dates limit_to="essays">
+                  <koken:select label="Select month" />
+                </koken:dates>
 
- 				<!-- Links to essays archived by category -->
-		       <koken:load source="categories" summary="true" limit_to="essays" order_by="essay_count">
-		            <h3>View essays by category</h3>
-		            <koken:loop>
-		                 <koken:link to="archive_essays">
-		                      {{ title }} ({{ counts.essays }})
-		                 </koken:link>
-		                 <br>
-		            </koken:loop>
-		       </koken:load>
+               <!-- Links to view essays by category in archive.essays.lens -->
+                <koken:categories limit_to="essays" order_by="essay_count">
+                  <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
+                  <koken:loop>
+                    <koken:link title="title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}"">
+                    {{ category.title }} ({{ category.counts.total }})
+                    </koken:link>
+                    <br>
+                  </koken:loop>
+                </koken:categories>
 
-		       <!-- Links to essays archived by tag -->
-		       <koken:load source="tags" summary="true" limit_to="essays" order_by="essay_count">
-		            <h3>View essays by tag</h3>
-		            <koken:loop>
-		                 <koken:link to="archive_essays">
-		                      {{ title }} ({{ counts.essays }})
-		                 </koken:link>
-		                 <br>
-		            </koken:loop>
-		       </koken:load>
+                <!-- Links to view essays by tag in archive.essays.lens -->
+                 <koken:tags limit_to="essays" order_by="essay_count">
+                 <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
+                 <koken:loop>
+                    <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
+                         {{ tag.title }} ({{ tag.counts.total }})
+                    </koken:link>
+                    <br>
+                 </koken:loop>
+               </koken:tags>
 
 			</aside>
 

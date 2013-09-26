@@ -34,7 +34,7 @@
 				<koken:featured_image>
 
 					<!-- Link image to essay -->
-					<koken:link>
+					<koken:link title="Read {{ essay.title }}">
 
 						<!-- Display featured image cropped to 3:2 -->
 						<koken:img size="3:2" />

@@ -19,12 +19,12 @@
 
                   <header>
 
-                    <h2><koken:link>{{ essay.title }}</koken:link></h2>
+                    <h2><koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link></h2>
 
                     <p>
                         <strong>Published:</strong>
                         <!-- Link to archive.essays.lens to view all essays published the same momth -->
-                        <koken:link to="archive">
+                        <koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
                           <!-- Display the date it was published -->
                           <koken:time />
                         </koken:link>
@@ -38,7 +38,7 @@
 
                     <!-- Publishes the link for this essay -->
                     <p>
-                      <koken:link>Permalink</koken:link>
+                      <koken:link title="{{ essay.title }}">Permalink</koken:link>
                     </p>
 
                     <!-- Link to any albums assigned as the essay's topic -->
@@ -46,7 +46,7 @@
                       <p>
                            <strong>Topics:</strong>
                            <koken:loop separator=", ">
-                                <koken:link>
+                                <koken:link title="View {{ album.title }}">
                                      {{ album.title }}
                                 </koken:link>
                            </koken:loop>
@@ -58,7 +58,7 @@
                     <p>
                          <strong>{{ labels.category.plural }}:</strong>
                          <koken:loop separator=", ">
-                              <koken:link>
+                              <koken:link title="View all {{ labels.essay.plural case='lower' }} in #{{ category.title }}">
                                    {{ category.title }}
                               </koken:link>
                          </koken:loop>
@@ -70,7 +70,7 @@
                       <p>
                            <strong>{{ labels.tag.plural }}:</strong>
                            <koken:loop separator=" ">
-                                <koken:link>
+                                <koken:link title="View all {{ labels.essay.plural case='lower' }} in #{{ tag.title }}">
                                      #{{ tag.title }}
                                 </koken:link>
                            </koken:loop>
@@ -104,7 +104,7 @@
               <koken:categories limit_to="essays" order_by="essay_count">
                 <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
                 <koken:loop>
-                  <koken:link>
+                  <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
                   {{ category.title }} ({{ category.counts.total }})
                   </koken:link>
                   <br>
@@ -115,7 +115,7 @@
                <koken:tags limit_to="essays" order_by="essay_count">
                <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
                <koken:loop>
-                  <koken:link>
+                  <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
                        {{ tag.title }} ({{ tag.counts.total }})
                   </koken:link>
                   <br>

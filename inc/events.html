@@ -1,0 +1,261 @@
+<koken:event>
+
+	<!-- Render if event is a new album -->
+	<koken:event_album>
+
+		<!-- Display primary cover image, link to album.lens to view album -->
+		<koken:link title="View {{ album.title }}"><koken:img size="3:2" /></koken:link>
+
+		<h3>
+			<!-- Link to album.lens template to view album -->
+			<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
+		</h3>
+
+		<p>
+			<!-- Link to view all timeline events in this month -->
+			<koken:link to="date" title="View everything from this month">
+				<!-- Display timestamp -->
+				<koken:time />
+			</koken:link> /
+			<!-- Display album title and summary (or description as fallback) -->
+			{{ album.summary | album.description }}
+		</p>
+
+		<!-- Display assigned tags -->
+		<koken:tags>
+			<p>
+				<strong>{{ labels.tag.plural }}:</strong>
+				<!-- Loop over each assigned tag -->
+				<koken:loop>
+					<!-- Link each tag to tag.lens to view all content assigned the same tag -->
+					<!-- To link to archive.albums.lens instead, remove to="tag" -->
+					<koken:link to="tag" title="View everything in #{{ tag.title }}">
+						#{{ tag.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:tags>
+
+		<!-- Display assigned categories -->
+		<koken:categories>
+			<p>
+				<strong>{{ labels.category.plural }}:</strong>
+				<!-- Loop over each assigned category -->
+				<koken:loop>
+					<!-- Link each category to category.lens to view all content assigned the same category -->
+					<!-- To link to archive.albums.lens instead, remove to="category" -->
+					<koken:link to="category" title="View everything in {{ category.title }}">
+						{{ category.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:categories>
+
+		<hr>
+
+	</koken:event_album>
+
+	<!-- Render if event is an updated album from before today -->
+	<koken:event_album_update>
+
+		<!-- Link to view only these images in album.lens -->
+		<koken:link filter:order_by="uploaded_on" filter:year="{{ date date_format='Y' }}" filter:month="{{ date date_format='m' }}" filter:day="{{ date date_format='d' }}" title="View {{ album.title }}">
+
+			<!-- Loop over all new images that were added -->
+			<koken:loop>
+
+				<!-- Display a small image -->
+				<koken:img preset="small" />
+
+			</koken:loop>
+
+			<h3>
+
+				<!-- Link to view only these images in album.lens -->
+				<koken:link filter:order_by="uploaded_on" filter:year="{{ date date_format='Y' }}" filter:month="{{ date date_format='m' }}" filter:day="{{ date date_format='d' }}" title="View {{ album.title }}">
+
+					<!-- Display album title and # of items -->
+					{{ album.title }} ({{ content.length }} new {{ content.length plural="items" singular="item" }})
+
+				</koken:link>
+
+			</h3>
+
+			<p>
+				<!-- Link to view all timeline events in this month -->
+				<koken:link to="date" title="View everything from this month">
+					<!-- Display timestamp -->
+					<koken:time />
+				</koken:link> /
+				<!-- Display album title and summary (or description as fallback) -->
+				{{ album.summary | album.description }}
+			</p>
+
+			<!-- Display assigned tags -->
+			<koken:tags>
+				<p>
+					<strong>{{ labels.tag.plural }}:</strong>
+					<!-- Loop over each assigned tag -->
+					<koken:loop>
+						<!-- Link each tag to tag.lens to view all content assigned the same tag -->
+						<!-- To link to archive.albums.lens instead, remove to="tag" -->
+						<koken:link to="tag" title="View everything in #{{ tag.title }}">
+							#{{ tag.title }}
+						</koken:link>
+					</koken:loop>
+				</p>
+			</koken:tags>
+
+			<!-- Display assigned categories -->
+			<koken:categories>
+				<p>
+					<strong>{{ labels.category.plural }}:</strong>
+					<!-- Loop over each assigned category -->
+					<koken:loop>
+						<!-- Link each category to category.lens to view all content assigned the same category -->
+						<!-- To link to archive.albums.lens instead, remove to="category" -->
+						<koken:link to="category" title="View everything in {{ category.title }}">
+							{{ category.title }}
+						</koken:link>
+					</koken:loop>
+				</p>
+			</koken:categories>
+
+			<hr>
+
+		</koken:link>
+
+	</koken:event_album_update>
+
+	<!-- Render if event is an individual image/video not added to an album -->
+	<koken:event_content>
+
+		<!-- Render if an uploaded image -->
+		<koken:content_image>
+			<!-- Link to content.lens permalink page -->
+			<koken:link title="View {{ content.title | content.filename }}">
+				<koken:img />
+			</koken:link>
+		</koken:content_image>
+
+		<!-- Render if an uploaded video -->
+		<koken:content_video>
+			<koken:video />
+		</koken:content_video>
+
+		<!-- Display content title or filename as fallback -->
+		<h3>
+			<!-- Link to content.lens permalink page -->
+			<koken:link title="View {{ content.title | content.filename }}">
+				{{ content.title | content.filename }}
+			</koken:link>
+		</h3>
+
+		<p>
+			<!-- Link to view all timeline events in this month -->
+			<koken:link to="date" title="View everything from this month">
+				<!-- Display timestamp -->
+				<koken:time />
+			</koken:link> /
+			<!-- Display caption -->
+			{{ content.caption }}
+		</p>
+
+		<!-- Display assigned tags -->
+		<koken:tags>
+			<p>
+				<strong>{{ labels.tag.plural }}:</strong>
+				<!-- Loop over each assigned tag -->
+				<koken:loop>
+					<!-- Link each tag to tag.lens to view all content assigned the same tag -->
+					<!-- To link to archive.contents.lens instead, remove to="tag" -->
+					<koken:link to="tag" title="View everything in #{{ tag.title }}">
+						#{{ tag.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:tags>
+
+		<!-- Display assigned categories -->
+		<koken:categories>
+			<p>
+				<strong>{{ labels.category.plural }}:</strong>
+				<!-- Loop over each assigned category -->
+				<koken:loop>
+					<!-- Link each category to category.lens to view all content assigned the same category -->
+					<!-- To link to archive.contents.lens instead, remove to="category" -->
+					<koken:link to="category" title="View everything in {{ category.title }}">
+						{{ category.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:categories>
+
+		<hr>
+
+	</koken:event_content>
+
+	<!-- Render if event is an essay -->
+	<koken:event_essay>
+
+		<!-- Display essay's featured image -->
+		<koken:featured_image>
+			<!-- Link to essay.lens permalink page -->
+			<koken:link title="Read {{ essay.title }}">
+				<koken:img />
+			</koken:link>
+		</koken:featured_image>
+
+		<!-- Display essay title -->
+		<h3>
+			<!-- Link to essay.lens permalink page -->
+			<koken:link title="Read {{ essay.title }}">
+				{{ essay.title }}
+			</koken:link>
+		</h3>
+
+		<p>
+			<!-- Link to view all timeline events in this month -->
+			<koken:link to="date" title="View everything from this month">
+				<!-- Display timestamp -->
+				<koken:time />
+			</koken:link> /
+			<!-- Display excerpt -->
+			{{ essay.excerpt }}
+		</p>
+
+		<!-- Display assigned tags -->
+		<koken:tags>
+			<p>
+				<strong>{{ labels.tag.plural }}:</strong>
+				<!-- Loop over each assigned tag -->
+				<koken:loop>
+					<!-- Link each tag to tag.lens to view all content assigned the same tag -->
+					<!-- To link to archive.albums.lens instead, remove to="tag" -->
+					<koken:link to="tag" title="View everything in #{{ tag.title }}">
+						#{{ tag.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:tags>
+
+		<!-- Display assigned categories -->
+		<koken:categories>
+			<p>
+				<strong>{{ labels.category.plural }}:</strong>
+				<!-- Loop over each assigned category -->
+				<koken:loop>
+					<!-- Link each category to category.lens to view all content assigned the same category -->
+					<!-- To link to archive.essays.lens instead, remove to="category" -->
+					<koken:link to="category" title="View everything in {{ category.title }}">
+						{{ category.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:categories>
+
+		<hr>
+
+	</koken:event_essay>
+
+</koken:event>

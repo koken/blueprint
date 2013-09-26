@@ -54,13 +54,13 @@
 				<!-- Display the context the image/video is being viewed in -->
 				<koken:context>
 					<!-- Viewing image/video with contextual criteria -->
-					<koken:link>
+					<koken:link title="View {{ context.title }}">
 						{{ context.title }}
 					</koken:link>
 					<span>({{ context.position }} of {{ context.total }})</span>
 				<koken:else>
 					<!-- Viewing image/video independently -->
-					<koken:link to="contents">{{ labels.content.plural }}</koken:link>
+					<koken:link to="contents" title="{{ labels.content.plural }}">{{ labels.content.plural }}</koken:link>
 					<span>({{ context.position }} of {{ context.total }})</span>
 				</koken:context>
 
@@ -85,7 +85,7 @@
 		<koken:content_image>
 
 			<!-- Load image in lightbox viewer if clicked -->
-			<koken:link lightbox="true" bind_to_key="l">
+			<koken:link lightbox="true" bind_to_key="l" title="View in lightbox">
 				<koken:img />
 			</koken:link>
 
@@ -102,12 +102,12 @@
 		<br>
 
 		<!-- Opens the image in the lightbox viewer -->
-		<koken:link lightbox="true" class="button">View in lightbox</koken:link>
+		<koken:link lightbox="true" class="button" title="View in lightbox">View in lightbox</koken:link>
 
 		<!-- Display the content caption -->
 		<p>
 			<!-- Link to archive.contents.lens to view all content captured the same month -->
-			<koken:link to="archive">
+			<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
 				<!-- Publish the date it was captured -->
 				<koken:time />
 			</koken:link> /
@@ -124,7 +124,7 @@
 			<p>
 				<strong>Categories:</strong>
 				<koken:loop separator=", ">
-					<koken:link>
+					<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
 						{{ category.title }}
 					</koken:link>
 				</koken:loop>
@@ -135,9 +135,9 @@
 		<koken:tags>
 			<p>
 				<strong>Tags:</strong>
-				<koken:loop separator=", ">
-					<koken:link>
-						{{ tag.title }}
+				<koken:loop separator=" ">
+					<koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
+						#{{ tag.title }}
 					</koken:link>
 				</koken:loop>
 			</p>
@@ -184,7 +184,8 @@
 		<!-- If item is an image and allows downloading, show download link -->
 		<koken:max_download>
 			<p>
-				<strong>Download image:</strong> <koken:link>
+				<strong>Download image:</strong>
+				<koken:link title="Download image">
 					{{ max_download.label }}&nbsp;({{ max_download.width }}x{{ max_download.height }})
 				</koken:link>
 			</p>
@@ -197,8 +198,10 @@
 		<!-- If content is part of an album, display a link to it -->
 		<koken:parent>
 			<p>
-				<strong>From the album:</strong> <koken:link title="View {{ album.title }}">
-				{{ album.title }}</koken:link>
+				<strong>From the album:</strong>
+				<koken:link title="View {{ album.title }}">
+					{{ album.title }}
+				</koken:link>
 			</p>
 		</koken:parent>
 

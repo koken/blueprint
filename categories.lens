@@ -13,7 +13,7 @@
 			<li>
 
 				<!-- Link to category.lens to view all published content assigned the category -->
-				<koken:link>
+				<koken:link title="View everything in {{ category.title }}">
 					<!-- Display the category's title -->
 					{{ category.title }} ({{ category.counts.total }})
 				</koken:link>

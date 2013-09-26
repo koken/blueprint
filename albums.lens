@@ -14,20 +14,20 @@
 				<div class="item">
 
 					<!-- Display each album's title, link to album.lens -->
-					<h2><koken:link>{{ album.title }}</koken:link></h2>
+					<h2><koken:link title="View {{ album.title }}">{{ album.title }}</koken:link></h2>
 
 					<!-- Display each album's first album cover, link to album.lens -->
-					<koken:link>
+					<koken:link title="View {{ album.title }}">
 						<koken:img size="8:5" />
 					</koken:link>
 
 					<p>
 						<!-- Link to view all albums published the same month -->
-						<koken:link to="archive">
+						<koken:link to="archive" title="View all albums published this month">
 							<!-- Display the date it was published -->
 							<koken:time />
 						</koken:link> /
-						<!-- Display the album's (shorter) summary -->
+						<!-- Display the album's summary (shorter than description) -->
 						{{ album.summary }}
 					</p>
 
@@ -36,7 +36,7 @@
 						<p>
 							<strong>{{ labels.category.plural }}:</strong>
 							<koken:loop separator=", ">
-								<koken:link>
+								<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
 									{{ category.title }}
 								</koken:link>
 							</koken:loop>
@@ -48,7 +48,7 @@
 						<p>
 							<strong>{{ labels.tag.plural }}:</strong>
 							<koken:loop separator=" ">
-								<koken:link>
+								<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
 									#{{ tag.title }}
 								</koken:link>
 							</koken:loop>
@@ -78,7 +78,7 @@
             <koken:categories limit_to="albums" order_by="album_count">
               <h3>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
               <koken:loop>
-                <koken:link>
+				<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
                 {{ category.title }} ({{ category.counts.total }})
                 </koken:link>
                 <br>
@@ -89,7 +89,7 @@
              <koken:tags limit_to="albums" order_by="album_count">
              <h3>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
              <koken:loop>
-                <koken:link>
+				<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
                  {{ tag.title }} ({{ tag.counts.total }})
                 </koken:link>
                 <br>

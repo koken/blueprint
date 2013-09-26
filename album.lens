@@ -63,7 +63,7 @@
 				{{ album.title }}
 				<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
 				<koken:filtered>
-					({{ filter.count }} of {{ album.counts.total }}) / <koken:link>View all</koken:link>
+					({{ filter.count }} of {{ album.counts.total }}) / <koken:link title="View {{ album.title }}">View all</koken:link>
 				</koken:filtered>
 			</h2>
 
@@ -82,14 +82,14 @@
 		{{ album.description paragraphs="true" }}
 
 		<!-- Display link to the full screen lightbox viewer -->
-		<koken:link lightbox="true" class="button" bind_to_key="l">View in lightbox</koken:link>
+		<koken:link lightbox="true" class="button" bind_to_key="l" title="View in lightbox">View in lightbox</koken:link>
 
 		<!-- Display essays/pages written about this album -->
 		<koken:topics>
 			<p>
 				<strong>Related content:</strong>
 				<koken:loop separator=", ">
-					<koken:link>
+					<koken:link title="Read {{ essay.title }}">
 						{{ essay.title }}
 					</koken:link>
 				</koken:loop>
@@ -101,7 +101,7 @@
 			<p>
 				<strong>Categories:</strong>
 				<koken:loop separator=", ">
-					<koken:link>
+					<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
 						{{ category.title }}
 					</koken:link>
 				</koken:loop>
@@ -113,7 +113,7 @@
 			<p>
 				<strong>Tags:</strong>
 				<koken:loop separator=" ">
-					<koken:link>
+					<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
 						#{{ tag.title }}
 					</koken:link>
 				</koken:loop>
@@ -129,7 +129,7 @@
 				<!-- Display links to other albums part of the same set -->
 				<strong>Other albums in this set:</strong>
 				<koken:loop separator=",">
-					<koken:link>{{ album.title }}</koken:link>
+					<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
 				</koken:loop>
 			</p>
 		</koken:parent>
@@ -157,7 +157,7 @@
 
 				<!-- Displayed if the asset is an image -->
 				<koken:content_image>
-					<koken:link>
+					<koken:link title="View {{ content.title | content.filename }}">
 						<koken:img />
 					</koken:link>
 				</koken:content_image>
@@ -166,7 +166,7 @@
 					<koken:video />
 				</koken:content_video>
 
-				<h3><koken:link>{{ content.title | content.filename }}</koken:link></h3>
+				<h3><koken:link title="View {{ content.title | content.filename }}">{{ content.title | content.filename }}</koken:link></h3>
 
 				{{ content.caption paragraphs="true" }}
 
@@ -177,7 +177,7 @@
 		<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
 		<koken:filtered>
 			<p>
-				{{ filter.count }} of {{ album.counts.total }} / <koken:link>View all</koken:link>
+				{{ filter.count }} of {{ album.counts.total }} / <koken:link title="View {{ album.title }}">View all</koken:link>
 			</p>
 		</koken:filtered>
 
