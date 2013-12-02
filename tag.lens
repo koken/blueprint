@@ -5,6 +5,15 @@
 	<!-- Load this template's source data (tag). Limit to 20 items. -->
 	<koken:load limit="20">
 
+		<!-- Add Facebook Open Graph tags for nicer sharing -->
+		<koken:head>
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{{ labels.tag.plural }} / {{ tag.title }}" />
+			<meta property="og:description" content="{{ site.description strip_html='true' }}" />
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
+		</koken:head>
+
 		<div class="lcol">
 
 			<!-- Display breadcrumbs because it's an archive page -->
