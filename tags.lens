@@ -5,6 +5,15 @@
 	<!-- Load this template's source data (tags) -->
 	<koken:load>
 
+		<!-- Add Facebook Open Graph tags for nicer sharing -->
+		<koken:head>
+			<meta property="og:site_name" content="{{ site.title }}" />
+			<meta property="og:title" content="{{ labels.tag.plural }}" />
+			<meta property="og:description" content="{{ site.description strip_html='true' }}" />
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
+		</koken:head>
+
 		<ul>
 
 		<!-- Loop over them all -->
