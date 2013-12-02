@@ -15,7 +15,7 @@
 		</koken:first>
 		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
 		<koken:not empty="profile.twitter">
-		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:card" content="gallery" />
 		<meta name="twitter:site" content="@{{ profile.twitter }}" />
 		<meta name="twitter:creator" content="@{{ profile.twitter }}" />
 		<koken:loop>
