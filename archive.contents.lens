@@ -19,7 +19,7 @@
 		<meta name="twitter:site" content="@{{ profile.twitter }}" />
 		<meta name="twitter:creator" content="@{{ profile.twitter }}" />
 		<koken:loop>
-		<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.url }}">
+		<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
 		</koken:loop>
 		</koken:not>
 	</koken:head>
