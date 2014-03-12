@@ -111,7 +111,7 @@
 				<!-- Publish the date it was captured -->
 				<koken:time />
 			</koken:link> /
-			{{ content.caption }}
+			{{ content.caption paragraphs="true" }}
 		</p>
 
 		<!-- Display uploaded date -->
