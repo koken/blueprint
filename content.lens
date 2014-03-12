@@ -119,6 +119,13 @@
 			<strong>Uploaded:</strong> <koken:time data="date_uploaded" />
 		</p>
 
+		<!-- Display duration if an imported video -->
+		<koken:content_video>
+		<p>
+			<strong>Duration:</strong> {{ content.duration }}
+		</p>
+		</koken:content_video>
+
 		<!-- Display assigned categories -->
 		<koken:categories>
 			<p>
