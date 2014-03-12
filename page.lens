@@ -34,6 +34,27 @@
 		<!-- Displays the custom page content -->
 		{{ page.content }}
 
+		<footer>
+
+			<!-- Display image and info about album assigned as page topic -->
+			<koken:topics>
+				<h3>Related content</h3>
+				<koken:loop>
+					<p>
+						<koken:link title="View {{ album.title }}">
+							<koken:img preset="small" />
+						</koken:link>
+						<br>
+						<koken:link title="View {{ album.title }}">
+							{{ album.title }}
+						</koken:link>
+						({{ album.counts.total }} images)
+					</p>
+				</koken:loop>
+			</koken:topics>
+
+		</footer>
+
 	</koken:load>
 
 </div> <!-- close #content -->
