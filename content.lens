@@ -205,6 +205,14 @@
 			</p>
 		</koken:parent>
 
+		<!-- If content is imported from elsewhere (Vimeo, Instagram), show link to original page -->
+		<koken:not empty="{{ content.source.title }}">
+			<p>
+				<strong>Imported from:</strong>
+				<a href="{{ content.source.url }}" onclick="return !window.open(this.href);" title="View at {{ content.source.title }}">{{ content.source.title }}</a>
+			</p>
+		</koken:not>
+
 		<!-- Display a link to Google Maps to show where this photo was taken -->
 		<koken:geolocation>
 			<a href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}" target="_blank">View map</a>
