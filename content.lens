@@ -121,9 +121,9 @@
 
 		<!-- Display duration if an imported video -->
 		<koken:content_video>
-		<p>
-			<strong>Duration:</strong> {{ content.duration }}
-		</p>
+			<p>
+				<strong>Duration:</strong> {{ content.duration }}
+			</p>
 		</koken:content_video>
 
 		<!-- Display assigned categories -->
