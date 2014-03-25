@@ -100,7 +100,9 @@ nav a, nav a:visited {
 }
 
 /* highlights navigation link for current page - assigned automatically by Koken */
-nav a.k-nav-current {
+a.k-nav-current,
+a.k-pagination-current
+{
 	color:#ff6e00;
 }
 header.main h1 a {

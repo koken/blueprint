@@ -33,6 +33,11 @@
 
 		</ul>
 
+		<!-- Display pagination links -->
+		<p>
+			<koken:include file="inc/pagination.html" />
+		</p>
+
 	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>
 
