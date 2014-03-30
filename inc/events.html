@@ -3,8 +3,23 @@
 	<!-- Render if event is a new album -->
 	<koken:event_album>
 
-		<!-- Display primary cover image, link to album.lens to view album -->
-		<koken:link title="View {{ album.title }}"><koken:img size="3:2" /></koken:link>
+		<!-- If an album, display primary cover image and link to album.lens to view -->
+		<koken:if data="album.album_type" equals="standard">
+			<koken:link title="View {{ album.title }}">
+				<koken:img />
+			</koken:link>
+		</koken:if>
+
+		<!-- If a set, display primary cover image of each album it contains and link to set.lens to view -->
+		<koken:if data="album.album_type" equals="set">
+			<koken:link title="View {{ album.title }}">
+				<koken:covers>
+					<koken:loop>
+						<koken:img />
+					</koken:loop>
+				</koken:covers>
+			</koken:link>
+		</koken:if>
 
 		<h3>
 			<!-- Link to album.lens template to view album -->
