@@ -74,7 +74,7 @@
 	<koken:event_album_update>
 
 		<!-- Link to view only these images in album.lens -->
-		<koken:link filter:order_by="uploaded_on" filter:year="{{ date date_format='Y' }}" filter:month="{{ date date_format='m' }}" filter:day="{{ date date_format='d' }}" title="View {{ album.title }}">
+		<koken:link filter:order_by="published_on" filter:year="{{ date date_format='Y' }}" filter:month="{{ date date_format='m' }}" filter:day="{{ date date_format='d' }}" title="View {{ album.title }}">
 
 			<!-- Loop over all new images that were added -->
 			<koken:loop>
@@ -87,7 +87,7 @@
 			<h3>
 
 				<!-- Link to view only these images in album.lens -->
-				<koken:link filter:order_by="uploaded_on" filter:year="{{ date date_format='Y' }}" filter:month="{{ date date_format='m' }}" filter:day="{{ date date_format='d' }}" title="View {{ album.title }}">
+				<koken:link filter:order_by="published_on" filter:year="{{ date date_format='Y' }}" filter:month="{{ date date_format='m' }}" filter:day="{{ date date_format='d' }}" title="View {{ album.title }}">
 
 					<!-- Display album title and # of items -->
 					{{ album.title }} ({{ content.length }} new {{ content.length plural="items" singular="item" }})
