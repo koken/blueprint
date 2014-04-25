@@ -123,7 +123,7 @@
 						<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
 						<a href="https://www.facebook.com/sharer.php?u={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Facebook" target="_blank">Facebook</a>
 						 <a href="http://www.tumblr.com/share/photo?source={{ essay.featured_image.presets.medium_large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ essay.url url_encode="true" }}&quot; title=&quot;{{ essay.title url_encode="true" }}&quot;%3E{{ essay.title url_encode="true" }}%3C/a%3E%3C%2Fstrong%3E%3C%2Fp%3E%3Cp%3E{{ essay.excerpt url_encode="true" }}%3C%2Fp%3E&click_thru={{ essay.url url_encode="true" }}" class="share-tumblr" title="Share {{ essay.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
-						<a href="https://plus.google.com/share?url={{ essay.url url_encode="true" }}" title="Share {{ essay.url url_encode="true" }} on Google+" target="_blank">Google+</a></li>
+						<a href="https://plus.google.com/share?url={{ essay.url url_encode="true" }}" title="Share {{ essay.url url_encode="true" }} on Google+" target="_blank">Google+</a>
 					</p>
 
 				</footer>
