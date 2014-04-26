@@ -26,15 +26,17 @@
 			<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
 		</h3>
 
+		<!-- Display timestamp -->
 		<p>
 			<!-- Link to view all timeline events in this month -->
 			<koken:link to="date" title="View everything from this month">
 				<!-- Display timestamp -->
 				<koken:time />
-			</koken:link> /
-			<!-- Display album title and summary (or description as fallback) -->
-			{{ album.summary | album.description }}
+			</koken:link>
 		</p>
+
+		<!-- Display album title and summary (or description as fallback) -->
+		{{ album.summary | album.description paragraphs="true" }}
 
 		<!-- Display assigned tags -->
 		<koken:tags>
@@ -66,8 +68,6 @@
 			</p>
 		</koken:categories>
 
-		<hr>
-
 	</koken:event_album>
 
 	<!-- Render if event is an updated album from before today -->
@@ -96,15 +96,17 @@
 
 			</h3>
 
+			<!-- Display timestamp -->
 			<p>
 				<!-- Link to view all timeline events in this month -->
 				<koken:link to="date" title="View everything from this month">
 					<!-- Display timestamp -->
 					<koken:time />
-				</koken:link> /
-				<!-- Display album title and summary (or description as fallback) -->
-				{{ album.summary | album.description }}
+				</koken:link>
 			</p>
+
+			<!-- Display album title and summary (or description as fallback) -->
+			{{ album.summary | album.description paragraphs="true" }}
 
 			<!-- Display assigned tags -->
 			<koken:tags>
@@ -135,8 +137,6 @@
 					</koken:loop>
 				</p>
 			</koken:categories>
-
-			<hr>
 
 		</koken:link>
 
@@ -171,10 +171,11 @@
 			<koken:link to="date" title="View everything from this month">
 				<!-- Display timestamp -->
 				<koken:time />
-			</koken:link> /
-			<!-- Display caption -->
-			{{ content.caption }}
+			</koken:link>
 		</p>
+
+		<!-- Display caption -->
+		{{ content.caption paragraphs="true" }}
 
 		<!-- Display assigned tags -->
 		<koken:tags>
@@ -206,8 +207,6 @@
 			</p>
 		</koken:categories>
 
-		<hr>
-
 	</koken:event_content>
 
 	<!-- Render if event is an essay -->
@@ -229,15 +228,17 @@
 			</koken:link>
 		</h3>
 
+		<!-- Display timestamp -->
 		<p>
 			<!-- Link to view all timeline events in this month -->
 			<koken:link to="date" title="View everything from this month">
 				<!-- Display timestamp -->
 				<koken:time />
-			</koken:link> /
-			<!-- Display excerpt -->
-			{{ essay.excerpt }}
+			</koken:link>
 		</p>
+
+		<!-- Display excerpt -->
+		{{ essay.excerpt paragraphs="true" }}
 
 		<!-- Display assigned tags -->
 		<koken:tags>
@@ -268,8 +269,6 @@
 				</koken:loop>
 			</p>
 		</koken:categories>
-
-		<hr>
 
 	</koken:event_essay>
 

@@ -58,16 +58,15 @@
 					<koken:img size="8:5" />
 				</koken:link>
 
+                <!-- Display the timestamp (date published) -->
 				<p>
-					<strong>Published:</strong>
 					<!-- Link to archive.albums.lens to view all albums published the same momth -->
 					<koken:link to="archive" title="View all {{ labels.album.plural case='lower' }} published this month">
-						<!-- Display the date it was published -->
 						<koken:time />
 					</koken:link>
 				</p>
 
-				<!-- Display the album's (shorter) summary -->
+				<!-- Display the album's summary (shorter than description) -->
 				{{ album.summary paragraphs="true" }}
 
 				<!-- Display album categories, link each to this template to change criteria -->

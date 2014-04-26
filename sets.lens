@@ -57,11 +57,12 @@
 					<!-- Display the set's (shorter) summary -->
 					{{ album.summary paragraphs="true" }}
 
-					<!-- Display set categories, link each to archive.albums.lens -->
+					<!-- Display set categories -->
 					<koken:categories>
 						<p>
 							<strong>Categories:</strong>
 							<koken:loop separator=", ">
+								<!-- Link each to archive.albums.lens -->
 								<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
 									{{ category.title }}
 								</koken:link>
@@ -74,6 +75,7 @@
 						<p>
 							<strong>Tags:</strong>
 							<koken:loop separator=", ">
+								<!-- Link each to archive.albums.lens -->
 								<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
 									{{ tag.title }}
 								</koken:link>

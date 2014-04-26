@@ -25,17 +25,17 @@
 
                           <h2><koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link></h2>
 
+                          <!-- Display the timestamp (date published) -->
                           <p>
-                              <strong>Published:</strong>
                               <!-- Link to archive.essays.lens to view all essays published the same momth -->
                               <koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
-                                <!-- Display the date it was published -->
                                 <koken:time />
                               </koken:link>
                           </p>
 
                         </header>
 
+                        <!-- Display body of the essay -->
                         {{ essay.content }}
 
                         <footer>

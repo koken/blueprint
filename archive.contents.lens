@@ -68,15 +68,16 @@
 
 					</koken:content_video>
 
+					<!-- Display the timestamp (date published) -->
 					<p>
 						<!-- Link to archive.contents.lens to view all content uploaded the same month -->
 						<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
-							<!-- Publish the date it was captured -->
 							<koken:time />
-						</koken:link> /
-						{{ content.caption }}
+						</koken:link>
 					</p>
 
+					<!-- Display the content caption -->
+					{{ content.caption paragraphs="true" }}
 
 					<p>
 						<strong>Uploaded:</strong> {{ content.uploaded_on }}

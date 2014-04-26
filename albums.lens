@@ -54,15 +54,27 @@
 						<koken:img size="8:5" />
 					</koken:link>
 
+					<!-- To display all covers, use koken:covers -->
+					<!--
+					<koken:covers>
+						<koken:loop>
+							<koken:link title="View {{ album.title }}">
+								<koken:img size="1:1" />
+							</koken:link>
+						</koken:loop>
+					</koken:covers>
+					-->
+
 					<p>
 						<!-- Link to view all albums published the same month -->
 						<koken:link to="archive" title="View all albums published this month">
 							<!-- Display the date it was published -->
 							<koken:time />
-						</koken:link> /
-						<!-- Display the album's summary (shorter than description) -->
-						{{ album.summary }}
+						</koken:link>
 					</p>
+
+					<!-- Display the album's summary (shorter than description) -->
+					{{ album.summary paragraphs="true" }}
 
 					<!-- Display album categories, link each to archive.albums.lens -->
 					<koken:categories>

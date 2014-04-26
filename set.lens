@@ -88,6 +88,7 @@
 					<p>
 						<strong>Categories:</strong>
 						<koken:loop separator=", ">
+							<!-- Link each to archive.albums.lens -->
 							<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
 								{{ category.title }}
 							</koken:link>
@@ -100,6 +101,7 @@
 					<p>
 						<strong>Tags:</strong>
 						<koken:loop separator=", ">
+							<!-- Link each to archive.albums.lens -->
 							<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
 								{{ title }}
 							</koken:link>
