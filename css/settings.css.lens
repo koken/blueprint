@@ -57,6 +57,14 @@ hr {
 	margin:1em 0;
 }
 
+.comma_sep span:after {
+	content:", ";
+}
+
+.comma_sep span:last-child:after {
+	content:"";
+}
+
 /*
 	LAYOUT
 */

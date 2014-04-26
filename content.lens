@@ -104,13 +104,17 @@
 		<!-- Opens the image in the lightbox viewer -->
 		<koken:link lightbox="true" class="button" title="View in lightbox">View in lightbox</koken:link>
 
-		<!-- Display the content caption -->
+		<!-- Display the timestamp (date published) -->
+		<!-- Link to archive.contents.lens to view all content captured the same month -->
 		<p>
-			<!-- Link to archive.contents.lens to view all content captured the same month -->
 			<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
 				<!-- Publish the date it was captured -->
 				<koken:time />
-			</koken:link> /
+			</koken:link>
+		</p>
+
+		<!-- Display the content caption -->
+		<p>
 			{{ content.caption paragraphs="true" }}
 		</p>
 
@@ -152,22 +156,22 @@
 
 		<!-- Display EXIF data -->
 		<koken:exif>
-			<p>
+			<p class="comma_sep">
 				<strong>EXIF:</strong>
 				<koken:not empty="exif.model">
-					{{ exif.model }},
+					<span>{{ exif.model }}</span>
 				</koken:not>
 				<koken:not empty="exif.exposure">
-					{{ exif.exposure }},
+					<span>{{ exif.exposure }}</span>
 				</koken:not>
 				<koken:not empty="exif.aperture">
-					{{ exif.aperture }},
+					<span>{{ exif.aperture }}</span>
 				</koken:not>
 				<koken:not empty="exif.focal_length">
-					{{ exif.focal_length }},
+					<span>{{ exif.focal_length }}</span>
 				</koken:not>
 				<koken:not empty="exif.iso_speed_ratings">
-					{{ exif.iso_speed_ratings }}
+					<span>{{ exif.iso_speed_ratings }}</span>
 				</koken:not>
 			</p>
 		</koken:exif>
