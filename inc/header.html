@@ -3,18 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<!-- Site description editable in console Settings -->
+	<!-- Site description editable in Settings > Site Publishing -->
 	<meta name="description" content="{{ site.description }}" />
-	<!-- Site title editable in console Settings -->
+	<!-- Site title editable in Settings > Site Publishing -->
 	<meta name="author" content="{{ site.title }}" />
-	<!-- Site keywords editable in console Settings -->
+	<!-- Site keywords editable in Settings > Site Publishing -->
 	<meta name="keywords" content="{{ site.keywords }}" />
 
-	<!-- Publishes dynamic page title in each template -->
+	<!-- Publishes Page Title from Settings > Site Publishing plus content titles -->
 	<koken:title />
 
-	<!-- css -->
-	<koken:asset file="css/normalize.css" />
+	<!-- loads theme's settings css from css/settings.css.lens -->
 	<koken:settings />
 
 </head>
@@ -25,9 +24,10 @@
 
 		<header class="main">
 
-			<!-- Site title editable in console Settings -->
+			<!-- Site title editable in Settings > Site Publishing -->
 			<h1><koken:link to="front" title="{{ labels.home.singular }}">{{ site.title }}</koken:link></h1>
-			<!-- Site tagline editable in console Settings -->
+
+			<!-- Site tagline editable in Settings > Site Publishing -->
 			{{ site.tagline }}
 
 			<nav>
