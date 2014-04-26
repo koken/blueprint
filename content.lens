@@ -135,6 +135,7 @@
 			<p>
 				<strong>Categories:</strong>
 				<koken:loop separator=", ">
+					<!-- Link each to archive.contents.lens to view other images/videos assigned same category -->
 					<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
 						{{ category.title }}
 					</koken:link>
@@ -147,6 +148,7 @@
 			<p>
 				<strong>Tags:</strong>
 				<koken:loop separator=" ">
+					<!-- Link each to archive.contents.lens to view other images/videos assigned same tag -->
 					<koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
 						#{{ tag.title }}
 					</koken:link>
