@@ -111,7 +111,7 @@ nav a, nav a:visited {
 a.k-nav-current,
 a.k-pagination-current
 {
-	color:#ff6e00;
+	color:#ff6e00 !important;
 }
 header.main h1 a {
 	color:inherit !important;
