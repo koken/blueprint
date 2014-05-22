@@ -64,6 +64,14 @@
 					<span>({{ context.position }} of {{ context.total }})</span>
 				</koken:context>
 
+				&nbsp;
+
+				<koken:next>
+					<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
+				<koken:else>
+					<!-- display no link -->
+				</koken:next>
+
 			</div>
 
 		</div>
