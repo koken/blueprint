@@ -64,24 +64,16 @@
 					<span>({{ context.position }} of {{ context.total }})</span>
 				</koken:context>
 
-				&nbsp;
-
-				<koken:next>
-					<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
-				<koken:else>
-					<!-- display no link -->
-				</koken:next>
-
 			</div>
 
 		</div>
 
 		<!-- Display the content title -->
 		<h2>
-			{{ content.title | content.filename }}
+			{{ content.title | content.filename.clean }}
 		</h2>
 
-		<!-- Displayed if the asset is an image -->
+		<!-- Displayed if content is an image -->
 		<koken:content_image>
 
 			<!-- Load image in lightbox viewer if clicked -->
@@ -91,7 +83,7 @@
 
 		</koken:content_image>
 
-		<!-- Displayed if the asset is a video -->
+		<!-- Displayed if content is a video -->
 		<koken:content_video>
 
 			<!-- Load the video -->
@@ -101,7 +93,7 @@
 
 		<br>
 
-		<!-- Opens the image in the lightbox viewer -->
+		<!-- Opens the content in the lightbox viewer -->
 		<koken:link lightbox="true" class="button" title="View in lightbox">View in lightbox</koken:link>
 
 		<!-- Display the timestamp (date published) -->
@@ -122,6 +114,8 @@
 		<p>
 			<strong>Uploaded:</strong> <koken:time data="date_uploaded" />
 		</p>
+
+		<!-- Display links to albums the content is part of -->
 
 		<!-- Display duration if an imported video -->
 		<koken:content_video>
@@ -194,7 +188,7 @@
 			{{ content.license.clean }}
 		</p>
 
-		<!-- If item is an image and allows downloading, show download link -->
+		<!-- If content is an image and allows downloading, show download link -->
 		<koken:max_download>
 			<p>
 				<strong>Download image:</strong>
@@ -208,7 +202,7 @@
 			</p>
 		</koken:max_download>
 
-		<!-- If content is part of an album, display a link to it -->
+		<!-- Display link to parent album if content is viewed in that context -->
 		<koken:parent>
 			<p>
 				<strong>From the album:</strong>
@@ -217,6 +211,18 @@
 				</koken:link>
 			</p>
 		</koken:parent>
+
+		<!-- Display links to all parent albums the content is part of if content is viewed independently -->
+		<koken:albums>
+			<p>
+				<strong>Albums:</strong>
+				<koken:loop separator=", ">
+					<koken:link>
+						{{ album.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:albums>
 
 		<!-- If content is imported from elsewhere (Vimeo, Instagram), show link to original page -->
 		<koken:not empty="{{ content.source.title }}">
