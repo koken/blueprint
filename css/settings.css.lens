@@ -252,6 +252,12 @@ article blockquote p {
 }
 
 /*
+	Image Protect plugin
+*/
+
+body.k-image-protect-nopin a.social-pinterest { display:none; }
+
+/*
 	Classes assigned to inserted media
 	See: http://help.koken.me/customer/portal/articles/828695-css-classes
 */
