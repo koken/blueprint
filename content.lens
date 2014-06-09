@@ -208,7 +208,7 @@
 			</p>
 		</koken:max_download>
 
-		<!-- If content is part of an album, display a link to it -->
+		<!-- If viewing content in the context of an album, display link to parent album -->
 		<koken:parent>
 			<p>
 				<strong>From the album:</strong>
@@ -217,6 +217,18 @@
 				</koken:link>
 			</p>
 		</koken:parent>
+
+		<!-- If content is included in one or more albums, display links to each album -->
+		<koken:albums>
+			<p>
+				<strong>Albums:</strong>
+				<koken:loop>
+					<koken:link title="View {{ album.title }}">
+						{{ album.title }}
+					</koken:link>
+				</koken:loop>
+			</p>
+		</koken:albums>
 
 		<!-- If content is imported from elsewhere (Vimeo, Instagram), show link to original page -->
 		<koken:not empty="{{ content.source.title }}">
@@ -235,11 +247,12 @@
 		<koken:if true="content.public">
 			<p>
 				<strong>Share:</strong>
-				<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ content.title|content.filename url_encode="true" }}&url={{ content.url url_encode="true" }}" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ content.title|content.filename url_encode="true" }}&url={{ content.url url_encode="true" }}&via={{ profile.twitter }}" target="_blank"></koken:if>Twitter</a>
-				<a href="https://www.facebook.com/sharer.php?u={{ content.url url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Facebook" target="_blank">Facebook</a>
-				<a href="http://pinterest.com/pin/create/button/?url={{ content.url url_encode="true" }}&media={{ content.presets.large.url url_encode="true" }}&description={{ content.title url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Pinterest" target="_blank">Pinterest</a>
-				<a href="http://www.tumblr.com/share/photo?source={{ content.presets.large.url url_encode="true"  }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ content.url url_encode="true" }}&quot; title=&quot;{{ content.title|content.filename }}&quot;%3E{{ content.title|content.filename url_encode="true" }}%3C/a%3E%3C/strong%3E%3C/p%3E%3Cp%3E{{ content.caption url_encode="true" }}%3C/p%3E&click_thru={{ content.url url_encode="true" }}" class="share-tumblr" title="Share {{ content.title|content.filename }} on Tumblr" target="_blank">Tumblr</a>
-				<a href="https://plus.google.com/share?url={{ content.url url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Google+" target="_blank">Google+</a>
+				<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ content.title|content.filename url_encode="true" }}&url={{ content.url url_encode="true" }}" target="_blank" class="social-twitter"><koken:else><a href="https://twitter.com/intent/tweet?text={{ content.title|content.filename url_encode="true" }}&url={{ content.url url_encode="true" }}&via={{ profile.twitter }}" target="_blank" class="social-twitter"></koken:if>Twitter</a>
+				<a class="social-facebook" href="https://www.facebook.com/sharer.php?u={{ content.url url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Facebook" target="_blank">Facebook</a>
+				<!-- pinterest link hidden in css if image protector plugin is installed and pinning is disallowed -->
+				<a class="social-pinterest" href="http://pinterest.com/pin/create/button/?url={{ content.url url_encode="true" }}&media={{ content.presets.large.url url_encode="true" }}&description={{ content.title url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Pinterest" target="_blank">Pinterest</a>
+				<a href="http://www.tumblr.com/share/photo?source={{ content.presets.large.url url_encode="true"  }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ content.url url_encode="true" }}&quot; title=&quot;{{ content.title|content.filename }}&quot;%3E{{ content.title|content.filename url_encode="true" }}%3C/a%3E%3C/strong%3E%3C/p%3E%3Cp%3E{{ content.caption url_encode="true" }}%3C/p%3E&click_thru={{ content.url url_encode="true" }}" class="share-tumblr" title="Share {{ content.title|content.filename }} on Tumblr" target="_blank" class="social-tumblr">Tumblr</a>
+				<a href="https://plus.google.com/share?url={{ content.url url_encode="true" }}" title="Share {{ content.title|content.filename url_encode="true" }} on Google+" target="_blank" class="social-google">Google+</a>
 			</p>
 		</koken:if>
 
