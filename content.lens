@@ -78,10 +78,10 @@
 
 		<!-- Display the content title -->
 		<h2>
-			{{ content.title | content.filename }}
+			{{ content.title | content.filename.clean }}
 		</h2>
 
-		<!-- Displayed if the asset is an image -->
+		<!-- Displayed if content is an image -->
 		<koken:content_image>
 
 			<!-- Load image in lightbox viewer if clicked -->
@@ -91,7 +91,7 @@
 
 		</koken:content_image>
 
-		<!-- Displayed if the asset is a video -->
+		<!-- Displayed if content is a video -->
 		<koken:content_video>
 
 			<!-- Load the video -->
@@ -101,7 +101,7 @@
 
 		<br>
 
-		<!-- Opens the image in the lightbox viewer -->
+		<!-- Opens the content in the lightbox viewer -->
 		<koken:link lightbox="true" class="button" title="View in lightbox">View in lightbox</koken:link>
 
 		<!-- Display the timestamp (date published) -->
@@ -122,6 +122,8 @@
 		<p>
 			<strong>Uploaded:</strong> <koken:time data="date_uploaded" />
 		</p>
+
+		<!-- Display links to albums the content is part of -->
 
 		<!-- Display duration if an imported video -->
 		<koken:content_video>
@@ -194,7 +196,7 @@
 			{{ content.license.clean }}
 		</p>
 
-		<!-- If item is an image and allows downloading, show download link -->
+		<!-- If content is an image and allows downloading, show download link -->
 		<koken:max_download>
 			<p>
 				<strong>Download image:</strong>
