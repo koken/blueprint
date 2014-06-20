@@ -43,6 +43,11 @@
                   <!-- Display body of the essay -->
                   {{ essay.content }}
 
+                  <!-- Display link to the rest of the essay if a read more break link is inserted -->
+                  <koken:more>
+                    <koken:link title="{{ essay.title }}">{{ essay.read_more_label }}</koken:link>
+                  </koken:more>
+
                   <footer>
 
                     <!-- Publishes the link for this essay -->
