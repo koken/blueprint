@@ -28,7 +28,22 @@
 		</koken:head>
 
 		<!-- Slideshow that loads template data (featured content) -->
-		<koken:pulse />
+		<koken:pulse jsvar="pulse" next="#sldshw_next" previous="#sldshw_prev" toggle="#sldshw_play" fullscreen="#sldshw_fs" />
+
+		<!-- Basic slideshow navigation example -->
+		<a href="#" id="sldshw_prev">Previous</a> / <a href="#" id="sldshw_next">Next</a> / <a href="#" id="sldshw_play">Pause</a> / <a href="#" id="sldshw_fs">Full screen</a>
+
+		<!-- Optional script to change playback toggle text -->
+		<script>
+			pulse.on( 'playing', function(isPlaying) {
+				var el = $('#sldshw_play');
+				if (isPlaying) {
+					el.html('Pause');
+				} else {
+					el.html('Play');
+				}
+			});
+		</script>
 
 	<!-- Fallback content if no data was loaded by koken:load -->
 	<koken:else>
