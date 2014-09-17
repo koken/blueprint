@@ -12,23 +12,33 @@
 		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
 	</koken:head>
 
+	<!-- Display breadcrumbs because it's an archive page -->
+	<nav id="bread">
+		<koken:breadcrumbs separator="/" />
+	</nav>
+
 	<div class="lcol">
 
-		<!-- Display breadcrumbs because it's an archive page -->
-		<nav id="bread">
-			<koken:breadcrumbs separator="/" />
-		</nav>
+		<section>
 
-		<!-- Loop over each item assigned the category -->
-		<koken:loop>
+			<header>
 
-			<!-- Render each event in the category -->
-			<koken:include file="inc/events.html" />
+				<h2>All recent content in {{ category.title }}</h2>
 
-		</koken:loop>
+			</header>
 
-		<!-- Display pagination links -->
-		<koken:include file="inc/pagination.html" />
+			<!-- Loop over each item assigned the category -->
+			<koken:loop>
+
+				<!-- Render each event in the category -->
+				<koken:include file="inc/events.html" />
+
+			</koken:loop>
+
+			<!-- Display pagination links -->
+			<koken:include file="inc/pagination.html" />
+
+		</section>
 
 	</div> <!-- close .lcol -->
 

@@ -12,18 +12,24 @@
 		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
 	</koken:head>
 
-	<ul>
+	<section>
+
+		<h2>
+			{{ labels.category.plural }}
+		</h2>
+
 		<!-- Loop over them all -->
 		<koken:loop>
-			<li>
+			<p>
 				<!-- Link to category.lens to view all published content assigned the category -->
 				<koken:link title="View everything in {{ category.title }}">
 					<!-- Display the category's title -->
 					{{ category.title }} ({{ category.counts.total }})
 				</koken:link>
-			</li>
+			</p>
 		</koken:loop>
-	</ul>
+
+	</section>
 
 	<!-- Display pagination links -->
 	<koken:include file="inc/pagination.html" />

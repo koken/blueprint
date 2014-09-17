@@ -9,11 +9,14 @@
 	<!-- Publishes Page Title from Settings > Site Publishing plus content titles -->
 	<koken:title />
 
+	<!-- More consistent cross-browser styling -->
+	<koken:asset file="css/normalize.css" />
+
 	<!-- Loading Bootstrap CSS just for basic styling -->
 	<koken:asset file="css/bootstrap.css" />
 	<koken:asset file="css/bootstrap-theme.css" />
 
-	<!-- loads theme's settings css from css/settings.css.lens -->
+	<!-- Loading theme's settings css from css/settings.css.lens -->
 	<koken:settings />
 
 </head>
@@ -24,13 +27,13 @@
 
 		<header class="main">
 
+			<!-- Site tagline editable in Settings > Site Publishing -->
+			<p>
+				{{ site.tagline }}
+			</p>
+
 			<!-- Site title editable in Settings > Site Publishing -->
 			<h1><koken:link to="front" title="{{ labels.home.singular }}">{{ site.title }}</koken:link></h1>
-
-			<!-- Site tagline editable in Settings > Site Publishing -->
-			<span class="site_tagline">
-				{{ site.tagline }}
-			</span>
 
 			<nav>
 				<!-- Inserts primary navigation group -->

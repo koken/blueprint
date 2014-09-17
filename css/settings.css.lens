@@ -1,3 +1,10 @@
+body {
+	background:#d5e5f2;
+	color:rgba(0,0,0,0.6);
+	color:#428bca;
+	margin-top:2em;
+}
+
 /* everybody get down */
 h1,h2,h3,h4,h5,h6,hgroup,
 ul,ol,dd,
@@ -8,6 +15,10 @@ img,.slideshow,
 pre,table,fieldset,hr
 {
     margin-bottom:1.42857143rem;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin-top:0;
 }
 
 .comma_sep span:after {
@@ -28,6 +39,10 @@ h6 > a
 	color:inherit;
 }
 
+hr {
+	border-top-color: rgba(0,0,0,0.2);
+}
+
 /*
 	LAYOUT
 */
@@ -39,17 +54,16 @@ div.container {
 }
 
 header.main {
-	margin-bottom:2em;
+	margin-bottom:3em;
 }
 
 footer.main {
-	padding:2em 0;
 	clear:both;
-	text-align:left;
+	padding-bottom:2em;
 }
 
 nav {
-	margin-top:2em;
+	margin:1em 0;
 }
 
 nav ul {
@@ -62,13 +76,53 @@ nav ul li {
 	margin:0 15px 0 0;
 }
 
-aside section {
+/* highlights navigation link for current page - assigned automatically by Koken */
+nav a.k-nav-current,
+nav a.k-pagination-current
+{
+	font-weight:bold;
+}
+
+#pagination {
 	margin-bottom:2em;
+}
+
+main {
+	display:block;
+	margin-bottom:3em;
+}
+
+article {
+	margin-bottom:3em;
+}
+
+section {
+	margin-bottom:2em;
+}
+
+section header {
+	margin-bottom:2em;
+}
+
+footer {
+	font-size:90%;
 }
 
 .slideshow_nav {
 	margin-bottom:1em;
 	clear:both;
+}
+
+ul.blank {
+	list-style:none;
+	padding:0;
+	margin:0 0 1em;
+}
+
+ul.blank li {
+	padding:0;
+	margin:0;
+	display:block;
 }
 
 ul.feat-essays {
@@ -96,9 +150,14 @@ ul.feat-essays li:nth-child(4n+1) {
 	clear:left;
 }
 
-div#content-pag {
+#bread {
+	font-size:90%;
+	margin-top:0;
+	margin-bottom:2em;
+}
+
+#content-pag {
 	float:right;
-	font-size:14px;
 }
 
 div.lcol {
@@ -169,13 +228,6 @@ ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archiv
 
 /* used for fallback text in console */
 .k-note {}
-
-/* highlights navigation link for current page - assigned automatically by Koken */
-a.k-nav-current,
-a.k-pagination-current
-{
-	font-weight:bold;
-}
 
 /* assigned to body by Image Protect plugin if Pinterest pinning is disabled */
 body.k-image-protect-nopin a.social-pinterest {

@@ -28,38 +28,32 @@
 	</koken:head>
 
 	<!-- Display breadcrumb navigation -->
-	<div id="bread">
-		<koken:breadcrumbs />
-	</div>
-
-	<div class="lcol nofloat">
+	<nav id="bread">
 
 		<!-- Displays links to neighbor albums plus link back to albums index -->
 		<!-- Only show if the album is public, not unlisted -->
 		<koken:if true="album.public">
-
 			<div id="content-pag">
-
 				<koken:previous>
 					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
 				</koken:previous>
-
-				&nbsp;
-				<koken:link to="albums" title="View all {{ labels.album.plural case='lower' }}">View all</koken:link>
-				&nbsp;
-
 				<koken:next>
 					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
 				</koken:next>
-
 			</div>
 
 		</koken:if>
 
+		<koken:breadcrumbs />
+
+	</nav>
+
+	<div class="lcol nofloat">
+
 		<!-- Display the set's title -->
-		<h1>
+		<h2>
 			{{ album.title }}
-		</h1>
+		</h2>
 
 	</div>
 
@@ -68,44 +62,65 @@
 
 	<div class="lcol">
 
-		<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
+		<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.lens -->
 		<koken:loop>
 
-			<h3>
-				<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
-			</h3>
+			<section class="item">
 
-			<koken:link title="View {{ album.title }}">
-				<koken:img size="8:5" />
-			</koken:link>
+				<koken:link title="View {{ album.title }}">
+					<koken:img />
+				</koken:link>
 
-			<p>{{ album.summary }}</p>
+				<h3>
+					<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
+				</h3>
 
-			<!-- Display the set's categories -->
-			<koken:categories>
-				<p>
-					<strong>Categories:</strong>
-					<koken:loop separator=", ">
-						<!-- Link each to archive.albums.lens -->
-						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
-							{{ category.title }}
-						</koken:link>
-					</koken:loop>
-				</p>
-			</koken:categories>
+				<p>{{ album.summary }}</p>
 
-			<!-- Display the set's tags -->
-			<koken:tags>
-				<p>
-					<strong>Tags:</strong>
-					<koken:loop separator=", ">
-						<!-- Link each to archive.albums.lens -->
-						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
-							{{ title }}
-						</koken:link>
-					</koken:loop>
-				</p>
-			</koken:tags>
+				<footer>
+
+					<ul class="blank">
+
+						<!-- Display the timestamp -->
+						<li>
+							<strong>Published:</strong>
+							<!-- Link to view all albums published the same month -->
+							<koken:link to="archive" title="View all collections published this month">
+								<koken:time />
+							</koken:link>
+						</li>
+
+						<!-- Display the set's categories -->
+						<koken:categories>
+							<li>
+								<strong>Categories:</strong>
+								<koken:loop separator=", ">
+									<!-- Link each to archive.albums.lens -->
+									<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:categories>
+
+						<!-- Display the set's tags -->
+						<koken:tags>
+							<li>
+								<strong>Tags:</strong>
+								<koken:loop separator=", ">
+									<!-- Link each to archive.albums.lens -->
+									<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
+										{{ title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:tags>
+
+					</ul>
+
+				</footer>
+
+			</section>
 
 		</koken:loop>
 
@@ -117,16 +132,6 @@
 	<div class="rcol">
 
 		<aside>
-
-			<section>
-				<!-- If album is part of a set, display link to it -->
-				<koken:parent>
-					<h5>From the {{ labels.set.singular }}</h5>
-					<koken:link title="View {{ album.title }}">
-						{{ album.title }}
-					</koken:link>
-				</koken:parent>
-			</section>
 
 			<section>
 				<!-- Links to view albums by publish date in archive.albums.lens -->

@@ -12,28 +12,34 @@
 		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
 	</koken:head>
 
+	<!-- Display breadcrumbs -->
+	<nav id="bread">
+		<koken:breadcrumbs separator="/" />
+	</nav>
+
 	<div class="lcol">
 
-		<!-- Display breadcrumbs because it's an archive page -->
-		<p>
-			<koken:breadcrumbs separator="/" />
-		</p>
+		<section>
 
-		<!-- Loop over the items in the day -->
-		<koken:loop>
+			<!-- Loop over the items in the day -->
+			<koken:loop>
 
-			<!-- Display the day (eg, January 1, 2014) -->
-			<h1>
-				<koken:time />
-			</h1>
+				<header>
+					<!-- Display the day (eg, January 1, 2014) -->
+					<h1>
+						<koken:time />
+					</h1>
+				</header>
 
-			<!-- Render each event in each day -->
-			<koken:include file="inc/events.html" />
+				<!-- Render each event in each day -->
+				<koken:include file="inc/events.html" />
 
-		</koken:loop>
+			</koken:loop>
 
-		<!-- Display pagination links -->
-		<koken:include file="inc/pagination.html" />
+			<!-- Display pagination links -->
+			<koken:include file="inc/pagination.html" />
+
+		</section>
 
 	</div> <!-- close .lcol -->
 

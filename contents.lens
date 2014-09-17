@@ -34,13 +34,7 @@
 		<koken:loop>
 
 			<!-- wrapper used for keyboard navigation targetting -->
-			<div class="item">
-
-				<h2>
-					<koken:link title="View {{ content.title | content.filename }}">
-						{{ content.title | content.filename }}
-					</koken:link>
-				</h2>
+			<section class="item">
 
 				<!-- Displayed if the asset is an image -->
 				<koken:content_image>
@@ -60,40 +54,58 @@
 
 				</koken:content_video>
 
-				<!-- Display the timestamp (date published) -->
-				<!-- Link to archive.contents.lens to view all content uploaded the same month -->
-				<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
-					<!-- Publish the date it was captured -->
-					<koken:time />
-				</koken:link>
+				<!-- Display the title with filenames as a fallback -->
+				<h2>
+					<koken:link title="View {{ content.title | content.filename }}">
+						{{ content.title | content.filename }}
+					</koken:link>
+				</h2>
 
+				<!-- Display the caption -->
 				{{ content.caption paragraphs="true" }}
 
-				<!-- Publish the asset's categories. Links to archive.contents.lens -->
-				<koken:categories>
-					<p>
-						<strong>{{ labels.category.plural }}:</strong>
-						<koken:loop separator=", ">
-							<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
-								{{ category.title }}
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:categories>
+				<footer>
 
-				<!-- Publish the asset' tags. Links to archive.contents.lens -->
-				<koken:tags>
-					<p>
-						<strong>{{ labels.tag.plural }}:</strong>
-						<koken:loop separator=" ">
-							<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ tag.title }}">
-								#{{ tag.title }}
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:tags>
+					<ul class="blank">
 
-			</div>
+						<!-- Display the timestamp (date published) -->
+						<li>
+							<strong>Published:</strong>
+							<!-- Link to archive.contents.lens to view all content uploaded the same month -->
+							<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
+								<koken:time />
+							</koken:link>
+						</li>
+
+						<!-- Publish the asset's categories. Links to archive.contents.lens -->
+						<koken:categories>
+							<li>
+								<strong>{{ labels.category.plural }}:</strong>
+								<koken:loop separator=", ">
+									<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:categories>
+
+						<!-- Publish the asset' tags. Links to archive.contents.lens -->
+						<koken:tags>
+							<li>
+								<strong>{{ labels.tag.plural }}:</strong>
+								<koken:loop separator=" ">
+									<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ tag.title }}">
+										#{{ tag.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:tags>
+
+					</ul>
+
+				</footer>
+
+			</section>
 
 		</koken:loop>
 
@@ -163,6 +175,6 @@
 </koken:load>
 
 <!-- Turn on keyboard scrolling (left/right arrow keys) for items -->
-<koken:keyboard_scroll element="div.item" />
+<koken:keyboard_scroll element=".item" />
 
 <koken:include file="inc/footer.html" />

@@ -14,21 +14,27 @@
 
 	<div class="lcol">
 
-		<!-- Loop over each day -->
-		<koken:loop>
+		<section>
 
-			<!-- Display the day (eg, January 1, 2014) -->
-			<h1>
-				<koken:time />
-			</h1>
+			<!-- Loop over each day -->
+			<koken:loop>
 
-			<!-- Render each event in each day -->
-			<koken:include file="inc/events.html" />
+				<header>
+					<!-- Display the day (eg, January 1, 2014) -->
+					<h1>
+						<koken:time />
+					</h1>
+				</header>
 
-		</koken:loop>
+				<!-- Render each event in each day -->
+				<koken:include file="inc/events.html" />
 
-		<!-- Display pagination links -->
-		<koken:include file="inc/pagination.html" />
+			</koken:loop>
+
+			<!-- Display pagination links -->
+			<koken:include file="inc/pagination.html" />
+
+		</section>
 
 	</div> <!-- close lcol -->
 

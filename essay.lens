@@ -26,14 +26,10 @@
 		</koken:not>
 	</koken:head>
 
-	<!-- Display breadcrumb navigation -->
-	<nav>
-		<koken:breadcrumbs />
-	</nav>
-
 	<div class="lcol">
 
-		<article>
+		<!-- Display breadcrumb navigation -->
+		<nav id="bread">
 
 			<!-- Pagination to view neighboring essays -->
 			<div id="content-pag">
@@ -42,23 +38,21 @@
 					<koken:link title="Read {{ essay.title }}" bind_to_key="left">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;
 				</koken:next>
 
-				<koken:link to="essays" bind_to_key="up">View all {{ labels.essay.plural }}</koken:link>
-
 				<koken:previous>
 					&nbsp;&nbsp;<koken:link title="Read {{ essay.title }}" bind_to_key="right">{{ essay.title }} &rarr; </koken:link>
 				</koken:previous>
 
 			</div>
 
+			<koken:breadcrumbs />
+
+		</nav>
+
+		<article>
+
 			<header>
 
-				<h1>{{ essay.title }}</h1>
-
-				<!-- Display the timestamp (date published) -->
-				<!-- Link to archive.essays.lens to view all essays published the same momth -->
-				<koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
-					<koken:time />
-				</koken:link>
+				<h2>{{ essay.title }}</h2>
 
 			</header>
 
@@ -67,11 +61,19 @@
 
 			<footer>
 
-				<!-- Display image and info about album assigned as essay topic -->
-				<koken:topics>
-					<h5>Related content</h5>
-					<koken:loop>
-						<p>
+				<ul class="blank">
+
+					<!-- Publishes the link for this essay -->
+					<li>
+						<strong>Permalink:</strong>
+						<koken:link title="{{ essay.title }}">Link</koken:link>
+					</li>
+
+					<!-- Display image and info about album assigned as essay topic -->
+					<koken:topics>
+						<li>
+						<strong>Related content:</strong>
+						<koken:loop>
 							<koken:link title="View {{ album.title }}">
 								<koken:img preset="small" />
 							</koken:link>
@@ -80,50 +82,47 @@
 								{{ album.title }}
 							</koken:link>
 							({{ album.counts.total }} images)
-						</p>
-					</koken:loop>
-				</koken:topics>
-
-				<!-- Publishes the link for this essay -->
-				<p>
-					<koken:link title="{{ essay.title }}">Permalink</koken:link>
-				</p>
-
-				<!-- Publish the essay's categories. Links to archive.essays.lens -->
-				<koken:categories>
-					<p>
-						<strong>Category:</strong>
-						<koken:loop separator=", ">
-							<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
-								{{ category.title }}
-							</koken:link>
 						</koken:loop>
-					</p>
-				</koken:categories>
+						</li>
+					</koken:topics>
 
-				<!-- Publish the essays' tags. Links to archive.essays.lens -->
-				<koken:tags>
-					<p>
-						<strong>Tags:</strong>
+					<!-- Publish the essay's categories. Links to archive.essays.lens -->
+					<koken:categories>
+						<li>
+							<strong>Category:</strong>
 							<koken:loop separator=", ">
-							<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
-								{{ tag.title }}
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:tags>
+								<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
+									{{ category.title }}
+								</koken:link>
+							</koken:loop>
+						</li>
+					</koken:categories>
 
-				<!-- Display share links -->
-				<p>
-					<strong>Share:</strong>
-					<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
-					<a href="https://www.facebook.com/sharer.php?u={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Facebook" target="_blank">Facebook</a>
-					 <a href="http://www.tumblr.com/share/photo?source={{ essay.featured_image.presets.medium_large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ essay.url url_encode="true" }}&quot; title=&quot;{{ essay.title url_encode="true" }}&quot;%3E{{ essay.title url_encode="true" }}%3C/a%3E%3C%2Fstrong%3E%3C%2Fp%3E%3Cp%3E{{ essay.excerpt url_encode="true" }}%3C%2Fp%3E&click_thru={{ essay.url url_encode="true" }}" class="share-tumblr" title="Share {{ essay.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
-					<a href="https://plus.google.com/share?url={{ essay.url url_encode="true" }}" title="Share {{ essay.url url_encode="true" }} on Google+" target="_blank">Google+</a>
-				</p>
+					<!-- Publish the essays' tags. Links to archive.essays.lens -->
+					<koken:tags>
+						<li>
+							<strong>Tags:</strong>
+								<koken:loop separator=", ">
+								<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
+									{{ tag.title }}
+								</koken:link>
+							</koken:loop>
+						</li>
+					</koken:tags>
+
+					<!-- Display social share links -->
+					<li>
+						<strong>Share:</strong>
+						<koken:link share="twitter">Twitter</koken:link>
+						<koken:link share="facebook">Facebook</koken:link>
+						<koken:link share="pinterest">Pinterest</koken:link>
+						<koken:link share="tumblr">Tumblr</koken:link>
+						<koken:link share="google-plus">Google+</koken:link>
+					</li>
+
+				</ul>
 
 			</footer>
-
 
 			<!-- Display discussions or other data if enabled via a plugin (eg, our Disqus plugin) -->
 			<koken:discussion>

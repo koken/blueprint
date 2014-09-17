@@ -1,12 +1,11 @@
 <koken:include file="inc/header.html" />
 
-<!-- Load this template's source data (favorites) and limit for pagination -->
-<koken:load limit="50">
-
-	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+<!-- Using a separate koken:load for this so it doesn't conflict with page data -->
+<koken:load limit="4">
 	<koken:head>
 		<meta property="og:site_name" content="{{ site.title }}" />
-		<meta property="og:title" content="{{ labels.favorite.plural }}" />
+		<meta property="og:title" content="{{ labels.content.plural }}" />
 		<meta property="og:description" content="{{ site.description strip_html='true' }}" />
 		<meta property="og:type" content="website" />
 		<koken:first>
@@ -19,40 +18,94 @@
 		<meta name="twitter:card" content="gallery" />
 		<meta name="twitter:site" content="@{{ profile.twitter }}" />
 		<meta name="twitter:creator" content="@{{ profile.twitter }}" />
-		<koken:loop limit="4">
+		<koken:loop>
 		<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
 		</koken:loop>
 		</koken:not>
 	</koken:head>
+</koken:load>
+
+<!-- Load this template's source data (contents) and limit for pagination -->
+<koken:load limit="50">
 
 	<div class="lcol">
 
-		<!-- Loop over all favorited content, display info about each, link to content.lens -->
+		<!-- Loop over all public content, display info about each, link to content.lens -->
 		<koken:loop>
 
-			<h2>
-				<koken:link title="View {{ content.title | content.filename }}">
-					{{ content.title | content.filename }}
-				</koken:link>
-			</h2>
+			<!-- wrapper used for keyboard navigation targetting -->
+			<section class="item">
 
-			<koken:link title="View {{ content.title | content.filename }}">
-				<koken:img />
-			</koken:link>
+				<!-- Displayed if the asset is an image -->
+				<koken:content_image>
 
-			<!-- Display the timestamp (date published) -->
-			<!-- Link to archive.contents.lens to view all content uploaded the same month -->
-			<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
-				<!-- Publish the date it was captured -->
-				<koken:time />
-			</koken:link>
+					<!-- Display image title, fallback to file name if empty, link to content.lens -->
+					<koken:link title="View {{ content.title | content.filename }}">
+						<koken:img />
+					</koken:link>
 
-			<!-- Display the image/video caption -->
-			{{ content.caption paragraphs="true" }}
+				</koken:content_image>
 
-			<p>
-				<strong>Uploaded:</strong> {{ content.uploaded_on }}
-			</p>
+				<!-- Displayed if the asset is a video -->
+				<koken:content_video>
+
+					<!-- Load the video -->
+					<koken:video />
+
+				</koken:content_video>
+
+				<!-- Display the title with filenames as a fallback -->
+				<h2>
+					<koken:link title="View {{ content.title | content.filename }}">
+						{{ content.title | content.filename }}
+					</koken:link>
+				</h2>
+
+				<!-- Display the caption -->
+				{{ content.caption paragraphs="true" }}
+
+				<footer>
+
+					<ul class="blank">
+
+						<!-- Display the timestamp (date published) -->
+						<li>
+							<strong>Published:</strong>
+							<!-- Link to archive.contents.lens to view all content uploaded the same month -->
+							<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
+								<koken:time />
+							</koken:link>
+						</li>
+
+						<!-- Publish the asset's categories. Links to archive.contents.lens -->
+						<koken:categories>
+							<li>
+								<strong>{{ labels.category.plural }}:</strong>
+								<koken:loop separator=", ">
+									<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:categories>
+
+						<!-- Publish the asset' tags. Links to archive.contents.lens -->
+						<koken:tags>
+							<li>
+								<strong>{{ labels.tag.plural }}:</strong>
+								<koken:loop separator=" ">
+									<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ tag.title }}">
+										#{{ tag.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:tags>
+
+					</ul>
+
+				</footer>
+
+			</section>
 
 		</koken:loop>
 
@@ -79,7 +132,7 @@
 					<h5>View {{ labels.content.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
 					<koken:loop>
 						<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
-							{{ category.title }} ({{ category.counts.total }})
+						{{ category.title }} ({{ category.counts.total }})
 						</koken:link>
 						<br>
 					</koken:loop>
@@ -87,16 +140,24 @@
 			</section>
 
 			<section>
-			<!-- Links to view content by tag in archive.contents.lens -->
-			<koken:tags limit_to="content" order_by="content_count">
-				<h5>View {{ labels.content.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
-				<koken:loop>
-					<koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
+				<!-- Links to view content by tag in archive.contents.lens -->
+				<koken:tags limit_to="content" order_by="content_count">
+					<h5>View {{ labels.content.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
 						{{ tag.title }} ({{ tag.counts.total }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:tags>
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
+
+			<section>
+				<!-- Display a link to the "All uploads" RSS feed -->
+				<h5>RSS</h5>
+				<p>
+					<a href="{{ rss.contents }}" title="Subscribe to RSS">Subscribe to latest uploads</a>
+				</p>
 			</section>
 
 		</aside>
@@ -108,9 +169,12 @@
 
 		<!-- Display fallback message in Site editor only -->
 		<koken:note>
-			No favorites found. Assign some in the Library.
+			No images or videos found. Upload some to the Library.
 		</koken:note>
 
 </koken:load>
+
+<!-- Turn on keyboard scrolling (left/right arrow keys) for items -->
+<koken:keyboard_scroll element=".item" />
 
 <koken:include file="inc/footer.html" />

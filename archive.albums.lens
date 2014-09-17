@@ -43,51 +43,76 @@
 
 	<div class="lcol">
 
-		<!-- Loop over loaded archival data and execute with each pass -->
+				<!-- Loop over all albums, render each with the following -->
 		<koken:loop>
 
-			<!-- Display each album's title, link to album.lens -->
-			<h2>
-				<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
-			</h2>
+			<!-- wrapper used for keyboard navigation targetting -->
+			<section class="item">
 
-			<!-- Load the most recently assigned album cover, link to album.lens -->
-			<koken:link title="View {{ album.title }}">
-				<koken:img size="8:5" />
-			</koken:link>
+				<!-- Display each album's first album cover, link to album.lens -->
+				<koken:link title="View {{ album.title }}">
+					<koken:img />
+				</koken:link>
 
-              <!-- Display the timestamp (date published) -->
-			<!-- Link to archive.albums.lens to view all albums published the same momth -->
-			<koken:link to="archive" title="View all {{ labels.album.plural case='lower' }} published this month">
-				<koken:time />
-			</koken:link>
-
-			<!-- Display the album's summary (shorter than description) -->
-			{{ album.summary paragraphs="true" }}
-
-			<!-- Display album categories, link each to this template to change criteria -->
-			<koken:categories>
-				<p>
-					<strong>{{ labels.category.plural }}:</strong>
-					<koken:loop separator=", ">
-						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
-							{{ category.title }}
+				<!-- To display all covers, use koken:covers -->
+				<!--
+				<koken:covers>
+					<koken:loop>
+						<koken:link title="View {{ album.title }}">
+							<koken:img size="1:1" />
 						</koken:link>
 					</koken:loop>
-				</p>
-			</koken:categories>
+				</koken:covers>
+				-->
 
-			<!-- Display album tags, link each to this template to change criteria -->
-			<koken:tags>
-				<p>
-					<strong>{{ labels.tag.plural }}:</strong>
-					<koken:loop separator=" ">
-						<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
-							#{{ tag.title }}
-						</koken:link>
-					</koken:loop>
-				</p>
-			</koken:tags>
+				<!-- Display each album's title, link to album.lens -->
+				<h2><koken:link title="View {{ album.title }}">{{ album.title }}</koken:link></h2>
+
+				<!-- Display the album's summary (shorter than description) -->
+				{{ album.summary paragraphs="true" }}
+
+				<footer>
+
+					<ul class="blank">
+
+						<!-- Display the timestamp -->
+						<li>
+							<strong>Published:</strong>
+							<!-- Link to view all albums published the same month -->
+							<koken:link to="archive" title="View all albums published this month">
+								<koken:time />
+							</koken:link>
+						</li>
+
+						<!-- Display album categories, link each to archive.albums.lens -->
+						<koken:categories>
+							<li>
+								<strong>{{ labels.category.plural }}:</strong>
+								<koken:loop separator=", ">
+									<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:categories>
+
+						<!-- Display album tags, link each to archive.albums.lens -->
+						<koken:tags>
+							<li>
+								<strong>{{ labels.tag.plural }}:</strong>
+								<koken:loop separator=" ">
+									<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
+										#{{ tag.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:tags>
+
+					</ul>
+
+				</footer>
+
+			</section>
 
 		</koken:loop>
 
@@ -100,39 +125,39 @@
 
 		<aside>
 
-		<section>
-			<!-- Links to view albums by publish date in archive.albums.lens -->
-			<h5>View {{ labels.album.plural case="lower" }} by date</h5>
-			<koken:dates limit_to="albums">
-				<koken:select label="Select month" />
-			</koken:dates>
-		</section>
+			<section>
+				<!-- Links to view albums by publish date in archive.albums.lens -->
+				<h5>View {{ labels.album.plural case="lower" }} by date</h5>
+				<koken:dates limit_to="albums">
+					<koken:select label="Select month" />
+				</koken:dates>
+			</section>
 
-		<section>
-			<!-- Links to view albums by category in archive.albums.lens -->
-			<koken:categories limit_to="albums" order_by="album_count">
-				<h5>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
-				<koken:loop>
-					<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
-						{{ category.title }} ({{ category.counts.total }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:categories>
-		</section>
+			<section>
+				<!-- Links to view albums by category in archive.albums.lens -->
+				<koken:categories limit_to="albums" order_by="album_count">
+					<h5>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+							{{ category.title }} ({{ category.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:categories>
+			</section>
 
-		<section>
-			<!-- Links to view albums by tag in archive.albums.lens -->
-			<koken:tags limit_to="albums" order_by="album_count">
-				<h5>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
-				<koken:loop>
-					<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
-						{{ tag.title }} ({{ tag.counts.total }})
-					</koken:link>
-					<br>
-				</koken:loop>
-			</koken:tags>
-		</section>
+			<section>
+				<!-- Links to view albums by tag in archive.albums.lens -->
+				<koken:tags limit_to="albums" order_by="album_count">
+					<h5>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
+							{{ tag.title }} ({{ tag.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
 
 		</aside>
 
