@@ -9,6 +9,10 @@
 	<!-- Publishes Page Title from Settings > Site Publishing plus content titles -->
 	<koken:title />
 
+	<!-- Loading Bootstrap CSS just for basic styling -->
+	<koken:asset file="css/bootstrap.min.css" />
+	<koken:asset file="css/bootstrap-theme.min.css" />
+
 	<!-- loads theme's settings css from css/settings.css.lens -->
 	<koken:settings />
 
@@ -16,7 +20,7 @@
 
 <body>
 
-	<div id="container">
+	<div class="container">
 
 		<header class="main">
 
@@ -32,3 +36,5 @@
 			</nav>
 
 		</header>
+
+		<main>
