@@ -23,7 +23,9 @@
 		<koken:loop>
 
 			<!-- Display the day (eg, January 1, 2014) -->
-			<koken:time />
+			<h1>
+				<koken:time />
+			</h1>
 
 			<!-- Render each event in each day -->
 			<koken:include file="inc/events.html" />

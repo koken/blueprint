@@ -15,11 +15,11 @@
 	<div class="lcol">
 
 		<!-- Display breadcrumbs because it's an archive page -->
-		<p>
+		<nav id="bread">
 			<koken:breadcrumbs separator="/" />
-		</p>
+		</nav>
 
-		<h2>All recent content tagged #{{ tag.title }}</h2>
+		<h1>All recent content tagged #{{ tag.title }}</h1>
 
 		<!-- Loop over each tagged item -->
 		<koken:loop>

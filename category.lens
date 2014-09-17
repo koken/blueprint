@@ -15,9 +15,9 @@
 	<div class="lcol">
 
 		<!-- Display breadcrumbs because it's an archive page -->
-		<p>
+		<nav id="bread">
 			<koken:breadcrumbs separator="/" />
-		</p>
+		</nav>
 
 		<!-- Loop over each item assigned the category -->
 		<koken:loop>

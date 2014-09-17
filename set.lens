@@ -57,9 +57,9 @@
 		</koken:if>
 
 		<!-- Display the set's title -->
-		<h2>
+		<h1>
 			{{ album.title }}
-		</h2>
+		</h1>
 
 	</div>
 

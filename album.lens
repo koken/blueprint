@@ -56,14 +56,14 @@
 
 		</koken:if>
 
-		<h2>
+		<h1>
 			<!-- Display the album's title -->
 			{{ album.title }}
 			<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
 			<koken:filtered>
 				({{ filter.count }} of {{ album.counts.total }}) / <koken:link title="View {{ album.title }}">View all</koken:link>
 			</koken:filtered>
-		</h2>
+		</h1>
 
 	</div>
 

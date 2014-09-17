@@ -21,7 +21,7 @@
 
 						<header>
 
-							<h2><koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link></h2>
+							<h1><koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link></h1>
 
 							<!-- Display the timestamp (date published) -->
 							<!-- Link to archive.essays.lens to view all essays published the same momth -->
