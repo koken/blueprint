@@ -1,208 +1,210 @@
 <koken:include file="inc/header.html" />
 
-<div id="content">
+<!-- Load this template's source data (essay) -->
+<koken:load>
 
-	<!-- Load this template's source data (essay) -->
-	<koken:load>
-
-		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
-		<koken:head>
-			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{{ essay.title strip_html='true' }}" />
-			<meta property="og:description" content="{{ essay.excerpt strip_html='true' }}" />
-			<meta property="og:url" content="{{ essay.url }}" />
-			<meta property="og:type" content="website" />
+	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ essay.title strip_html='true' }}" />
+		<meta property="og:description" content="{{ essay.excerpt strip_html='true' }}" />
+		<meta property="og:url" content="{{ essay.url }}" />
+		<meta property="og:type" content="website" />
+		<koken:featured_image>
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		</koken:featured_image>
+		<meta name="medium" content="article" />
+		<koken:not empty="profile.twitter">
 			<koken:featured_image>
-			<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
-			<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
-			<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			<meta name="twitter:image" content="{{ content.presets.medium_large.url }}" />
 			</koken:featured_image>
-			<meta name="medium" content="article" />
-			<koken:not empty="profile.twitter">
-				<koken:featured_image>
-				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:site" content="@{{ profile.twitter }}" />
-				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
-				<meta name="twitter:image" content="{{ content.presets.medium_large.url }}" />
-				</koken:featured_image>
-			</koken:not>
-		</koken:head>
+		</koken:not>
+	</koken:head>
 
-		<!-- Display breadcrumb navigation -->
-		<div id="bread">
-			<koken:breadcrumbs />
-		</div>
+	<!-- Display breadcrumb navigation -->
+	<nav>
+		<koken:breadcrumbs />
+	</nav>
 
-		<div class="lcol">
+	<div class="lcol">
 
-			<article>
+		<article>
 
-				<!-- Pagination to view neighboring essays -->
-				<div id="content-pag">
+			<!-- Pagination to view neighboring essays -->
+			<div id="content-pag">
 
-					<koken:next>
-						<koken:link title="Read {{ essay.title }}" bind_to_key="left">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;
-					</koken:next>
+				<koken:next>
+					<koken:link title="Read {{ essay.title }}" bind_to_key="left">&larr; {{ essay.title }}</koken:link>&nbsp;&nbsp;
+				</koken:next>
 
-					<koken:link to="essays" bind_to_key="up">View all {{ labels.essay.plural }}</koken:link>
+				<koken:link to="essays" bind_to_key="up">View all {{ labels.essay.plural }}</koken:link>
 
-					<koken:previous>
-						&nbsp;&nbsp;<koken:link title="Read {{ essay.title }}" bind_to_key="right">{{ essay.title }} &rarr; </koken:link>
-					</koken:previous>
+				<koken:previous>
+					&nbsp;&nbsp;<koken:link title="Read {{ essay.title }}" bind_to_key="right">{{ essay.title }} &rarr; </koken:link>
+				</koken:previous>
 
-				</div>
+			</div>
 
-				<header>
+			<header>
 
-	              <h1>{{ essay.title }}</h1>
+				<h1>{{ essay.title }}</h1>
 
-                  <!-- Display the timestamp (date published) -->
-	              <p>
-	                  <!-- Link to archive.essays.lens to view all essays published the same momth -->
-	                  <koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
-	                    <koken:time />
-	                  </koken:link>
-	              </p>
+				<!-- Display the timestamp (date published) -->
+				<!-- Link to archive.essays.lens to view all essays published the same momth -->
+				<koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
+					<koken:time />
+				</koken:link>
 
-	            </header>
+			</header>
 
-				<!-- Display body of the essay -->
-				{{ essay.content }}
+			<!-- Display body of the essay -->
+			{{ essay.content }}
 
-				<footer>
+			<footer>
 
-					<!-- Display image and info about album assigned as essay topic -->
-					<koken:topics>
-						<h3>Related content</h3>
-						<koken:loop>
-							<p>
-								<koken:link title="View {{ album.title }}">
-									<koken:img preset="small" />
-								</koken:link>
-								<br>
-								<koken:link title="View {{ album.title }}">
-									{{ album.title }}
-								</koken:link>
-								({{ album.counts.total }} images)
-							</p>
-						</koken:loop>
-					</koken:topics>
-
-					<!-- Publishes the link for this essay -->
-					<p>
-						<koken:link title="{{ essay.title }}">Permalink</koken:link>
-					</p>
-
-					<!-- Publish the essay's categories. Links to archive.essays.lens -->
-					<koken:categories>
-					<p>
-					     <strong>Category:</strong>
-					     <koken:loop separator=", ">
-					          <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
-					               {{ category.title }}
-					          </koken:link>
-					     </koken:loop>
-					</p>
-					</koken:categories>
-
-					<!-- Publish the essays' tags. Links to archive.essays.lens -->
-					<koken:tags>
+				<!-- Display image and info about album assigned as essay topic -->
+				<koken:topics>
+					<h5>Related content</h5>
+					<koken:loop>
 						<p>
-						     <strong>Tags:</strong>
-						     <koken:loop separator=", ">
-						          <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
-						               {{ tag.title }}
-						          </koken:link>
-						     </koken:loop>
+							<koken:link title="View {{ album.title }}">
+								<koken:img preset="small" />
+							</koken:link>
+							<br>
+							<koken:link title="View {{ album.title }}">
+								{{ album.title }}
+							</koken:link>
+							({{ album.counts.total }} images)
 						</p>
-					</koken:tags>
+					</koken:loop>
+				</koken:topics>
 
-					<!-- Display share links -->
-					<p>
-						<strong>Share:</strong>
-						<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
-						<a href="https://www.facebook.com/sharer.php?u={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Facebook" target="_blank">Facebook</a>
-						 <a href="http://www.tumblr.com/share/photo?source={{ essay.featured_image.presets.medium_large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ essay.url url_encode="true" }}&quot; title=&quot;{{ essay.title url_encode="true" }}&quot;%3E{{ essay.title url_encode="true" }}%3C/a%3E%3C%2Fstrong%3E%3C%2Fp%3E%3Cp%3E{{ essay.excerpt url_encode="true" }}%3C%2Fp%3E&click_thru={{ essay.url url_encode="true" }}" class="share-tumblr" title="Share {{ essay.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
-						<a href="https://plus.google.com/share?url={{ essay.url url_encode="true" }}" title="Share {{ essay.url url_encode="true" }} on Google+" target="_blank">Google+</a>
-					</p>
+				<!-- Publishes the link for this essay -->
+				<p>
+					<koken:link title="{{ essay.title }}">Permalink</koken:link>
+				</p>
 
-				</footer>
-
-
-				<!-- Display discussions or other data if enabled via a plugin (eg, our Disqus plugin) -->
-				<koken:discussion>
-
-					<h3>Comments</h3>
-
-					{{ discussion }}
-
-				</koken:discussion>
-
-			</article>
-
-		</div> <!-- close .lcol -->
-
-		<div class="rcol">
-
-			<aside>
-
-				<!-- Display links to other essays in this category -->
+				<!-- Publish the essay's categories. Links to archive.essays.lens -->
 				<koken:categories>
-				    <koken:loop>
-				        <h3>Other {{ labels.essay.plural case="lower" }} in {{ category.title }}</h3>
-				        <koken:load source="essays" filter:category="{{ category.id }}">
-				            <koken:loop>
-			                    <koken:link title="Read {{ essay.title }}">
-			                        {{ essay.title }}
-			                    </koken:link>
-			                    <br>
-				            </koken:loop>
-				        </koken:load>
-				    </koken:loop>
+					<p>
+						<strong>Category:</strong>
+						<koken:loop separator=", ">
+							<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
+								{{ category.title }}
+							</koken:link>
+						</koken:loop>
+					</p>
 				</koken:categories>
 
+				<!-- Publish the essays' tags. Links to archive.essays.lens -->
+				<koken:tags>
+					<p>
+						<strong>Tags:</strong>
+							<koken:loop separator=", ">
+							<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
+								{{ tag.title }}
+							</koken:link>
+						</koken:loop>
+					</p>
+				</koken:tags>
+
+				<!-- Display share links -->
+				<p>
+					<strong>Share:</strong>
+					<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ essay.title url_encode="true" }}&url={{ essay.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ essay.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
+					<a href="https://www.facebook.com/sharer.php?u={{ essay.url url_encode="true" }}" title="Share {{ essay.title url_encode="true" }} on Facebook" target="_blank">Facebook</a>
+					 <a href="http://www.tumblr.com/share/photo?source={{ essay.featured_image.presets.medium_large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ essay.url url_encode="true" }}&quot; title=&quot;{{ essay.title url_encode="true" }}&quot;%3E{{ essay.title url_encode="true" }}%3C/a%3E%3C%2Fstrong%3E%3C%2Fp%3E%3Cp%3E{{ essay.excerpt url_encode="true" }}%3C%2Fp%3E&click_thru={{ essay.url url_encode="true" }}" class="share-tumblr" title="Share {{ essay.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
+					<a href="https://plus.google.com/share?url={{ essay.url url_encode="true" }}" title="Share {{ essay.url url_encode="true" }} on Google+" target="_blank">Google+</a>
+				</p>
+
+			</footer>
+
+
+			<!-- Display discussions or other data if enabled via a plugin (eg, our Disqus plugin) -->
+			<koken:discussion>
+
+				<h5>Comments</h5>
+
+				{{ discussion }}
+
+			</koken:discussion>
+
+		</article>
+
+	</div> <!-- close .lcol -->
+
+	<div class="rcol">
+
+		<aside>
+
+			<section>
+				<!-- Display links to other essays in this category -->
+				<koken:categories>
+					<koken:loop>
+					<h5>Other {{ labels.essay.plural case="lower" }} in {{ category.title }}</h5>
+					<koken:load source="essays" filter:category="{{ category.id }}">
+						<koken:loop>
+							<koken:link title="Read {{ essay.title }}">
+								{{ essay.title }}
+							</koken:link>
+							<br>
+						</koken:loop>
+					</koken:load>
+					</koken:loop>
+				</koken:categories>
+			</section>
+
+			<section>
 				<!-- Links to view essays by publish date in archive.essays.lens -->
-               <h3>View {{ labels.essay.plural case="lower" }} by date</h3>
-                <koken:dates limit_to="essays">
-                  <koken:select label="Select month" />
-                </koken:dates>
+				<h5>View {{ labels.essay.plural case="lower" }} by date</h5>
+				<koken:dates limit_to="essays">
+					<koken:select label="Select month" />
+				</koken:dates>
+			</section>
 
-               <!-- Links to view essays by category in archive.essays.lens -->
-                <koken:categories limit_to="essays" order_by="essay_count">
-                  <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
-                  <koken:loop>
-                    <koken:link title="title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}"">
-                    {{ category.title }} ({{ category.counts.total }})
-                    </koken:link>
-                    <br>
-                  </koken:loop>
-                </koken:categories>
+			<section>
+				<!-- Links to view essays by category in archive.essays.lens -->
+				<koken:categories limit_to="essays" order_by="essay_count">
+					<h5>View {{ labels.essay.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}"">
+							{{ category.title }} ({{ category.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:categories>
+			</section>
 
-                <!-- Links to view essays by tag in archive.essays.lens -->
-                 <koken:tags limit_to="essays" order_by="essay_count">
-                 <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
-                 <koken:loop>
-                    <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
-                         {{ tag.title }} ({{ tag.counts.total }})
-                    </koken:link>
-                    <br>
-                 </koken:loop>
-               </koken:tags>
+			<section>
+				<!-- Links to view essays by tag in archive.essays.lens -->
+				<koken:tags limit_to="essays" order_by="essay_count">
+					<h5>View {{ labels.essay.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
+							{{ tag.title }} ({{ tag.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
 
-			</aside>
+		</aside>
 
-		</div> <!-- close .rcol -->
+	</div> <!-- close .rcol -->
 
-		<!-- Fallback content if no data was loaded by koken:load -->
-		<koken:else>
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
 
-			<!-- Display fallback message in Site editor only -->
-			<koken:note>
-				No essay found. Create one in Text.
-			</koken:note>
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No essay found. Create one in Text.
+		</koken:note>
 
-	</koken:load>
-
-</div> <!-- close #content -->
+</koken:load>
 
 <koken:include file="inc/footer.html" />

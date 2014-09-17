@@ -1,175 +1,179 @@
 <koken:include file="inc/header.html" />
 
-<div id="content">
+<!-- Load this template's source data (set) and limit for pagination -->
+<koken:load limit="20">
 
-	<!-- Load this template's source data (set) and limit for pagination -->
-	<koken:load limit="20">
+	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ album.title strip_html="true" }}" />
+		<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ album.url }}" />
+		<koken:covers><koken:shift>
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		</koken:shift></koken:covers>
+		<koken:not empty="profile.twitter">
+			<meta name="twitter:card" content="gallery" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			<koken:covers minimum="4" limit="4">
+				<koken:loop>
+					<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
+				</koken:loop>
+			</koken:covers>
+		</koken:not>
+	</koken:head>
 
-		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
-		<koken:head>
-			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{{ album.title strip_html="true" }}" />
-			<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
-			<meta property="og:type" content="website" />
-			<meta property="og:url" content="{{ album.url }}" />
-			<koken:covers><koken:shift>
-			<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
-			<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
-			<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
-			</koken:shift></koken:covers>
-			<koken:not empty="profile.twitter">
-				<meta name="twitter:card" content="gallery" />
-				<meta name="twitter:site" content="@{{ profile.twitter }}" />
-				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
-				<koken:covers minimum="4" limit="4">
-					<koken:loop>
-						<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
-					</koken:loop>
-				</koken:covers>
-			</koken:not>
-		</koken:head>
+	<!-- Display breadcrumb navigation -->
+	<div id="bread">
+		<koken:breadcrumbs />
+	</div>
 
-		<!-- Display breadcrumb navigation -->
-		<div id="bread">
-			<koken:breadcrumbs />
-		</div>
+	<div class="lcol nofloat">
 
-		<div class="lcol nofloat">
+		<!-- Displays links to neighbor albums plus link back to albums index -->
+		<!-- Only show if the album is public, not unlisted -->
+		<koken:if true="album.public">
 
-			<!-- Displays links to neighbor albums plus link back to albums index -->
-			<!-- Only show if the album is public, not unlisted -->
-			<koken:if true="album.public">
+			<div id="content-pag">
 
-				<div id="content-pag">
+				<koken:previous>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+				</koken:previous>
 
-					<koken:previous>
-						<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
-					</koken:previous>
+				&nbsp;
+				<koken:link to="albums" title="View all {{ labels.album.plural case='lower' }}">View all</koken:link>
+				&nbsp;
 
-					&nbsp;
-					<koken:link to="albums" title="View all {{ labels.album.plural case='lower' }}">View all</koken:link>
-					&nbsp;
+				<koken:next>
+					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+				</koken:next>
 
-					<koken:next>
-						<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
-					</koken:next>
+			</div>
 
-				</div>
+		</koken:if>
 
-			</koken:if>
+		<!-- Display the set's title -->
+		<h2>
+			{{ album.title }}
+		</h2>
 
-			<!-- Display the set's title -->
-			<h2>
-				{{ album.title }}
-			</h2>
+	</div>
 
-		</div>
+	<!-- Display the set's description -->
+	{{ album.description paragraphs="true" }}
 
-		<!-- Display the set's description -->
-		{{ album.description paragraphs="true" }}
+	<div class="lcol">
 
-		<div class="lcol">
+		<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
+		<koken:loop>
 
-			<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.detail.lens -->
-			<koken:loop>
+			<h3>
+				<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
+			</h3>
 
-				<h3>
-					<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
-				</h3>
+			<koken:link title="View {{ album.title }}">
+				<koken:img size="8:5" />
+			</koken:link>
 
-				<koken:link title="View {{ album.title }}">
-					<koken:img size="8:5" />
-				</koken:link>
+			<p>{{ album.summary }}</p>
 
-				<p>{{ album.summary }}</p>
-
-				<!-- Display the set's categories -->
-				<koken:categories>
-					<p>
-						<strong>Categories:</strong>
-						<koken:loop separator=", ">
-							<!-- Link each to archive.albums.lens -->
-							<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
-								{{ category.title }}
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:categories>
-
-				<!-- Display the set's tags -->
-				<koken:tags>
-					<p>
-						<strong>Tags:</strong>
-						<koken:loop separator=", ">
-							<!-- Link each to archive.albums.lens -->
-							<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
-								{{ title }}
-							</koken:link>
-						</koken:loop>
-					</p>
-				</koken:tags>
-
-			</koken:loop>
-
-			<!-- Display pagination links -->
-			<p>
-				<koken:include file="inc/pagination.html" />
-			</p>
-
-		</div> <!-- close .lcol -->
-
-		<div class="rcol">
-
-			<!-- If album is part of a set, display link to it -->
-			<koken:parent>
+			<!-- Display the set's categories -->
+			<koken:categories>
 				<p>
-					<h3>From the set</h3>
+					<strong>Categories:</strong>
+					<koken:loop separator=", ">
+						<!-- Link each to archive.albums.lens -->
+						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+							{{ category.title }}
+						</koken:link>
+					</koken:loop>
+				</p>
+			</koken:categories>
+
+			<!-- Display the set's tags -->
+			<koken:tags>
+				<p>
+					<strong>Tags:</strong>
+					<koken:loop separator=", ">
+						<!-- Link each to archive.albums.lens -->
+						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
+							{{ title }}
+						</koken:link>
+					</koken:loop>
+				</p>
+			</koken:tags>
+
+		</koken:loop>
+
+		<!-- Display pagination links -->
+		<koken:include file="inc/pagination.html" />
+
+	</div> <!-- close .lcol -->
+
+	<div class="rcol">
+
+		<aside>
+
+			<section>
+				<!-- If album is part of a set, display link to it -->
+				<koken:parent>
+					<h5>From the {{ labels.set.singular }}</h5>
 					<koken:link title="View {{ album.title }}">
 						{{ album.title }}
 					</koken:link>
-				</p>
-			</koken:parent>
+				</koken:parent>
+			</section>
 
-            <!-- Links to view albums by publish date in archive.albums.lens -->
-           <h3>View {{ labels.album.plural case="lower" }} by date</h3>
-            <koken:dates limit_to="albums">
-              <koken:select label="Select month" />
-            </koken:dates>
+			<section>
+				<!-- Links to view albums by publish date in archive.albums.lens -->
+				<h5>View {{ labels.album.plural case="lower" }} by date</h5>
+				<koken:dates limit_to="albums">
+					<koken:select label="Select month" />
+				</koken:dates>
+			</section>
 
-           <!-- Links to view albums by category in archive.albums.lens -->
-            <koken:categories limit_to="albums" order_by="album_count">
-              <h3>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
-              <koken:loop>
-				<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
-                {{ category.title }} ({{ category.counts.total }})
-                </koken:link>
-                <br>
-              </koken:loop>
-            </koken:categories>
+			<section>
+				<!-- Links to view albums by category in archive.albums.lens -->
+				<koken:categories limit_to="albums" order_by="album_count">
+				<h5>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
+				<koken:loop>
+					<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+						{{ category.title }} ({{ category.counts.total }})
+					</koken:link>
+					<br>
+				</koken:loop>
+				</koken:categories>
+			</section>
 
-            <!-- Links to view albums by tag in archive.albums.lens -->
-             <koken:tags limit_to="albums" order_by="album_count">
-             <h3>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
-             <koken:loop>
-				<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
-                 {{ tag.title }} ({{ tag.counts.total }})
-                </koken:link>
-                <br>
-             </koken:loop>
-           </koken:tags>
+			<section>
+				<!-- Links to view albums by tag in archive.albums.lens -->
+				<koken:tags limit_to="albums" order_by="album_count">
+					<h5>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
+							{{ tag.title }} ({{ tag.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
 
-		</div> <!-- close .rcol -->
+    </aside>
 
-		<!-- Fallback content if no data was loaded by koken:load -->
-		<koken:else>
+	</div> <!-- close .rcol -->
 
-			<!-- Display fallback message in Site editor only -->
-			<koken:note>
-				No set found. Create one in the Library.
-			</koken:note>
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
 
-	</koken:load>
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No set found. Create one in the Library.
+		</koken:note>
 
-</div> <!-- close #content -->
+</koken:load>
 
 <koken:include file="inc/footer.html" />

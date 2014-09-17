@@ -1,149 +1,153 @@
 <koken:include file="inc/header.html" />
 
-<div id="content">
+<!-- Load this template's source data (essays) and limit for pagination -->
+<koken:load limit="20">
 
-     <!-- Load this template's source data (essays) and limit for pagination -->
-     <koken:load limit="20">
+	<!-- Add Facebook Open Graph tags for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:description" content="{{ site.description strip_html='true' }}" />
+		<meta property="og:title" content="{{ labels.essay.plural }}" />
+		<meta property="og:type" content="blog" />
+		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
+	</koken:head>
 
-          <!-- Add Facebook Open Graph tags for nicer sharing -->
-          <koken:head>
-            <meta property="og:site_name" content="{{ site.title }}" />
-            <meta property="og:description" content="{{ site.description strip_html='true' }}" />
-            <meta property="og:title" content="{{ labels.essay.plural }}" />
-            <meta property="og:type" content="blog" />
-            <meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
-          </koken:head>
+	<div class="lcol">
 
-          <div class="lcol">
+		<!-- Loop over and display each essay -->
+		<koken:loop>
 
-                <!-- Loop over and display each essay -->
-                <koken:loop>
+				<article>
 
-                    <article>
+						<header>
 
-                        <header>
+							<h2><koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link></h2>
 
-                          <h2><koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link></h2>
+							<!-- Display the timestamp (date published) -->
+							<!-- Link to archive.essays.lens to view all essays published the same momth -->
+							<koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
+								<koken:time />
+							</koken:link>
 
-                          <!-- Display the timestamp (date published) -->
-                          <p>
-                              <!-- Link to archive.essays.lens to view all essays published the same momth -->
-                              <koken:link to="archive" title="View all {{ labels.essay.plural case='lower' }} from this month">
-                                <koken:time />
-                              </koken:link>
-                          </p>
+						</header>
 
-                        </header>
+						<!-- Display body of the essay -->
+						{{ essay.content }}
 
-                        <!-- Display body of the essay -->
-                        {{ essay.content }}
+						<!-- Display link to the rest of the essay if a read more break link is inserted -->
+						<koken:more>
+							<koken:link title="{{ essay.title }}">{{ essay.read_more_label }}</koken:link>
+						</koken:more>
 
-                        <!-- Display link to the rest of the essay if a read more break link is inserted -->
-                        <koken:more>
-                          <koken:link title="{{ essay.title }}">{{ essay.read_more_label }}</koken:link>
-                        </koken:more>
+						<footer>
 
-                        <footer>
+							 <!-- Link to any albums assigned as the essay's topic -->
+								<koken:topics>
+									<p>
+											 <strong>Topics:</strong>
+											 <koken:loop separator=", ">
+														<koken:link title="View {{ album.title }}">
+																 {{ album.title }}
+														</koken:link>
+											 </koken:loop>
+									</p>
+								</koken:topics>
 
-                           <!-- Link to any albums assigned as the essay's topic -->
-                            <koken:topics>
-                              <p>
-                                   <strong>Topics:</strong>
-                                   <koken:loop separator=", ">
-                                        <koken:link title="View {{ album.title }}">
-                                             {{ album.title }}
-                                        </koken:link>
-                                   </koken:loop>
-                              </p>
-                            </koken:topics>
+								<!-- Publish the essay's categories. Links to archive.essays.lens -->
+								<koken:categories>
+								<p>
+										 <strong>{{ labels.category.plural }}:</strong>
+										 <koken:loop separator=", ">
+													<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
+															 {{ category.title }}
+													</koken:link>
+										 </koken:loop>
+								</p>
+								</koken:categories>
 
-                            <!-- Publish the essay's categories. Links to archive.essays.lens -->
-                            <koken:categories>
-                            <p>
-                                 <strong>{{ labels.category.plural }}:</strong>
-                                 <koken:loop separator=", ">
-                                      <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
-                                           {{ category.title }}
-                                      </koken:link>
-                                 </koken:loop>
-                            </p>
-                            </koken:categories>
+								<!-- Publish the essays' tags. Links to archive.essays.lens -->
+								<koken:tags>
+									<p>
+											 <strong>{{ labels.tag.plural }}:</strong>
+											 <koken:loop separator=" ">
+													<koken:link title="View all {{ labels.essay.plural case='lower' }} in #{{ tag.title }}">
+																 #{{ tag.title }}
+														</koken:link>
+											 </koken:loop>
+									</p>
+								</koken:tags>
 
-                            <!-- Publish the essays' tags. Links to archive.essays.lens -->
-                            <koken:tags>
-                              <p>
-                                   <strong>{{ labels.tag.plural }}:</strong>
-                                   <koken:loop separator=" ">
-                                      <koken:link title="View all {{ labels.essay.plural case='lower' }} in #{{ tag.title }}">
-                                             #{{ tag.title }}
-                                        </koken:link>
-                                   </koken:loop>
-                              </p>
-                            </koken:tags>
+						</footer>
 
-                        </footer>
+				</article>
 
-                    </article>
+	 	</koken:loop>
 
-               </koken:loop>
+	 	<br>
 
-               <br>
+		<!-- Display pagination links -->
+		<koken:include file="inc/pagination.html" />
 
-                <!-- Display pagination links -->
-                <p>
-                    <koken:include file="inc/pagination.html" />
-                </p>
+	</div> <!-- close .lcol -->
 
-          </div> <!-- close .lcol -->
+	<div class="rcol">
 
-          <div class="rcol">
+		<aside>
 
-               <!-- Links to view essays by publish date in archive.essays.lens -->
-               <h3>View {{ labels.essay.plural case="lower" }} by date</h3>
-                <koken:dates limit_to="essays">
-                  <koken:select label="Select month" />
-                </koken:dates>
+			<section>
+				<!-- Links to view essays by publish date in archive.essays.lens -->
+				<h6>View {{ labels.essay.plural case="lower" }} by date</h6>
+				<koken:dates limit_to="essays">
+				 <koken:select label="Select month" />
+				</koken:dates>
+			</section>
 
-               <!-- Links to view essays by category in archive.essays.lens -->
-                <koken:categories limit_to="essays" order_by="essay_count">
-                  <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
-                  <koken:loop>
-                    <koken:link title="title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}"">
-                    {{ category.title }} ({{ category.counts.total }})
-                    </koken:link>
-                    <br>
-                  </koken:loop>
-                </koken:categories>
+			<section>
+				<!-- Links to view essays by category in archive.essays.lens -->
+				<koken:categories limit_to="essays" order_by="essay_count">
+					<h6>View {{ labels.essay.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h6>
+					<koken:loop>
+						<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ category.title }}">
+							{{ category.title }} ({{ category.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:categories>
+			</section>
 
-                <!-- Links to view essays by tag in archive.essays.lens -->
-                 <koken:tags limit_to="essays" order_by="essay_count">
-                 <h3>View {{ labels.essay.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
-                 <koken:loop>
-                    <koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
-                         {{ tag.title }} ({{ tag.counts.total }})
-                    </koken:link>
-                    <br>
-                 </koken:loop>
-               </koken:tags>
+			<section>
+				<!-- Links to view essays by tag in archive.essays.lens -->
+				<koken:tags limit_to="essays" order_by="essay_count">
+					<h6>View {{ labels.essay.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h6>
+					<koken:loop>
+						<koken:link title="View all {{ labels.essay.plural case='lower' }} in {{ tag.title }}">
+							{{ tag.title }} ({{ tag.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
 
-               <!-- Display a link to the "Essays" RSS feed -->
-              <h3>RSS</h3>
-              <p>
-                <a href="{{ rss.essays }}" title="Subscribe to RSS">Subscribe to latest essays</a>
-              </p>
+			<section>
+				<!-- Display a link to the "Essays" RSS feed -->
+				<h6>RSS</h6>
+				<p>
+					<a href="{{ rss.essays }}" title="Subscribe to RSS">Subscribe to latest essays</a>
+				</p>
+			</section>
 
-          </div> <!-- close .rcol -->
+		</aside>
 
-          <!-- Fallback content if no data was loaded by koken:load -->
-          <koken:else>
+	</div> <!-- close .rcol -->
 
-              <!-- Display fallback message in Site editor only -->
-              <koken:note>
-                No essays found. Create some in Text.
-              </koken:note>
+<!-- Fallback content if no data was loaded by koken:load -->
+<koken:else>
 
-     </koken:load>
+	<!-- Display fallback message in Site editor only -->
+	<koken:note>
+		No essays found. Create some in Text.
+	</koken:note>
 
-</div> <!-- close #content -->
+</koken:load>
 
 <koken:include file="inc/footer.html" />

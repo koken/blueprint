@@ -27,13 +27,11 @@
 		</h3>
 
 		<!-- Display timestamp -->
-		<p>
-			<!-- Link to view all timeline events in this month -->
-			<koken:link to="date" title="View everything from this month">
-				<!-- Display timestamp -->
-				<koken:time />
-			</koken:link>
-		</p>
+		<!-- Link to view all timeline events in this month -->
+		<koken:link to="date" title="View everything from this month">
+			<!-- Display timestamp -->
+			<koken:time />
+		</koken:link>
 
 		<!-- Display album title and summary (or description as fallback) -->
 		{{ album.summary | album.description paragraphs="true" }}

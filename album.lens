@@ -1,202 +1,194 @@
 <koken:include file="inc/header.html" />
 
-<div id="content">
+<!-- Load this template's source data (album) and limit for pagination -->
+<koken:load limit="50">
 
-	<!-- Load this template's source data (album) and limit for pagination -->
-	<koken:load limit="50">
-
-		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
-		<koken:head>
-			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{{ album.title strip_html="true" }}" />
-			<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
-			<meta property="og:type" content="website" />
-			<meta property="og:url" content="{{ album.url }}" />
-			<koken:covers><koken:shift>
-			<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
-			<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
-			<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
-			</koken:shift></koken:covers>
-			<koken:not empty="profile.twitter">
-				<meta name="twitter:card" content="gallery" />
-				<meta name="twitter:site" content="@{{ profile.twitter }}" />
-				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
-				<koken:covers minimum="4" limit="4">
-					<koken:loop>
-						<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
-					</koken:loop>
-				</koken:covers>
-			</koken:not>
-		</koken:head>
-
-		<!-- Display breadcrumb navigation -->
-		<div id="bread">
-			<koken:breadcrumbs />
-		</div>
-
-		<div>
-
-			<!-- Displays links to neighbor albums plus link back to albums index -->
-			<!-- Only show if the album is public, not unlisted -->
-			<koken:if true="album.public">
-
-				<div id="content-pag">
-
-					<koken:previous>
-						<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
-					</koken:previous>
-
-					&nbsp;
-					<koken:link to="albums">View all {{ labels.album.plural case="lower" }}</koken:link>
-					&nbsp;
-
-					<koken:next>
-						<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
-					</koken:next>
-
-				</div>
-
-			</koken:if>
-
-			<h2>
-				<!-- Display the album's title -->
-				{{ album.title }}
-				<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
-				<koken:filtered>
-					({{ filter.count }} of {{ album.counts.total }}) / <koken:link title="View {{ album.title }}">View all</koken:link>
-				</koken:filtered>
-			</h2>
-
-		</div>
-
-		<p>
-			<strong>Published:</strong>
-			<!-- Link to archive.albums.lens to view all albums published the same momth -->
-			<koken:link to="archive">
-				<!-- Display the date it was published -->
-				<koken:time />
-			</koken:link>
-		</p>
-
-		<!-- Display the album's description -->
-		{{ album.description paragraphs="true" }}
-
-		<!-- Display link to the full screen lightbox viewer -->
-		<koken:link lightbox="true" class="button" bind_to_key="l" title="View in lightbox">View in lightbox</koken:link>
-
-		<!-- Display essays/pages written about this album -->
-		<koken:topics>
-			<p>
-				<strong>Related content:</strong>
-				<koken:loop separator=", ">
-					<koken:link title="Read {{ title }}">
-						{{ title }}
-					</koken:link>
+	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ album.title strip_html="true" }}" />
+		<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ album.url }}" />
+		<koken:covers><koken:shift>
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		</koken:shift></koken:covers>
+		<koken:not empty="profile.twitter">
+			<meta name="twitter:card" content="gallery" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			<koken:covers minimum="4" limit="4">
+				<koken:loop>
+					<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
 				</koken:loop>
-			</p>
-		</koken:topics>
+			</koken:covers>
+		</koken:not>
+	</koken:head>
 
-		<!-- Display the album's categories -->
-		<koken:categories>
-			<p>
-				<strong>Categories:</strong>
-				<koken:loop separator=", ">
-					<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
-						{{ category.title }}
-					</koken:link>
-				</koken:loop>
-			</p>
-		</koken:categories>
+	<!-- Display breadcrumb navigation -->
+	<nav>
+		<koken:breadcrumbs />
+	</nav>
 
-		<!-- Display the album's tags -->
-		<koken:tags>
-			<p>
-				<strong>Tags:</strong>
-				<koken:loop separator=" ">
-					<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
-						#{{ tag.title }}
-					</koken:link>
-				</koken:loop>
-			</p>
-		</koken:tags>
+	<div>
 
-		<!-- If album is part of a set, display link to it -->
-		<koken:parent>
-			<p>
-				<strong>From the set:</strong> <koken:link title="View {{ album.title }}">
-				{{ album.title }}</koken:link>
-				&nbsp;&nbsp;
-				<!-- Display links to other albums part of the same set -->
-				<strong>Other albums in this set:</strong>
-				<koken:loop separator=",">
-					<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
-				</koken:loop>
-			</p>
-		</koken:parent>
-
-		<!-- Display social share links if album has public visibility -->
+		<!-- Displays links to neighbor albums plus link back to albums index -->
+		<!-- Only show if the album is public, not unlisted -->
 		<koken:if true="album.public">
-			<p>
-				<strong>Share:</strong>
-				<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ album.title url_encode="true" }}&url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ album.title url_encode="true" }}&url={{ album.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ album.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
-				<a href="https://www.facebook.com/sharer.php?u={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Facebook" target="_blank" >Facebook</a>
-				<a href="http://pinterest.com/pin/create/button/?url={{ album.url url_encode="true" }}&media={{ album.covers.first.presets.large.url url_encode="true" }}&description={{ album.title url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Pinterest">Pinterest</a>
-				<a href="http://www.tumblr.com/share/photo?source={{ album.covers.first.presets.large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ album.url url_encode="true" }}&quot; title=&quot;{{ album.title }}&quot;%3E{{ album.title }}%3C/a%3E%3C/strong%3E%3C/p%3E%3Cp%3E{{ album.description url_encode="true" }}%3C/p%3E&click_thru={{ album.url url_encode="true" }}" class="share-tumblr" title="Share {{ album.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
-				<a href="https://plus.google.com/share?url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Google+" target="_blank">Google+</a>
-				&nbsp;&nbsp;
-				<!-- Display a link to this album's RSS feed -->
-				<strong>RSS:</strong> <a href="{{ album.rss }}">Subscribe to this album</a>
-			</p>
-		</koken:if>
 
-		<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.lens -->
-		<koken:loop>
+			<div id="content-pag">
 
-			<!-- wrapper used for keyboard navigation targetting -->
-			<div class="item">
+				<koken:previous>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+				</koken:previous>
 
-				<!-- Displayed if the asset is an image -->
-				<koken:content_image>
-					<koken:link title="View {{ content.title | content.filename }}">
-						<koken:img />
-					</koken:link>
-				</koken:content_image>
-				<!-- Displayed if the asset is a video -->
-				<koken:content_video>
-					<koken:video />
-				</koken:content_video>
+				&nbsp;
+				<koken:link to="albums">View all {{ labels.album.plural case="lower" }}</koken:link>
+				&nbsp;
 
-				<h3><koken:link title="View {{ content.title | content.filename }}">{{ content.title | content.filename }}</koken:link></h3>
-
-				{{ content.caption paragraphs="true" }}
+				<koken:next>
+					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+				</koken:next>
 
 			</div>
 
-		</koken:loop>
+		</koken:if>
 
-		<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
-		<koken:filtered>
-			<p>
-				{{ filter.count }} of {{ album.counts.total }} / <koken:link title="View {{ album.title }}">View all</koken:link>
-			</p>
-		</koken:filtered>
+		<h2>
+			<!-- Display the album's title -->
+			{{ album.title }}
+			<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
+			<koken:filtered>
+				({{ filter.count }} of {{ album.counts.total }}) / <koken:link title="View {{ album.title }}">View all</koken:link>
+			</koken:filtered>
+		</h2>
 
-		<!-- Display pagination links -->
+	</div>
+
+	<strong>Published:</strong>
+	<!-- Link to archive.albums.lens to view all albums published the same momth -->
+	<koken:link to="archive">
+		<!-- Display the date it was published -->
+		<koken:time />
+	</koken:link>
+
+	<!-- Display the album's description -->
+	{{ album.description paragraphs="true" }}
+
+	<!-- Display link to the full screen lightbox viewer -->
+	<koken:link lightbox="true" class="button" bind_to_key="l" title="View in lightbox">View in lightbox</koken:link>
+
+	<!-- Display essays/pages written about this album -->
+	<koken:topics>
 		<p>
-			<koken:include file="inc/pagination.html" />
+			<strong>Related content:</strong>
+			<koken:loop separator=", ">
+				<koken:link title="Read {{ title }}">
+					{{ title }}
+				</koken:link>
+			</koken:loop>
 		</p>
+	</koken:topics>
 
-		<!-- Fallback content if no data was loaded by koken:load -->
-		<koken:else>
+	<!-- Display the album's categories -->
+	<koken:categories>
+		<p>
+			<strong>Categories:</strong>
+			<koken:loop separator=", ">
+				<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+					{{ category.title }}
+				</koken:link>
+			</koken:loop>
+		</p>
+	</koken:categories>
 
-			<!-- Display fallback message in Site editor only -->
-			<koken:note>
-				No album loaded
-			</koken:note>
+	<!-- Display the album's tags -->
+	<koken:tags>
+		<p>
+			<strong>Tags:</strong>
+			<koken:loop separator=" ">
+				<koken:link title="View all {{ labels.album.plural case='lower' }} in #{{ tag.title }}">
+					#{{ tag.title }}
+				</koken:link>
+			</koken:loop>
+		</p>
+	</koken:tags>
 
-	</koken:load>
+	<!-- If album is part of a set, display link to it -->
+	<koken:parent>
+		<p>
+			<strong>From the set:</strong> <koken:link title="View {{ album.title }}">
+			{{ album.title }}</koken:link>
+			&nbsp;&nbsp;
+			<!-- Display links to other albums part of the same set -->
+			<strong>Other albums in this set:</strong>
+			<koken:loop separator=",">
+				<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
+			</koken:loop>
+		</p>
+	</koken:parent>
 
-</div> <!-- close #content -->
+	<!-- Display social share links if album has public visibility -->
+	<koken:if true="album.public">
+		<p>
+			<strong>Share:</strong>
+			<koken:if empty="profile.twitter"><a href="https://twitter.com/intent/tweet?text={{ album.title url_encode="true" }}&url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Twitter" target="_blank"><koken:else><a href="https://twitter.com/intent/tweet?text={{ album.title url_encode="true" }}&url={{ album.url url_encode="true" }}&via={{ profile.twitter }}" title="Share {{ album.title url_encode="true" }} on Twitter" target="_blank"></koken:if>Twitter</a>
+			<a href="https://www.facebook.com/sharer.php?u={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Facebook" target="_blank" >Facebook</a>
+			<a href="http://pinterest.com/pin/create/button/?url={{ album.url url_encode="true" }}&media={{ album.covers.first.presets.large.url url_encode="true" }}&description={{ album.title url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Pinterest">Pinterest</a>
+			<a href="http://www.tumblr.com/share/photo?source={{ album.covers.first.presets.large.url url_encode="true" }}&caption=%3Cp%3E%3Cstrong%3E%3Ca href=&quot;{{ album.url url_encode="true" }}&quot; title=&quot;{{ album.title }}&quot;%3E{{ album.title }}%3C/a%3E%3C/strong%3E%3C/p%3E%3Cp%3E{{ album.description url_encode="true" }}%3C/p%3E&click_thru={{ album.url url_encode="true" }}" class="share-tumblr" title="Share {{ album.title url_encode="true" }} on Tumblr" target="_blank">Tumblr</a>
+			<a href="https://plus.google.com/share?url={{ album.url url_encode="true" }}" title="Share {{ album.title url_encode="true" }} on Google+" target="_blank">Google+</a>
+			&nbsp;&nbsp;
+			<!-- Display a link to this album's RSS feed -->
+			<strong>RSS:</strong> <a href="{{ album.rss }}">Subscribe to this album</a>
+		</p>
+	</koken:if>
+
+	<!-- Loop over all the items the album contains. Dislay photo, title and caption and link each to content.lens -->
+	<koken:loop>
+
+		<!-- wrapper used for keyboard navigation targetting -->
+		<div class="item">
+
+			<!-- Displayed if the asset is an image -->
+			<koken:content_image>
+				<koken:link title="View {{ content.title | content.filename }}">
+					<koken:img />
+				</koken:link>
+			</koken:content_image>
+			<!-- Displayed if the asset is a video -->
+			<koken:content_video>
+				<koken:video />
+			</koken:content_video>
+
+			<h3><koken:link title="View {{ content.title | content.filename }}">{{ content.title | content.filename }}</koken:link></h3>
+
+			{{ content.caption paragraphs="true" }}
+
+		</div>
+
+	</koken:loop>
+
+	<!-- Display number of items plus link to full album if user arrives at this page from a filtered url. See koken:event_album_update in timeline.lens for link example. -->
+	<koken:filtered>
+		<p>
+			{{ filter.count }} of {{ album.counts.total }} / <koken:link title="View {{ album.title }}">View all</koken:link>
+		</p>
+	</koken:filtered>
+
+	<!-- Display pagination links -->
+	<koken:include file="inc/pagination.html" />
+
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
+
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No album loaded
+		</koken:note>
+
+</koken:load>
 
 <!-- Turn on keyboard scrolling (left/right arrow keys) for items -->
 <koken:keyboard_scroll element="div.item" />

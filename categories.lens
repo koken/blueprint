@@ -1,53 +1,47 @@
 <koken:include file="inc/header.html" />
 
-<main>
+<!-- Load this template's source data (categories) -->
+<koken:load>
 
-	<!-- Load this template's source data (categories) -->
-	<koken:load>
+	<!-- Add Facebook Open Graph tags for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ labels.category.plural }}" />
+		<meta property="og:description" content="{{ site.description strip_html='true' }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
+	</koken:head>
 
-		<!-- Add Facebook Open Graph tags for nicer sharing -->
-		<koken:head>
-			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{{ labels.category.plural }}" />
-			<meta property="og:description" content="{{ site.description strip_html='true' }}" />
-			<meta property="og:type" content="website" />
-			<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
-		</koken:head>
+	<ul>
 
-		<ul>
+	<!-- Loop over them all -->
+	<koken:loop>
 
-		<!-- Loop over them all -->
-		<koken:loop>
+		<li>
 
-			<li>
+			<!-- Link to category.lens to view all published content assigned the category -->
+			<koken:link title="View everything in {{ category.title }}">
+				<!-- Display the category's title -->
+				{{ category.title }} ({{ category.counts.total }})
+			</koken:link>
 
-				<!-- Link to category.lens to view all published content assigned the category -->
-				<koken:link title="View everything in {{ category.title }}">
-					<!-- Display the category's title -->
-					{{ category.title }} ({{ category.counts.total }})
-				</koken:link>
+		</li>
 
-			</li>
+	</koken:loop>
 
-		</koken:loop>
+	</ul>
 
-		</ul>
+	<!-- Display pagination links -->
+	<koken:include file="inc/pagination.html" />
 
-		<!-- Display pagination links -->
-		<p>
-			<koken:include file="inc/pagination.html" />
-		</p>
+<!-- Fallback content if no data was loaded by koken:load -->
+<koken:else>
 
-	<!-- Fallback content if no data was loaded by koken:load -->
-	<koken:else>
+	<!-- Use koken:note to display this message in the Site editor only -->
+	<koken:note>
+		No categories found
+	</koken:note>
 
-		<!-- Use koken:note to display this message in the Site editor only -->
-		<koken:note>
-			No categories found
-		</koken:note>
-
-	</koken:load>
-
-</main> <!-- close main -->
+</koken:load>
 
 <koken:include file="inc/footer.html" />

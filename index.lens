@@ -1,111 +1,111 @@
 <koken:include file="inc/header.html" />
 
-<main>
+<!-- Load this template's source data (featured content) -->
+<koken:load>
 
-	<!-- Load this template's source data (featured content) -->
-	<koken:load>
+	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ site.title }}" />
+		<meta property="og:description" content="{{ site.description strip_html='true' }}" />
+		<meta property="og:type" content="website" />
+		<koken:first>
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		</koken:first>
+		<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
+		<koken:not empty="profile.twitter">
+			<meta name="twitter:card" content="gallery" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			<koken:loop limit="4">
+				<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
+			</koken:loop>
+		</koken:not>
+	</koken:head>
 
-		<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
-		<koken:head>
-			<meta property="og:site_name" content="{{ site.title }}" />
-			<meta property="og:title" content="{{ site.title }}" />
-			<meta property="og:description" content="{{ site.description strip_html='true' }}" />
-			<meta property="og:type" content="website" />
-			<koken:first>
-			<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
-			<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
-			<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
-			</koken:first>
-			<meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
-			<koken:not empty="profile.twitter">
-				<meta name="twitter:card" content="gallery" />
-				<meta name="twitter:site" content="@{{ profile.twitter }}" />
-				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
-				<koken:loop limit="4">
-					<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
-				</koken:loop>
-			</koken:not>
-		</koken:head>
-
-		<!-- Slideshow that loads template data (featured content) -->
+	<!-- Slideshow that loads template data (featured content) -->
+	<div class="slideshow">
 		<koken:pulse jsvar="pulse" next="#sldshw_next" previous="#sldshw_prev" toggle="#sldshw_play" fullscreen="#sldshw_fs" />
+	</div>
 
-		<!-- Basic slideshow navigation example -->
+	<!-- Basic slideshow navigation example -->
+	<div class="slideshow_nav">
 		<a href="#" id="sldshw_prev">Previous</a> / <a href="#" id="sldshw_next">Next</a> / <a href="#" id="sldshw_play">Pause</a> / <a href="#" id="sldshw_fs">Full screen</a>
+	</div>
 
-		<!-- Optional script to change playback toggle text -->
-		<script>
-			pulse.on( 'playing', function(isPlaying) {
-				var el = $('#sldshw_play');
-				if (isPlaying) {
-					el.html('Pause');
-				} else {
-					el.html('Play');
-				}
-			});
-		</script>
+	<!-- Optional script to change playback toggle text -->
+	<script>
+		pulse.on( 'playing', function(isPlaying) {
+			var el = $('#sldshw_play');
+			if (isPlaying) {
+				el.html('Pause');
+			} else {
+				el.html('Play');
+			}
+		});
+	</script>
 
-	<!-- Fallback content if no data was loaded by koken:load -->
-	<koken:else>
+<!-- Fallback content if no data was loaded by koken:load -->
+<koken:else>
 
-		<!-- Use koken:note to display this message in the Site editor only -->
-		<koken:note>
-			No featured content found. Assign content in the Library.
-		</koken:note>
+	<!-- Use koken:note to display this message in the Site editor only -->
+	<koken:note>
+		No featured content found. Assign content in the Library.
+	</koken:note>
 
-	</koken:load>
+</koken:load>
 
-	<!-- Load featured essays -->
-	<koken:load source="featured_essays">
+<!-- Load featured essays -->
+<koken:load source="featured_essays">
 
-		<h3>Featured essays</h3>
+	<h3>Featured essays</h3>
 
-		<ul class="feat-essays">
+	<ul class="feat-essays">
 
-		<!-- Loop over each featured essay -->
-		<koken:loop>
+	<!-- Loop over each featured essay -->
+	<koken:loop>
 
-			<li>
+		<li>
 
-				<!-- Display the essay's featured image -->
-				<koken:featured_image>
+			<!-- Display the essay's featured image -->
+			<koken:featured_image>
 
-					<!-- Link image to essay -->
-					<koken:link title="Read {{ essay.title }}">
+				<!-- Link image to essay -->
+				<koken:link title="Read {{ essay.title }}">
 
-						<!-- Display featured image cropped to 3:2 -->
-						<koken:img size="3:2" />
+					<!-- Display featured image cropped to 3:2 -->
+					<koken:img size="3:2" />
 
-					</koken:link>
+				</koken:link>
 
-				</koken:featured_image>
+			</koken:featured_image>
 
-				<!-- Display essay title -->
-				<h4>
-					<koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link>
-				</h4>
+			<!-- Display essay title -->
+			<h4>
+				<koken:link title="Read {{ essay.title }}">{{ essay.title }}</koken:link>
+			</h4>
 
-				<!-- Display truncated essay excerpt plus link to essay -->
-				<p>
-					{{ essay.excerpt truncate="160" }} <koken:link title="Read {{ essay.title }}">more</koken:link>
-				</p>
+			<!-- Display truncated essay excerpt plus link to essay -->
+			<p>
+				{{ essay.excerpt truncate="160" }} <koken:link title="Read {{ essay.title }}">more</koken:link>
+			</p>
 
-			</li>
+		</li>
 
-		</koken:loop>
+	</koken:loop>
 
-		</ul>
+	</ul>
 
-	<!-- Fallback content if no data was loaded by koken:load -->
-	<koken:else>
+<!-- Fallback content if no data was loaded by koken:load -->
+<koken:else>
 
-		<!-- Use koken:note to display this message in the Site editor only -->
-		<koken:note>
-			No featured essays found. Assign essays in Text.
-		</koken:note>
+	<!-- Use koken:note to display this message in the Site editor only -->
+	<koken:note>
+		No featured essays found. Assign essays in Text.
+	</koken:note>
 
-	</koken:load>
-
-</main> <!-- close main -->
+</koken:load>
 
 <koken:include file="inc/footer.html" />

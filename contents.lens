@@ -25,138 +25,142 @@
 	</koken:head>
 </koken:load>
 
-<div id="content">
+<!-- Load this template's source data (contents) and limit for pagination -->
+<koken:load limit="50">
 
-	<!-- Load this template's source data (contents) and limit for pagination -->
-	<koken:load limit="50">
+	<div class="lcol">
 
-		<div class="lcol">
+		<!-- Loop over all public content, display info about each, link to content.lens -->
+		<koken:loop>
 
-			<!-- Loop over all public content, display info about each, link to content.lens -->
-			<koken:loop>
+			<!-- wrapper used for keyboard navigation targetting -->
+			<div class="item">
 
-				<!-- wrapper used for keyboard navigation targetting -->
-				<div class="item">
+				<h2>
+					<koken:link title="View {{ content.title | content.filename }}">
+						{{ content.title | content.filename }}
+					</koken:link>
+				</h2>
 
-					<h2>
-						<koken:link title="View {{ content.title | content.filename }}">
-							{{ content.title | content.filename }}
-						</koken:link>
-					</h2>
+				<!-- Displayed if the asset is an image -->
+				<koken:content_image>
 
-					<!-- Displayed if the asset is an image -->
-					<koken:content_image>
+					<!-- Display image title, fallback to file name if empty, link to content.lens -->
+					<koken:link title="View {{ content.title | content.filename }}">
+						<koken:img />
+					</koken:link>
 
-						<!-- Display image title, fallback to file name if empty, link to content.lens -->
-						<koken:link title="View {{ content.title | content.filename }}">
-							<koken:img />
-						</koken:link>
+				</koken:content_image>
 
-					</koken:content_image>
+				<!-- Displayed if the asset is a video -->
+				<koken:content_video>
 
-					<!-- Displayed if the asset is a video -->
-					<koken:content_video>
+					<!-- Load the video -->
+					<koken:video />
 
-						<!-- Load the video -->
-						<koken:video />
+				</koken:content_video>
 
-					</koken:content_video>
+				<!-- Display the timestamp (date published) -->
+				<!-- Link to archive.contents.lens to view all content uploaded the same month -->
+				<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
+					<!-- Publish the date it was captured -->
+					<koken:time />
+				</koken:link>
 
-					<!-- Display the timestamp (date published) -->
+				{{ content.caption paragraphs="true" }}
+
+				<!-- Publish the asset's categories. Links to archive.contents.lens -->
+				<koken:categories>
 					<p>
-						<!-- Link to archive.contents.lens to view all content uploaded the same month -->
-						<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
-							<!-- Publish the date it was captured -->
-							<koken:time />
-						</koken:link>
-					</p>
-
-					{{ content.caption paragraphs="true" }}
-
-					 <!-- Publish the asset's categories. Links to archive.contents.lens -->
-                    <koken:categories>
-                    <p>
-                        <strong>{{ labels.category.plural }}:</strong>
-                        <koken:loop separator=", ">
+						<strong>{{ labels.category.plural }}:</strong>
+						<koken:loop separator=", ">
 							<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
 								{{ category.title }}
 							</koken:link>
-                         </koken:loop>
-                    </p>
-                    </koken:categories>
+						</koken:loop>
+					</p>
+				</koken:categories>
 
-                    <!-- Publish the asset' tags. Links to archive.contents.lens -->
-                    <koken:tags>
-                      <p>
-                      	<strong>{{ labels.tag.plural }}:</strong>
+				<!-- Publish the asset' tags. Links to archive.contents.lens -->
+				<koken:tags>
+					<p>
+						<strong>{{ labels.tag.plural }}:</strong>
 						<koken:loop separator=" ">
 							<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ tag.title }}">
 								#{{ tag.title }}
 							</koken:link>
 						</koken:loop>
-                      </p>
-                    </koken:tags>
+					</p>
+				</koken:tags>
 
-				</div>
+			</div>
 
-			</koken:loop>
+		</koken:loop>
 
-			<!-- Display pagination links -->
-			<p>
-				<koken:include file="inc/pagination.html" />
-			</p>
+		<!-- Display pagination links -->
+		<koken:include file="inc/pagination.html" />
 
-		</div> <!-- close .lcol -->
+	</div> <!-- close .lcol -->
 
-		<div class="rcol">
+	<div class="rcol">
 
-			<!-- Links to view content by publish date in archive.contents.lens -->
-	       <h3>View {{ labels.content.plural case="lower" }} by date</h3>
-	        <koken:dates limit_to="content">
-	          <koken:select label="Select month" />
-	        </koken:dates>
+		<aside>
 
-	       <!-- Links to view content by category in archive.contents.lens -->
-	        <koken:categories limit_to="content" order_by="content_count">
-	          <h3>View {{ labels.content.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h3>
-	          <koken:loop>
-	            <koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
-	            {{ category.title }} ({{ category.counts.total }})
-	            </koken:link>
-	            <br>
-	          </koken:loop>
-	        </koken:categories>
+			<section>
+				<!-- Links to view content by publish date in archive.contents.lens -->
+				<h5>View {{ labels.content.plural case="lower" }} by date</h5>
+				<koken:dates limit_to="content">
+					<koken:select label="Select month" />
+				</koken:dates>
+			</section>
 
-	        <!-- Links to view content by tag in archive.contents.lens -->
-	         <koken:tags limit_to="content" order_by="content_count">
-	         <h3>View {{ labels.content.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h3>
-	         <koken:loop>
-	            <koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
-	              {{ tag.title }} ({{ tag.counts.total }})
-	            </koken:link>
-	            <br>
-	         </koken:loop>
-	       </koken:tags>
+			<section>
+				<!-- Links to view content by category in archive.contents.lens -->
+				<koken:categories limit_to="content" order_by="content_count">
+					<h5>View {{ labels.content.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
+						{{ category.title }} ({{ category.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:categories>
+			</section>
 
-			<!-- Display a link to the "All uploads" RSS feed -->
-			<h3>RSS</h3>
-			<p>
-				<a href="{{ rss.contents }}" title="Subscribe to RSS">Subscribe to latest uploads</a>
-			</p>
+			<section>
+				<!-- Links to view content by tag in archive.contents.lens -->
+				<koken:tags limit_to="content" order_by="content_count">
+					<h5>View {{ labels.content.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
+						{{ tag.title }} ({{ tag.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
 
-		</div> <!-- close .rcol -->
+			<section>
+				<!-- Display a link to the "All uploads" RSS feed -->
+				<h5>RSS</h5>
+				<p>
+					<a href="{{ rss.contents }}" title="Subscribe to RSS">Subscribe to latest uploads</a>
+				</p>
+			</section>
 
-		<!-- Fallback content if no data was loaded by koken:load -->
-		<koken:else>
+		</aside>
 
-			<!-- Display fallback message in Site editor only -->
-			<koken:note>
-				No uploads found. Upload some to the Library.
-			</koken:note>
+	</div> <!-- close .rcol -->
 
-	</koken:load>
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
 
-</div> <!-- close #content -->
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No images or videos found. Upload some to the Library.
+		</koken:note>
+
+</koken:load>
 
 <!-- Turn on keyboard scrolling (left/right arrow keys) for items -->
 <koken:keyboard_scroll element="div.item" />
