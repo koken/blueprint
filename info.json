@@ -7,7 +7,7 @@
 		"name": "Your name",
 		"link": "https://store.koken.me/authors/koken"
 	},
-	"koken_version_required": "0.14.4",
+	"koken_version_required": "0.18.0",
 
 	"navigation_groups": {
 		"footer": {
