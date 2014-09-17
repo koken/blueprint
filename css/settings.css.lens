@@ -1,60 +1,13 @@
-/*
-	GLOBAL
-*/
-
-body {
-	background:#fff;
-	color:#000;
-	font:16px/24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	margin:20px;
-	text-align:center;
-}
-
-a {
-	color:#75c4e5;
-	cursor:pointer;
-	text-decoration:none;
-}
-
-a:hover {
-	text-decoration:underline;
-}
-
-a.button {
-	padding:4px 8px;
-	border:1px solid #999;
-	color:#000;
-	font-size:13px;
-	font-weight:bold;
-	margin:1em 0;
-	display:inline-block;
-}
-
-a.button:hover {
-	text-decoration:none;
-	border:1px solid #000;
-}
-
-h1,h2,h3,h4,h5,h6,strong {
-	color:#000;
-	font-weight:bold;
-}
-
-h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
-	color:inherit;
-}
-
-img {
-	-ms-interpolation-mode: bicubic;
-	vertical-align: bottom;
-}
-
-hr {
-	border:0;
-	height:1px;
-	background:black;
-	display:block;
-	margin:1em 0;
+/* everybody get down */
+h1,h2,h3,h4,h5,h6,hgroup,
+ul,ol,dd,
+blockquote,
+p,figure,
+nav,header,article,section,time,
+img,.slideshow,
+pre,table,fieldset,hr
+{
+    margin-bottom:1.42857143rem;
 }
 
 .comma_sep span:after {
@@ -65,32 +18,38 @@ hr {
 	content:"";
 }
 
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a
+{
+	color:inherit;
+}
+
 /*
 	LAYOUT
 */
 
-div#container {
+div.container {
 	width:960px;
 	margin:0 auto;
 	text-align:left;
 }
 
 header.main {
-	margin-bottom:40px;
-}
-
-header.main h1 a {
-	color:inherit;
+	margin-bottom:2em;
 }
 
 footer.main {
-	padding:40px 0;
+	padding:2em 0;
 	clear:both;
 	text-align:left;
 }
 
 nav {
-	margin-top:40px;
+	margin-top:2em;
 }
 
 nav ul {
@@ -103,31 +62,13 @@ nav ul li {
 	margin:0 15px 0 0;
 }
 
-nav a, nav a:visited {
-	color:#000;
+aside section {
+	margin-bottom:2em;
 }
 
-/* highlights navigation link for current page - assigned automatically by Koken */
-a.k-nav-current,
-a.k-pagination-current
-{
-	color:#ff6e00 !important;
-}
-header.main h1 a {
-	color:inherit !important;
-	border-bottom:none !important;
-}
-
-/*
-	LAYOUT (JUST ENOUGH TO ORGANIZE THINGS)
-*/
-
-main {
-	display:block;
-}
-
-main h2 {
-	margin-bottom:20px;
+.slideshow_nav {
+	margin-bottom:1em;
+	clear:both;
 }
 
 ul.feat-essays {
@@ -190,75 +131,15 @@ ol.archive.albums li {
 
 ol.archive.essays li {
 	width:310px;
-	margin-bottom:20px !important;
+	margin-bottom:1em !important;
 }
 
 ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archive.essays li:nth-child(3) {
 	margin-right:0;
 }
 
-#bread {
-	display:block;
-	margin-bottom:2em;
-}
-
 /*
-	ARTICLES
-	Used for essays and pages.
-	Markup shown below contains all possible elements and classes
-	generated from the editor's rich text formatting.
-*/
-
-article {
-}
-
-article h1 {
-}
-
-article h2 {
-}
-
-article h3 {
-}
-
-article h4 {
-}
-
-article time {
-}
-
-article p {
-	margin-bottom:20px;
-}
-
-article ul {
-	list-style:disc;
-	list-style-position: inside;
-	padding:0;
-}
-
-article ol {
-	list-style:decimal;
-	list-style-position: inside;
-	padding:0;
-}
-
-article blockquote {
-	font-style:italic;
-}
-
-article blockquote p {
-	padding:0;
-}
-
-/*
-	Image Protect plugin
-*/
-
-body.k-image-protect-nopin a.social-pinterest { display:none; }
-
-/*
-	Classes assigned to inserted media
+	Helper classes
 	See: http://help.koken.me/customer/portal/articles/828695-css-classes
 */
 
@@ -270,7 +151,6 @@ body.k-image-protect-nopin a.social-pinterest { display:none; }
 /* wrapper of the media asset itself */
 .k-content {
 	line-height:0; /* resolves html whitespace */
-	margin:0 0 1em 0;
 }
 
 /* wrapper for title/caption underneath photo/video, if turned on */
@@ -281,16 +161,23 @@ body.k-image-protect-nopin a.social-pinterest { display:none; }
 /* wrapper for the media's title */
 .k-content-title {
 	display:block;
+	font-style:italic;
 }
 
 /* wrapper for the media's caption */
-.k-content-caption {
-}
-
-/*
-	MORE CLASSES
-	See: http://help.koken.me/customer/portal/articles/828695-css-classes
-*/
+.k-content-caption {}
 
 /* used for fallback text in console */
 .k-note {}
+
+/* highlights navigation link for current page - assigned automatically by Koken */
+a.k-nav-current,
+a.k-pagination-current
+{
+	font-weight:bold;
+}
+
+/* assigned to body by Image Protect plugin if Pinterest pinning is disabled */
+body.k-image-protect-nopin a.social-pinterest {
+	display:none;
+}
