@@ -54,7 +54,7 @@
 
 				<header>
 
-	              <h2>{{ essay.title }}</h2>
+	              <h1>{{ essay.title }}</h1>
 
                   <!-- Display the timestamp (date published) -->
 	              <p>
