@@ -72,7 +72,7 @@
 
 	<!-- Display the content title or filename as a backup -->
 	<h2>
-		{{ content.title | content.filename.clean }}
+		{{ content.title | content.filename }}
 	</h2>
 
 	<!-- Displayed if content is an image -->

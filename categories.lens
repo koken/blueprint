@@ -13,22 +13,16 @@
 	</koken:head>
 
 	<ul>
-
-	<!-- Loop over them all -->
-	<koken:loop>
-
-		<li>
-
-			<!-- Link to category.lens to view all published content assigned the category -->
-			<koken:link title="View everything in {{ category.title }}">
-				<!-- Display the category's title -->
-				{{ category.title }} ({{ category.counts.total }})
-			</koken:link>
-
-		</li>
-
-	</koken:loop>
-
+		<!-- Loop over them all -->
+		<koken:loop>
+			<li>
+				<!-- Link to category.lens to view all published content assigned the category -->
+				<koken:link title="View everything in {{ category.title }}">
+					<!-- Display the category's title -->
+					{{ category.title }} ({{ category.counts.total }})
+				</koken:link>
+			</li>
+		</koken:loop>
 	</ul>
 
 	<!-- Display pagination links -->

@@ -4,13 +4,13 @@
 <koken:load limit="20">
 
 	<!-- Add Facebook Open Graph tags for nicer sharing -->
-      <koken:head>
-        <meta property="og:site_name" content="{{ site.title }}" />
-        <meta property="og:description" content="{{ site.description strip_html='true' }}" />
-        <meta property="og:title" content="{{ labels.timeline.plural }}" />
-        <meta property="og:type" content="blog" />
-        <meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
-      </koken:head>
+  <koken:head>
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:description" content="{{ site.description strip_html='true' }}" />
+    <meta property="og:title" content="{{ labels.timeline.plural }}" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
+  </koken:head>
 
 	<div class="lcol">
 
