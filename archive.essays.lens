@@ -35,7 +35,9 @@
 
             <!-- Display link to the rest of the essay if a read more break link is inserted -->
             <koken:more>
-              <koken:link title="{{ essay.title }}">{{ essay.read_more_label }}</koken:link>
+              <p>
+                <koken:link title="{{ essay.title }}" class="btn btn-primary">{{ essay.read_more_label }}</koken:link>
+              </p>
             </koken:more>
 
             <footer>
