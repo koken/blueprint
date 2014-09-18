@@ -4,7 +4,7 @@
 	"description": "Bare bones theme for theme developers learning the ropes. Nothing fancy, just data.",
 	"demo": "http://koken.me",
 	"author": {
-		"name": "Your name",
+		"name": "Koken",
 		"link": "https://store.koken.me/authors/koken"
 	},
 	"koken_version_required": "0.18.0",
