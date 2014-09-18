@@ -35,10 +35,11 @@
 		<koken:if true="album.public">
 			<div id="content-pag">
 				<koken:previous>
-				<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+					&nbsp;&nbsp;
 				</koken:previous>
 				<koken:next>
-				<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
 				</koken:next>
 			</div>
 		</koken:if>
@@ -122,10 +123,11 @@
 
 				<!-- If album is part of a set, display link to it -->
 				<koken:parent>
-					<pli
+					<li>
 						<strong>From the set:</strong> <koken:link title="View {{ album.title }}">
 						{{ album.title }}</koken:link>
-						&nbsp;&nbsp;
+					</li>
+					<li>
 						<!-- Display links to other albums part of the same set -->
 						<strong>Other albums in this set:</strong>
 						<koken:loop separator=",">

@@ -36,12 +36,12 @@
 			<div id="content-pag">
 				<koken:previous>
 					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+					&nbsp;&nbsp;
 				</koken:previous>
 				<koken:next>
 					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
 				</koken:next>
 			</div>
-
 		</koken:if>
 
 		<koken:breadcrumbs />
