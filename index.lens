@@ -27,7 +27,7 @@
 
 	<!-- Slideshow that loads template data (featured content) -->
 	<div class="slideshow">
-		<koken:pulse jsvar="pulse" next="#sldshw_next" previous="#sldshw_prev" toggle="#sldshw_play" fullscreen="#sldshw_fs" />
+		<koken:pulse jsvar="pulse" next="#sldshw_next" previous="#sldshw_prev" toggle="#sldshw_play" fullscreen="#sldshw_fs" fallbacktext="No featured content found. Assign some in the Library." />
 	</div>
 
 	<!-- Basic slideshow navigation example -->
