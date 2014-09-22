@@ -69,23 +69,6 @@
 						<koken:link title="{{ essay.title }}">Link</koken:link>
 					</li>
 
-					<!-- Display image and info about album assigned as essay topic -->
-					<koken:topics>
-						<li>
-						<strong>Related content:</strong>
-						<koken:loop>
-							<koken:link title="View {{ album.title }}">
-								<koken:img preset="small" />
-							</koken:link>
-							<br>
-							<koken:link title="View {{ album.title }}">
-								{{ album.title }}
-							</koken:link>
-							({{ album.counts.total }} images)
-						</koken:loop>
-						</li>
-					</koken:topics>
-
 					<!-- Publish the essay's categories. Links to archive.essays.lens -->
 					<koken:categories>
 						<li>
@@ -119,6 +102,24 @@
 						<koken:link share="tumblr">Tumblr</koken:link>
 						<koken:link share="google-plus">Google+</koken:link>
 					</li>
+
+					<!-- Display image and info about album assigned as essay topic -->
+					<koken:topics>
+						<li>
+						<strong>Related content:</strong>
+						<br>
+						<koken:loop>
+							<koken:link title="View {{ album.title }}">
+								<koken:img preset="small" />
+							</koken:link>
+							<br>
+							<koken:link title="View {{ album.title }}">
+								{{ album.title }}
+							</koken:link>
+							({{ album.counts.total }} images)
+						</koken:loop>
+						</li>
+					</koken:topics>
 
 				</ul>
 
