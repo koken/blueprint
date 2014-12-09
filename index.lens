@@ -27,12 +27,12 @@
 
 	<!-- Slideshow that loads template data (featured content) -->
 	<div class="slideshow">
-		<koken:pulse jsvar="pulse" next="#sldshw_next" previous="#sldshw_prev" toggle="#sldshw_play" fullscreen="#sldshw_fs" fallbacktext="No featured content found. Assign some in the Library." />
+		<koken:pulse jsvar="pulse" next="#sldshw_next" previous="#sldshw_prev" toggle="#sldshw_play" fullscreen="#sldshw_fs" restart="#sldshw_restart" fallbacktext="No featured content found. Assign some in the Library." />
 	</div>
 
 	<!-- Basic slideshow navigation example -->
 	<div class="slideshow_nav">
-		<a href="#" id="sldshw_prev">Previous</a> / <a href="#" id="sldshw_next">Next</a> / <a href="#" id="sldshw_play">Pause</a> / <a href="#" id="sldshw_fs">Full screen</a>
+		<a href="#" id="sldshw_restart">Restart</a> / <a href="#" id="sldshw_prev">Previous</a> / <a href="#" id="sldshw_next">Next</a> / <a href="#" id="sldshw_play">Pause</a> / <a href="#" id="sldshw_fs">Full screen</a>
 	</div>
 
 	<!-- Optional script to change playback toggle text -->
