@@ -52,6 +52,13 @@
 
 		<header>
 
+			<!-- If album's visibility is unlisted, show message -->
+			<koken:unlisted>
+				<p class="unlisted">
+					This album is unlisted. Please don't share a link to it.
+				</p>
+			</koken:unlisted>
+
 			<h2>
 				<!-- Display the album's title -->
 				{{ album.title }}
@@ -137,7 +144,7 @@
 				</koken:parent>
 
 				<!-- Display social share links if album has public visibility -->
-				<koken:if true="album.public">
+				<koken:public>
 					<li>
 						<strong>Share:</strong>
 						<koken:link share="twitter">Twitter</koken:link>
@@ -146,7 +153,7 @@
 						<koken:link share="tumblr">Tumblr</koken:link>
 						<koken:link share="google-plus">Google+</koken:link>
 					</li>
-				</koken:if>
+				</koken:public>
 
 				<!-- Display a link to this album's RSS feed -->
 				<li>

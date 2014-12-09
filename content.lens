@@ -72,6 +72,13 @@
 
 	</nav>
 
+	<!-- If image/video visibility is unlisted, show message -->
+	<koken:unlisted>
+		<p class="unlisted">
+			This page is unlisted. Please don't share a link to it.
+		</p>
+	</koken:unlisted>
+
 	<!-- Displayed if content is an image -->
 	<koken:content_image>
 
@@ -247,7 +254,7 @@
 			</koken:geolocation>
 
 			<!-- Display social share links if the content has public visibility -->
-			<koken:if true="content.public">
+			<koken:public>
 				<li>
 					<strong>Share:</strong>
 					<koken:link share="twitter">Twitter</koken:link>
@@ -256,7 +263,7 @@
 					<koken:link share="tumblr">Tumblr</koken:link>
 					<koken:link share="google-plus">Google+</koken:link>
 				</li>
-			</koken:if>
+			</koken:public>
 
 		</ul>
 

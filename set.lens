@@ -48,6 +48,13 @@
 
 	</nav>
 
+	<!-- If set's visibility is unlisted, show message -->
+	<koken:unlisted>
+		<p class="unlisted">
+			This set is unlisted. Please don't share a link to it.
+		</p>
+	</koken:unlisted>
+
 	<div class="lcol nofloat">
 
 		<!-- Display the set's title -->
