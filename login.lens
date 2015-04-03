@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!-- Publishes Author, Description, and Keywords from Settings > Site Publishing plus content data -->
+	<koken:meta />
+
+	<!-- Publishes Page Title from Settings > Site Publishing plus content titles -->
+	<koken:title />
+
+	<!-- More consistent cross-browser styling -->
+	<koken:asset file="css/normalize.css" />
+
+	<!-- Loading Bootstrap CSS just for basic styling -->
+	<koken:asset file="css/bootstrap.css" />
+	<koken:asset file="css/bootstrap-theme.css" />
+
+	<!-- Loading theme's settings css from css/settings.css.lens -->
+	<koken:settings />
+
+</head>
+
+<body>
+
+	<!--
+
+	This login.lens template is used by Koken's Password Protect plugin
+	when a user is asked to sign-in to access a protected site
+	or individual albums and sets.
+
+	-->
+
+	<div class="container">
+
+		<koken:form>
+
+			<h1>
+				<koken:link to="front" title="{{ labels.home.singular }}">{{ site.title }}</koken:link>
+			</h1>
+
+			<koken:not empty="messages.koken_password_error">
+				<p>
+					{{ messages.koken_password_error }}
+				</p>
+			</koken:not>
+
+			<p>
+				<input type="password" name="password" autofocus placeholder="Enter password" />
+			</p>
+
+			<button type="submit" disabled="disabled">Go</button>
+
+		</koken:form>
+
+		<script>
+			$(document).ready(function() {
+			     $('input[type="password"]').keyup(function() {
+		           $('button[type="submit"]').attr('disabled', !$(this).val().length);
+			     }).trigger('keyup');
+		 	});
+		</script>
+
+	</div>
+
+</body>
+
+</html>
